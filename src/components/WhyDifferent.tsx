@@ -1,30 +1,30 @@
-import { Shield, Sparkles, CheckCircle, TrendingUp } from "lucide-react";
+import { Shield, Bot, FileCheck, TrendingUp } from "lucide-react";
 
 const WhyDifferent = () => {
   const features = [
     {
-      icon: CheckCircle,
-      title: "True Exclusivity",
-      description:
-        "We structurally limit competition to give you a clean, uncontested shot at the deal. No more racing 10 other brokers to the same burned-out lead.",
-    },
-    {
-      icon: Sparkles,
-      title: "AI-Powered Verification",
-      description:
-        "Our proprietary systems verify every data point, ensuring the highest levels of accuracy and connectivity. You get data you can actually use.",
-    },
-    {
       icon: Shield,
-      title: "Proactive Compliance Shield",
+      title: "True Exclusivity—One Buyer Per Lead",
       description:
-        "We scrub every lead against national DNC lists and known litigator databases *before* you get it, protecting your business from legal risk.",
+        "Our top-tier leads are sold once and never resold. You get a clean, uncontested shot at the deal.",
+    },
+    {
+      icon: FileCheck,
+      title: "Compliance First (Consent, TCPA, DNC)",
+      description:
+        "We take compliance seriously. Every lead is verified for consent and scrubbed against DNC and known litigator lists.",
+    },
+    {
+      icon: Bot,
+      title: "Real‑Time Delivery & Routing",
+      description:
+        "Leads are delivered to your CRM in under 60 seconds, with intelligent routing to get the right lead to the right rep, instantly.",
     },
     {
       icon: TrendingUp,
-      title: "Built to Scale",
+      title: "Conversion Accountability, Not Just Volume",
       description:
-        "Our model is designed for your growth. From our tiered products to our data add-ons, every part of our system is built to fuel your long-term success.",
+        "Our success is tied to yours. We provide the data, strategy, and support you need to actually convert leads and grow your business.",
     },
   ];
 
@@ -33,7 +33,7 @@ const WhyDifferent = () => {
       <div className="container mx-auto max-w-7xl px-6 lg:px-12">
         <div className="mb-16 text-center">
           <h2 className="font-heading text-4xl font-bold text-primary md:text-[40px]">
-            The Direct MCA Leads Difference
+            Why Direct MCA Leads Is Different
           </h2>
         </div>
 

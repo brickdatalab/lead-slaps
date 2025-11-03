@@ -1,22 +1,25 @@
-import { Brain, FileText, Phone } from "lucide-react";
+import { Sparkles, FileCheck, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const AddOns = () => {
   const addOns = [
     {
-      icon: Brain,
-      title: "FundSense",
-      tagline: "AI-powered fundability scoring",
+      icon: Sparkles,
+      title: "AI Lead Scoring for MCA",
+      description:
+        "Our AI models score every lead for fundability, allowing you to prioritize your outreach and focus on the deals most likely to close.",
     },
     {
-      icon: FileText,
-      title: "StatementSnap",
-      tagline: "Instant bank statement analysis",
+      icon: FileCheck,
+      title: "Data Enrichment & Verification (TCPA/DNC)",
+      description:
+        "We enrich your leads with critical data points and verify them for TCPA/DNC compliance, ensuring accuracy and protecting your business.",
     },
     {
       icon: Phone,
-      title: "TrustDial",
-      tagline: "TCPA-compliant automated outreach",
+      title: "Managed Outreach Sequences",
+      description:
+        "Let us handle the initial outreach. We can deploy automated, multi-channel sequences to warm up your leads before they hit your sales floor.",
     },
   ];
 
@@ -25,7 +28,7 @@ const AddOns = () => {
       <div className="container mx-auto max-w-7xl px-6 lg:px-12">
         <div className="mb-16 text-center">
           <h2 className="mb-4 font-heading text-4xl font-bold text-primary md:text-[40px]">
-            Transform Data Into Decisions with AI-Powered Add-Ons
+            Boost Conversions with Add‑Ons
           </h2>
         </div>
 
@@ -38,7 +41,7 @@ const AddOns = () => {
               <h3 className="mb-2 font-heading text-2xl font-semibold text-text-primary">
                 {addOn.title}
               </h3>
-              <p className="font-body text-base text-text-secondary">{addOn.tagline}</p>
+              <p className="font-body text-base text-text-secondary">{addOn.description}</p>
             </div>
           ))}
         </div>

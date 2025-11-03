@@ -3,34 +3,29 @@ import { useEffect } from "react";
 const FAQ = () => {
   const faqs = [
     {
-      question: "What makes your leads 'exclusive'?",
+      question: "What are exclusive MCA leads?",
       answer:
-        "Unlike traditional providers who sell the same lead to 10-20 brokers, our Apex product offers 100% exclusivity - you're the only broker receiving that prospect. Our Alpha product limits competition to just 2-3 qualified brokers, still dramatically better than industry standard.",
+        "Exclusive MCA leads are merchant cash advance leads that are sold to only one buyer. This means you are the only broker receiving that specific lead at that time, giving you an uncontested opportunity to connect with the merchant and close the deal without competition.",
     },
     {
-      question: "How do you verify lead quality?",
+      question: "Aged MCA leads vs fresh submissions: which converts better?",
       answer:
-        "Every lead passes through our AI-powered verification system that validates business information, checks credit indicators, confirms contact accuracy, and screens against DNC/litigator databases. We also validate funding intent through behavioral signals and direct engagement metrics.",
+        "It depends on your strategy. Fresh submissions generally have higher intent and convert faster, but at a higher cost. Aged leads have a lower cost per lead (CPL) and can be highly effective for teams with a consistent, multi-touch follow-up process. We recommend a blended approach for most teams.",
     },
     {
-      question: "What's the difference between your three products?",
+      question: "How do MCA live transfers work?",
       answer:
-        "Direct Submissions are real-time leads from businesses actively seeking funding. Alpha Data provides semi-exclusive leads with controlled competition (2-3 brokers). Apex Data offers 100% exclusive leads with zero competition - you're the only broker working that prospect.",
+        "An MCA live transfer is a pre-qualified, interested merchant who is transferred directly to your sales team in a live phone call. Our team handles the initial contact and qualification, and when the merchant expresses interest, we connect them to your closer instantly.",
     },
     {
-      question: "How quickly can I start receiving leads?",
+      question: "Are your MCA leads TCPA compliant?",
       answer:
-        "After our initial strategy session where we define your ideal borrower profile and compliance requirements, we typically begin delivery within 5-7 business days. Our team handles all setup, verification, and integration work.",
+        "Yes. We take compliance very seriously. All of our leads are generated from sources where clear consent has been given, and we scrub every lead against national DNC lists and known litigator databases before delivery.",
     },
     {
-      question: "What integrations do you support?",
+      question: "How fast are leads delivered to my CRM?",
       answer:
-        "We offer seamless integrations with HubSpot, Salesforce, and thousands of other platforms via Zapier. We also support standard delivery methods including email, CSV export, and our real-time API for custom integrations.",
-    },
-    {
-      question: "What if the leads don't convert?",
-      answer:
-        "We're a scalability partner, not a transactional vendor. If conversion rates aren't meeting expectations, we work with you to refine targeting criteria, adjust delivery volume, and optimize data quality. Our success is directly tied to your long-term ROI.",
+        "For our fresh submission and live transfer products, leads are delivered in real-time, typically in under 60 seconds. We use webhooks and direct API integrations to ensure instant delivery to your CRM or dialer.",
     },
   ];
 
@@ -62,7 +57,7 @@ const FAQ = () => {
       <div className="container mx-auto max-w-4xl">
         <div className="mb-16 text-center">
           <h2 className="font-heading text-4xl font-bold text-primary md:text-[40px]">
-            Your Core Questions About MCA Lead Generation
+            MCA Leads FAQ
           </h2>
         </div>
 

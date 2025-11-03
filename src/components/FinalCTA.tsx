@@ -5,10 +5,10 @@ const FinalCTA = () => {
     <section className="bg-primary py-24 text-primary-foreground">
       <div className="container mx-auto max-w-4xl px-6 text-center lg:px-12">
         <h2 className="mb-8 font-heading text-4xl font-bold md:text-[40px]">
-          Stop Competing. Start Scaling.
+          Ready to Stop Competing and Start Converting?
         </h2>
         <p className="mb-12 font-body text-lg opacity-90">
-          Your brokerage can't scale on burnt-out leads. Partner with a data provider that's actually invested in your ROI. Stop wasting your team's morale on leads they can't close.
+          Explore our product tiers, configure your data plan with powerful AI add-ons, and build the high-performance pipeline your team deserves.
         </p>
         <Button
           variant="secondary"
@@ -16,7 +16,7 @@ const FinalCTA = () => {
           asChild
           className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
         >
-          <a href="/contact">Request Pricing</a>
+          <a href="/products">Build Your Plan</a>
         </Button>
       </div>
     </section>

@@ -2,21 +2,21 @@ const HowItWorks = () => {
   const steps = [
     {
       number: "01",
-      title: "Define Your Strategy",
+      title: "Capture and Qualify Fresh Merchant Cash Advance Leads",
       description:
-        "Tell us your ideal borrower profile, volume needs, and compliance requirements.",
+        "We capture high-intent leads from multiple sources, including inbound web forms, partner data, and proprietary intent signals. Every lead is pre-qualified based on your criteria and consent is verified at the source.",
     },
     {
       number: "02",
-      title: "We Source & Validate",
+      title: "Score, Enrich, and Route in Real Time",
       description:
-        "Our AI-powered systems source, verify, and exclusivity-lock your data, ensuring quality and low competition.",
+        "Our AI models score each lead for fundability, enrich it with critical data points (revenue, time-in-business), and validate it for TCPA/DNC compliance. This ensures you get the most accurate and actionable data.",
     },
     {
       number: "03",
-      title: "Scale Predictably",
+      title: "Deliver Exclusive Leads or Live Transfers to Your CRM",
       description:
-        "We launch delivery, provide weekly reporting, and iterate with you to ensure your pipeline is always full and your ROI is climbing.",
+        "We deliver exclusive leads directly to your CRM or dialer via real-time API, webhook, or other integrations. For qualified prospects, we can initiate a live transfer, connecting your closers with interested merchants instantly.",
     },
   ];
 
@@ -25,11 +25,8 @@ const HowItWorks = () => {
       <div className="container mx-auto max-w-7xl px-6 lg:px-12">
         <div className="mb-16 text-center">
           <h2 className="mb-4 font-heading text-4xl font-bold text-primary md:text-[40px]">
-            How It Works
+            How Our AI‑Powered MCA Lead Generation Works
           </h2>
-          <p className="font-body text-lg text-text-secondary">
-            Partner with us in three simple steps
-          </p>
         </div>
 
         <div className="grid gap-12 md:grid-cols-3">
