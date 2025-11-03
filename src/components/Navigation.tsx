@@ -8,17 +8,13 @@ const Navigation = () => {
   const navLinks = [
     { label: "Products", href: "/products" },
     { label: "Add-Ons", href: "/add-ons" },
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "Why Us", href: "#why-us" },
-    { label: "FAQ", href: "#faq" },
-    { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="container mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
-        <a href="/" className="text-2xl font-bold text-primary font-headline">
+        <a href="/" className="font-heading text-2xl font-bold text-primary">
           Direct MCA Leads
         </a>
 
@@ -28,7 +24,7 @@ const Navigation = () => {
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-text-secondary transition-colors hover:text-primary"
+              className="font-body text-sm font-medium text-text-secondary transition-colors hover:text-primary"
             >
               {link.label}
             </a>
@@ -60,7 +56,7 @@ const Navigation = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-lg font-medium text-text-secondary"
+                className="font-body text-lg font-medium text-text-secondary"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}

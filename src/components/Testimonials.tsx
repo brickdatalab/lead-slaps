@@ -23,7 +23,7 @@ const Testimonials = () => {
     <section className="bg-surface py-24">
       <div className="container mx-auto max-w-7xl px-6 lg:px-12">
         <div className="mb-16 text-center">
-          <h2 className="text-4xl font-bold text-primary md:text-[40px]">
+          <h2 className="font-heading text-4xl font-bold text-primary md:text-[40px]">
             Don't Just Take Our Word For It
           </h2>
         </div>
@@ -35,10 +35,10 @@ const Testimonials = () => {
               className="rounded-lg bg-card p-8 shadow-card"
             >
               <Quote className="mb-4 h-8 w-8 text-accent" />
-              <p className="mb-6 text-base leading-relaxed text-text-primary">
+              <p className="mb-6 font-body text-base leading-relaxed text-text-primary">
                 "{testimonial.quote}"
               </p>
-              <p className="text-sm font-semibold text-text-secondary">
+              <p className="font-body text-sm font-semibold text-text-secondary">
                 {testimonial.author}
               </p>
             </div>

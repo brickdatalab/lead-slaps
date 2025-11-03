@@ -24,7 +24,7 @@ const Footer = () => {
       <div className="container mx-auto max-w-7xl px-6 lg:px-12">
         <div className="grid gap-12 md:grid-cols-3">
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider">
+            <h4 className="mb-4 font-heading text-sm font-semibold uppercase tracking-wider">
               Company
             </h4>
             <ul className="space-y-3">
@@ -32,7 +32,7 @@ const Footer = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-sm transition-colors hover:text-primary-foreground"
+                    className="font-body text-sm transition-colors hover:text-primary-foreground"
                   >
                     {link.label}
                   </a>
@@ -42,7 +42,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider">
+            <h4 className="mb-4 font-heading text-sm font-semibold uppercase tracking-wider">
               Solutions
             </h4>
             <ul className="space-y-3">
@@ -50,7 +50,7 @@ const Footer = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-sm transition-colors hover:text-primary-foreground"
+                    className="font-body text-sm transition-colors hover:text-primary-foreground"
                   >
                     {link.label}
                   </a>
@@ -60,7 +60,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider">
+            <h4 className="mb-4 font-heading text-sm font-semibold uppercase tracking-wider">
               Legal
             </h4>
             <ul className="space-y-3">
@@ -68,7 +68,7 @@ const Footer = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-sm transition-colors hover:text-primary-foreground"
+                    className="font-body text-sm transition-colors hover:text-primary-foreground"
                   >
                     {link.label}
                   </a>
@@ -79,7 +79,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
-          <p className="text-sm">
+          <p className="font-body text-sm">
             © 2024 Direct MCA Leads. All rights reserved.
           </p>
           <div className="flex gap-4">

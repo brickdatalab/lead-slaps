@@ -24,7 +24,7 @@ const AddOns = () => {
     <section className="bg-background py-24">
       <div className="container mx-auto max-w-7xl px-6 lg:px-12">
         <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-bold text-primary md:text-[40px]">
+          <h2 className="mb-4 font-heading text-4xl font-bold text-primary md:text-[40px]">
             Transform Data Into Decisions with AI-Powered Add-Ons
           </h2>
         </div>
@@ -35,10 +35,10 @@ const AddOns = () => {
               <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-lg bg-surface">
                 <addOn.icon className="h-8 w-8 text-accent" />
               </div>
-              <h3 className="mb-2 text-2xl font-semibold text-text-primary">
+              <h3 className="mb-2 font-heading text-2xl font-semibold text-text-primary">
                 {addOn.title}
               </h3>
-              <p className="text-base text-text-secondary">{addOn.tagline}</p>
+              <p className="font-body text-base text-text-secondary">{addOn.tagline}</p>
             </div>
           ))}
         </div>

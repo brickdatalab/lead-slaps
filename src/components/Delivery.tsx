@@ -11,10 +11,10 @@ const Delivery = () => {
   return (
     <section className="bg-background py-24">
       <div className="container mx-auto max-w-4xl px-6 text-center lg:px-12">
-        <h2 className="mb-8 text-4xl font-bold text-primary md:text-[40px]">
+        <h2 className="mb-8 font-heading text-4xl font-bold text-primary md:text-[40px]">
           Seamless Delivery, Right Where You Work
         </h2>
-        <p className="mb-12 text-lg text-text-secondary">
+        <p className="mb-12 font-body text-lg text-text-secondary">
           Get your leads delivered how you want them. We offer seamless integrations with HubSpot, Salesforce, and thousands of other apps via Zapier, plus standard delivery via email, CSV, or our real-time API.
         </p>
 
@@ -27,7 +27,7 @@ const Delivery = () => {
               <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-surface text-3xl">
                 {integration.logo}
               </div>
-              <span className="text-sm font-medium text-text-secondary">
+              <span className="font-body text-sm font-medium text-text-secondary">
                 {integration.name}
               </span>
             </div>

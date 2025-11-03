@@ -32,7 +32,7 @@ const WhyDifferent = () => {
     <section id="why-us" className="bg-surface py-24">
       <div className="container mx-auto max-w-7xl px-6 lg:px-12">
         <div className="mb-16 text-center">
-          <h2 className="text-4xl font-bold text-primary md:text-[40px]">
+          <h2 className="font-heading text-4xl font-bold text-primary md:text-[40px]">
             The Direct MCA Leads Difference
           </h2>
         </div>
@@ -46,10 +46,10 @@ const WhyDifferent = () => {
                 </div>
               </div>
               <div>
-                <h3 className="mb-3 text-2xl font-semibold text-text-primary">
+                <h3 className="mb-3 font-heading text-2xl font-semibold text-text-primary">
                   {feature.title}
                 </h3>
-                <p className="text-base leading-relaxed text-text-secondary">
+                <p className="font-body text-base leading-relaxed text-text-secondary">
                   {feature.description}
                 </p>
               </div>

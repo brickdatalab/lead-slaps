@@ -27,7 +27,7 @@ const TrustBar = () => {
           {features.map((feature, index) => (
             <div key={index} className="flex items-center gap-3">
               <feature.icon className="h-6 w-6 flex-shrink-0 text-accent" />
-              <span className="text-base font-semibold text-text-primary">
+              <span className="font-body text-base font-semibold text-text-primary">
                 {feature.text}
               </span>
             </div>

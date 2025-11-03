@@ -26,7 +26,7 @@ const ProductPreview = () => {
     <section className="bg-surface py-24">
       <div className="container mx-auto max-w-7xl px-6 lg:px-12">
         <div className="mb-16 text-center">
-          <h2 className="text-4xl font-bold text-primary md:text-[40px]">
+          <h2 className="font-heading text-4xl font-bold text-primary md:text-[40px]">
             Three Products. Three Strategies. One Goal: Your Success.
           </h2>
         </div>
@@ -37,15 +37,15 @@ const ProductPreview = () => {
               key={product.title}
               className="rounded-lg bg-card p-10 shadow-card transition-shadow hover:shadow-card-hover"
             >
-              <h3 className="mb-4 text-2xl font-semibold text-text-primary">
+              <h3 className="mb-4 font-heading text-2xl font-semibold text-text-primary">
                 {product.title}
               </h3>
-              <p className="mb-6 text-base leading-relaxed text-text-secondary">
+              <p className="mb-6 font-body text-base leading-relaxed text-text-secondary">
                 {product.description}
               </p>
               <a
                 href={product.href}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-accent/80"
+                className="inline-flex items-center gap-2 font-body text-sm font-semibold text-accent transition-colors hover:text-accent/80"
               >
                 Learn More <ArrowRight className="h-4 w-4" />
               </a>
