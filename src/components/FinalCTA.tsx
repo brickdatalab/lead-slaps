@@ -4,7 +4,7 @@ const FinalCTA = () => {
   return (
     <section className="bg-primary py-24 text-primary-foreground">
       <div className="container mx-auto max-w-4xl px-6 text-center lg:px-12">
-        <h2 className="mb-8 font-heading text-4xl font-bold md:text-[40px]">
+        <h2 className="mb-8 font-heading text-4xl font-bold text-primary-foreground md:text-[40px]">
           Ready to Stop Competing and Start Converting?
         </h2>
         <p className="mb-12 font-body text-lg opacity-90">
