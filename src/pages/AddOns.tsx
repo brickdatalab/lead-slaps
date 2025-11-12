@@ -653,7 +653,7 @@ const AddOns = () => {
       {/* Final CTA */}
       <section id="addons-cta" className="bg-primary px-6 py-24 text-primary-foreground lg:px-12">
         <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="mb-6 font-headline text-[40px] font-bold">
+          <h2 className="mb-6 font-headline text-[40px] font-bold text-primary-foreground">
             Build Your High-Performance Stack
           </h2>
           <p className="mb-12 text-lg opacity-90">
