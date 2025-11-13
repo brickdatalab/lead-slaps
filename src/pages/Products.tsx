@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-
 const Products = () => {
   useEffect(() => {
     document.title = "MCA Lead Products - Direct Submissions, Alpha & Apex Data | Lead Slaps";
@@ -12,13 +11,12 @@ const Products = () => {
       metaDescription.setAttribute("content", "Three data tiers for every MCA team. Direct Submissions for elite teams, Alpha for growing brokers, Apex for high-volume call centers. Exclusive leads that convert.");
     }
   }, []);
-
   const scrollToCTA = () => {
-    document.getElementById('products-cta')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('products-cta')?.scrollIntoView({
+      behavior: 'smooth'
+    });
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* Hero Section */}
@@ -28,7 +26,7 @@ const Products = () => {
             Build Your MCA Pipeline by Design — Three Tiers, One Strategy
           </h1>
           <p className="mx-auto max-w-5xl text-center font-body text-xl leading-relaxed text-text-secondary">
-            Choose the data tier that matches your team and growth plan. Direct Submissions for uncontested speed-to-fund, Alpha Data for smart-aged volume with intent, Apex Data for cost-efficient scale. Use our on-page guide to size your volume, exclusivity, and delivery—then request a tailored mix.
+            Choose the data tier that matches your team and growth plan. Direct Submissions for uncontested speed-to-fund, Alpha Data for smart-aged volume with intent, Pulse Data for cost-efficient scale. Use our on-page guide to size your volume, exclusivity, and delivery—then request a tailored mix.
           </p>
         </div>
       </section>
@@ -103,7 +101,7 @@ const Products = () => {
                 Scale Tier
               </div>
               <h3 className="mb-3 font-headline text-[32px] font-semibold text-primary">
-                Apex Data
+                 Pulse Data
               </h3>
               <p className="mb-6 font-body text-base leading-relaxed text-text-secondary">
                 Massive volume with trigger-based targeting
@@ -146,19 +144,10 @@ const Products = () => {
                 Key Features
               </h3>
               <ul className="mb-8 space-y-3">
-                {[
-                  "Exclusive, never-resold web forms for uncontested speed-to-fund.",
-                  "Real-time delivery (<60 seconds) to your CRM, dialer, or Slack.",
-                  "Connectivity guarantee with 1:1 replacements for hard-invalids within 7 days.",
-                  "AI intent scoring to front-load highest-propensity records to your top reps.",
-                  "Personal list suppression to prevent overlap with your existing pipeline.",
-                  "Priority routing, geo holds, and pacing control for elite, small teams."
-                ].map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
+                {["Exclusive, never-resold web forms for uncontested speed-to-fund.", "Real-time delivery (<60 seconds) to your CRM, dialer, or Slack.", "Connectivity guarantee with 1:1 replacements for hard-invalids within 7 days.", "AI intent scoring to front-load highest-propensity records to your top reps.", "Personal list suppression to prevent overlap with your existing pipeline.", "Priority routing, geo holds, and pacing control for elite, small teams."].map((feature, idx) => <li key={idx} className="flex items-start gap-3">
                     <Check className="mt-1 h-5 w-5 flex-shrink-0 text-success" />
                     <span className="font-body text-base text-text-primary">{feature}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
 
@@ -247,19 +236,10 @@ const Products = () => {
                 Key Features
               </h3>
               <ul className="mb-8 space-y-3">
-                {[
-                  "Smart-aged submissions (30 days—1 year) curated for education and fit—less hand-holding, more conversations.",
-                  "Layered triggers (recency of inquiry, UCC events, web activity) to surface active evaluators.",
-                  "Guaranteed connectivity and compliance (DNC/TCPA/CAN-SPAM) with litigator scrub.",
-                  "Limited distribution (1—3 buyers) to reduce noise without losing scale.",
-                  "Flexible delivery (CSV, CRM import, SFTP) and ready-to-dial formatting.",
-                  "Volume-based pricing with commit options to stabilize rep calendars."
-                ].map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
+                {["Smart-aged submissions (30 days—1 year) curated for education and fit—less hand-holding, more conversations.", "Layered triggers (recency of inquiry, UCC events, web activity) to surface active evaluators.", "Guaranteed connectivity and compliance (DNC/TCPA/CAN-SPAM) with litigator scrub.", "Limited distribution (1—3 buyers) to reduce noise without losing scale.", "Flexible delivery (CSV, CRM import, SFTP) and ready-to-dial formatting.", "Volume-based pricing with commit options to stabilize rep calendars."].map((feature, idx) => <li key={idx} className="flex items-start gap-3">
                     <Check className="mt-1 h-5 w-5 flex-shrink-0 text-success" />
                     <span className="font-body text-base text-text-primary">{feature}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
           </div>
@@ -272,29 +252,20 @@ const Products = () => {
           <div className="grid gap-12 lg:grid-cols-5">
             <div className="lg:col-span-3">
               <h2 className="mb-6 font-headline text-[40px] font-bold text-primary">
-                Apex Data: Maximum Volume for High-Performance Call Centers
+                Pulse Data: Maximum Volume for High-Performance Call Centers
               </h2>
               <p className="mb-8 font-body text-lg leading-[1.7] text-text-primary">
-                The Apex Database is our all-in-one, high-volume solution built to fuel the largest sales floors. It combines our deep archive of aged submissions with powerful trigger data (like UCC filings) to give your team a nearly limitless pool of prospects and a strategic 'reason to call.' This is the most cost-effective data in the industry, period. It's designed for one purpose: to give your sales team the maximum number of dials and email sends possible, ensuring your pipeline is never empty.
+                The Pulse Database is our all-in-one, high-volume solution built to fuel the largest sales floors. It combines our deep archive of aged submissions with powerful trigger data (like UCC filings) to give your team a nearly limitless pool of prospects and a strategic 'reason to call.' This is the most cost-effective data in the industry, period. It's designed for one purpose: to give your sales team the maximum number of dials and email sends possible, ensuring your pipeline is never empty.
               </p>
               
               <h3 className="mb-4 font-headline text-2xl font-semibold text-text-primary">
                 Key Features
               </h3>
               <ul className="mb-8 space-y-3">
-                {[
-                  "Massive, consistent data supply for 20—60+ seat call centers and email teams.",
-                  "Aged submissions blended with active triggers (e.g., UCC filings) for better-than-random contact rates at scale.",
-                  "Strict compliance: DNC, litigator, CAN-SPAM; personal suppression honored at volume.",
-                  "Bulk delivery via SFTP/warehouse connectors; schema-ready for dialers and martech.",
-                  "Aggressive volume pricing and subscription options to protect CPA.",
-                  "Add-on enablement: pre-score by propensity, segment by SIC/geo/revenue, and turnkey outreach sequences."
-                ].map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
+                {["Massive, consistent data supply for 20—60+ seat call centers and email teams.", "Aged submissions blended with active triggers (e.g., UCC filings) for better-than-random contact rates at scale.", "Strict compliance: DNC, litigator, CAN-SPAM; personal suppression honored at volume.", "Bulk delivery via SFTP/warehouse connectors; schema-ready for dialers and martech.", "Aggressive volume pricing and subscription options to protect CPA.", "Add-on enablement: pre-score by propensity, segment by SIC/geo/revenue, and turnkey outreach sequences."].map((feature, idx) => <li key={idx} className="flex items-start gap-3">
                     <Check className="mt-1 h-5 w-5 flex-shrink-0 text-success" />
                     <span className="font-body text-base text-text-primary">{feature}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
 
@@ -354,34 +325,79 @@ const Products = () => {
                     Alpha Data
                   </th>
                   <th className="p-4 text-left font-headline text-lg font-semibold text-primary">
-                    Apex Data
+                    Pulse Data
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {[
-                  { feature: "Ideal Team Size", ds: "1-5 reps", alpha: "5-15 reps", apex: "20-60+ reps" },
-                  { feature: "Age Ranges", ds: "Real-time (<60s)", alpha: "30 days - 1 year", apex: "1-18 months" },
-                  { feature: "Starting Cost", ds: "$75/lead", alpha: "$12/lead", apex: "$1.50/lead" },
-                  { feature: "Weekly Volume", ds: "25-300", alpha: "500-5,000", apex: "5,000-50,000+" },
-                  { feature: "Monthly Volume", ds: "100-1,200", alpha: "2,000-20,000", apex: "20,000-200,000+" },
-                  { feature: "Exclusivity", ds: "100% Exclusive", alpha: "1-3 buyers", apex: "Responsible caps" },
-                  { feature: "Delivery Speed", ds: "Real-time", alpha: "Batch/Schedule", apex: "Bulk/SFTP" },
-                  { feature: "Connectivity Guarantee", ds: "Yes (1:1)", alpha: "Yes", apex: "Yes" },
-                  { feature: "Compliance", ds: "Full TCPA/DNC", alpha: "Full TCPA/DNC", apex: "Full TCPA/DNC" },
-                  { feature: "List Suppression", ds: "Yes", alpha: "Yes", apex: "Yes (volume)" },
-                  { feature: "Add-ons Compatible", ds: "All", alpha: "FundSense, TrustDial", apex: "FundSense, TrustDial" },
-                  { feature: "Support Level", ds: "Priority", alpha: "Standard", apex: "Enterprise" }
-                ].map((row, idx) => (
-                  <tr key={idx} className="border-b border-border last:border-0">
+                {[{
+                feature: "Ideal Team Size",
+                ds: "1-5 reps",
+                alpha: "5-15 reps",
+                apex: "20-60+ reps"
+              }, {
+                feature: "Age Ranges",
+                ds: "Real-time (<60s)",
+                alpha: "30 days - 1 year",
+                apex: "1-18 months"
+              }, {
+                feature: "Starting Cost",
+                ds: "$75/lead",
+                alpha: "$12/lead",
+                apex: "$1.50/lead"
+              }, {
+                feature: "Weekly Volume",
+                ds: "25-300",
+                alpha: "500-5,000",
+                apex: "5,000-50,000+"
+              }, {
+                feature: "Monthly Volume",
+                ds: "100-1,200",
+                alpha: "2,000-20,000",
+                apex: "20,000-200,000+"
+              }, {
+                feature: "Exclusivity",
+                ds: "100% Exclusive",
+                alpha: "1-3 buyers",
+                apex: "Responsible caps"
+              }, {
+                feature: "Delivery Speed",
+                ds: "Real-time",
+                alpha: "Batch/Schedule",
+                apex: "Bulk/SFTP"
+              }, {
+                feature: "Connectivity Guarantee",
+                ds: "Yes (1:1)",
+                alpha: "Yes",
+                apex: "Yes"
+              }, {
+                feature: "Compliance",
+                ds: "Full TCPA/DNC",
+                alpha: "Full TCPA/DNC",
+                apex: "Full TCPA/DNC"
+              }, {
+                feature: "List Suppression",
+                ds: "Yes",
+                alpha: "Yes",
+                apex: "Yes (volume)"
+              }, {
+                feature: "Add-ons Compatible",
+                ds: "All",
+                alpha: "FundSense, TrustDial",
+                apex: "FundSense, TrustDial"
+              }, {
+                feature: "Support Level",
+                ds: "Priority",
+                alpha: "Standard",
+                apex: "Enterprise"
+              }].map((row, idx) => <tr key={idx} className="border-b border-border last:border-0">
                     <td className="sticky left-0 bg-card p-4 font-semibold text-text-primary">
                       {row.feature}
                     </td>
                     <td className="p-4 text-text-secondary">{row.ds}</td>
                     <td className="p-4 text-text-secondary">{row.alpha}</td>
                     <td className="p-4 text-text-secondary">{row.apex}</td>
-                  </tr>
-                ))}
+                  </tr>)}
               </tbody>
             </table>
           </div>
@@ -436,7 +452,7 @@ const Products = () => {
                 Budget: Cost per lead critical
               </p>
               <div className="mt-4 rounded-lg bg-primary/10 p-3">
-                <span className="font-semibold text-primary">→ Apex Data</span>
+                <span className="font-semibold text-primary">→ Pulse Data</span>
               </div>
             </div>
           </div>
@@ -450,22 +466,37 @@ const Products = () => {
             Trust Anchors Across All Tiers
           </h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              { icon: "🤖", title: "AI Scoring", desc: "Propensity models on every lead" },
-              { icon: "🛡️", title: "DNC/Litigator Scrub", desc: "Pre-screened for compliance" },
-              { icon: "🚫", title: "Personal List Suppression", desc: "Honor your existing pipeline" },
-              { icon: "✅", title: "Connectivity Guarantee", desc: "Replace hard invalids" },
-              { icon: "📋", title: "Full Compliance", desc: "TCPA/CTIA/CAN-SPAM adherence" },
-              { icon: "💬", title: "Dedicated Support", desc: "Real humans, fast response" }
-            ].map((feature, idx) => (
-              <div key={idx} className="rounded-lg bg-card p-8 text-center">
+            {[{
+            icon: "🤖",
+            title: "AI Scoring",
+            desc: "Propensity models on every lead"
+          }, {
+            icon: "🛡️",
+            title: "DNC/Litigator Scrub",
+            desc: "Pre-screened for compliance"
+          }, {
+            icon: "🚫",
+            title: "Personal List Suppression",
+            desc: "Honor your existing pipeline"
+          }, {
+            icon: "✅",
+            title: "Connectivity Guarantee",
+            desc: "Replace hard invalids"
+          }, {
+            icon: "📋",
+            title: "Full Compliance",
+            desc: "TCPA/CTIA/CAN-SPAM adherence"
+          }, {
+            icon: "💬",
+            title: "Dedicated Support",
+            desc: "Real humans, fast response"
+          }].map((feature, idx) => <div key={idx} className="rounded-lg bg-card p-8 text-center">
                 <div className="mb-4 text-5xl">{feature.icon}</div>
                 <h3 className="mb-2 font-headline text-xl font-semibold text-text-primary">
                   {feature.title}
                 </h3>
                 <p className="text-text-secondary">{feature.desc}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -504,18 +535,10 @@ const Products = () => {
             Choose your tier, configure your filters, and see your economics instantly. Or talk to our team for custom guidance.
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              variant="secondary"
-              size="lg"
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
-            >
+            <Button variant="secondary" size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
               Build My Plan
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-2 border-primary-foreground bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
-            >
+            <Button variant="outline" size="lg" className="border-2 border-primary-foreground bg-transparent text-primary-foreground hover:bg-primary-foreground/10">
               Talk to Sales
             </Button>
           </div>
@@ -526,8 +549,6 @@ const Products = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Products;
