@@ -543,25 +543,25 @@ const ProductsPage: React.FC = () => {
 
             <div className="mt-6 grid gap-6 md:grid-cols-3">
               {/* Direct Submissions */}
-              <article className="flex h-full flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                <p className="text-xs uppercase tracking-wide text-emerald-300">
+              <article className="flex h-full flex-col rounded-2xl border border-primary bg-primary p-5">
+                <p className="text-xs uppercase tracking-wide text-accent">
                   Premium tier
                 </p>
-                <h3 className="mt-1 text-lg font-semibold text-slate-50">
+                <h3 className="mt-1 text-lg font-semibold text-primary-foreground">
                   Direct Submissions
                 </h3>
-                <p className="mt-2 text-sm text-slate-300">
+                <p className="mt-2 text-sm text-primary-foreground/90">
                   Real-time and near-real-time submissions for teams that win on
                   speed-to-contact and tight follow-up.
                 </p>
-                <ul className="mt-3 space-y-1 text-xs text-slate-300">
-                  <li>• &lt; 15 days – $7.00 / record</li>
-                  <li>• 15–30 days – $4.00 / record</li>
+                <ul className="mt-3 space-y-1 text-xs text-primary-foreground/90">
+                  <li>• &lt; 15 days – <span className="text-accent">$7.00 / record</span></li>
+                  <li>• 15–30 days – <span className="text-accent">$4.00 / record</span></li>
                   <li>• Strict caps to avoid over-sold lists</li>
                 </ul>
                 <button
                   type="button"
-                  className="mt-auto inline-flex w-full items-center justify-center rounded-full bg-emerald-500 px-4 py-2 text-xs font-medium text-slate-950 hover:bg-emerald-400"
+                  className="mt-auto inline-flex w-full items-center justify-center rounded-full bg-primary-foreground px-4 py-2 text-xs font-medium text-primary hover:bg-primary-foreground/90"
                   onClick={() => {
                     handleSelectProduct("direct_submissions");
                     scrollToConfigurator();
@@ -572,25 +572,25 @@ const ProductsPage: React.FC = () => {
               </article>
 
               {/* Alpha Data */}
-              <article className="flex h-full flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                <p className="text-xs uppercase tracking-wide text-sky-300">
+              <article className="flex h-full flex-col rounded-2xl border border-primary bg-primary p-5">
+                <p className="text-xs uppercase tracking-wide text-accent">
                   Growth tier
                 </p>
-                <h3 className="mt-1 text-lg font-semibold text-slate-50">
+                <h3 className="mt-1 text-lg font-semibold text-primary-foreground">
                   Alpha Data
                 </h3>
-                <p className="mt-2 text-sm text-slate-300">
+                <p className="mt-2 text-sm text-primary-foreground/90">
                   Smart-aged submissions from the last 6 months, ideal for
                   blending phone, SMS, and email into one pipeline.
                 </p>
-                <ul className="mt-3 space-y-1 text-xs text-slate-300">
-                  <li>• 30–90 days – $1.00 / record</li>
-                  <li>• 90–180 days – $0.75 / record</li>
+                <ul className="mt-3 space-y-1 text-xs text-primary-foreground/90">
+                  <li>• 30–90 days – <span className="text-accent">$1.00 / record</span></li>
+                  <li>• 90–180 days – <span className="text-accent">$0.75 / record</span></li>
                   <li>• Built for sustainable, predictable volume</li>
                 </ul>
                 <button
                   type="button"
-                  className="mt-auto inline-flex w-full items-center justify-center rounded-full bg-sky-500 px-4 py-2 text-xs font-medium text-slate-950 hover:bg-sky-400"
+                  className="mt-auto inline-flex w-full items-center justify-center rounded-full bg-primary-foreground px-4 py-2 text-xs font-medium text-primary hover:bg-primary-foreground/90"
                   onClick={() => {
                     handleSelectProduct("alpha_data");
                     scrollToConfigurator();
@@ -601,25 +601,25 @@ const ProductsPage: React.FC = () => {
               </article>
 
               {/* Pulse Data */}
-              <article className="flex h-full flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                <p className="text-xs uppercase tracking-wide text-fuchsia-300">
+              <article className="flex h-full flex-col rounded-2xl border border-primary bg-primary p-5">
+                <p className="text-xs uppercase tracking-wide text-accent">
                   Scale tier
                 </p>
-                <h3 className="mt-1 text-lg font-semibold text-slate-50">
+                <h3 className="mt-1 text-lg font-semibold text-primary-foreground">
                   Pulse Data
                 </h3>
-                <p className="mt-2 text-sm text-slate-300">
+                <p className="mt-2 text-sm text-primary-foreground/90">
                   6–24 month MCA data priced for high-volume dialing, SMS
                   reactivation, and long-tail email campaigns.
                 </p>
-                <ul className="mt-3 space-y-1 text-xs text-slate-300">
-                  <li>• 180–365 days – $0.50 / record</li>
-                  <li>• 1–2 years – $0.25 / record</li>
+                <ul className="mt-3 space-y-1 text-xs text-primary-foreground/90">
+                  <li>• 180–365 days – <span className="text-accent">$0.50 / record</span></li>
+                  <li>• 1–2 years – <span className="text-accent">$0.25 / record</span></li>
                   <li>• Optimized for big floors and nurture programs</li>
                 </ul>
                 <button
                   type="button"
-                  className="mt-auto inline-flex w-full items-center justify-center rounded-full bg-fuchsia-500 px-4 py-2 text-xs font-medium text-slate-950 hover:bg-fuchsia-400"
+                  className="mt-auto inline-flex w-full items-center justify-center rounded-full bg-primary-foreground px-4 py-2 text-xs font-medium text-primary hover:bg-primary-foreground/90"
                   onClick={() => {
                     handleSelectProduct("pulse_data");
                     scrollToConfigurator();
@@ -766,13 +766,13 @@ const ProductsPage: React.FC = () => {
 
           {/* Order Configurator */}
           <section
-            className="products-section products-configurator mb-12 border-t border-slate-800 pt-10"
+            className="products-section products-configurator mb-12 border-t border-border pt-10"
             id="order-configurator"
           >
-            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl text-primary">
               Configure Your File and Start Your Order
             </h2>
-            <p className="mt-3 max-w-3xl text-sm text-slate-300">
+            <p className="mt-3 max-w-3xl text-sm text-slate-700">
               Build your order in three steps: choose a product, choose an age
               band, and set your quantity. We cap your request at live
               availability and hand off to a secure Square checkout.
@@ -928,7 +928,7 @@ const ProductsPage: React.FC = () => {
                   <div className="mt-3 flex flex-wrap items-center gap-3">
                     <button
                       type="button"
-                      className="inline-flex items-center justify-center rounded-full bg-sky-400 px-5 py-2 text-xs font-medium text-slate-950 shadow-sm transition hover:bg-sky-300 disabled:cursor-not-allowed disabled:bg-slate-600 disabled:text-slate-300"
+                      className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
                       onClick={handleCheckout}
                       disabled={checkoutLoading || !selectedSegment || !quantity}
                     >
@@ -936,7 +936,7 @@ const ProductsPage: React.FC = () => {
                         ? "Creating checkout…"
                         : "Proceed to checkout"}
                     </button>
-                    <p className="text-xs text-slate-400">
+                    <p className="text-xs text-muted-foreground">
                       You&apos;ll confirm details and complete payment on a
                       secure checkout powered by Square.
                     </p>
@@ -945,48 +945,48 @@ const ProductsPage: React.FC = () => {
               </div>
 
               {/* Right side: summary */}
-              <aside className="space-y-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+              <aside className="space-y-4 rounded-2xl border border-border bg-card p-5">
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                   Order summary
                 </p>
-                <div className="space-y-1 text-sm text-slate-200">
+                <div className="space-y-1 text-sm text-foreground">
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Product</span>
-                    <span>
+                    <span className="text-muted-foreground">Product</span>
+                    <span className="text-primary font-medium">
                       {selectedSegment
                         ? selectedSegment.productLabel
                         : "Select a product"}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Age band</span>
-                    <span>
+                    <span className="text-muted-foreground">Age band</span>
+                    <span className="text-primary font-medium">
                       {selectedSegment
                         ? selectedSegment.ageBandLabel
                         : "Select an age band"}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Price / record</span>
-                    <span>
+                    <span className="text-muted-foreground">Price / record</span>
+                    <span className="text-primary font-medium">
                       {pricePerRecord
                         ? `$${pricePerRecord.toFixed(2)}`
                         : "—"}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Quantity</span>
-                    <span>
+                    <span className="text-muted-foreground">Quantity</span>
+                    <span className="text-primary font-medium">
                       {quantity ? quantity.toLocaleString() : "Not set yet"}
                     </span>
                   </div>
                 </div>
-                <div className="mt-2 border-t border-slate-800 pt-3">
+                <div className="mt-2 border-t border-border pt-3">
                   <div className="flex items-baseline justify-between">
-                    <span className="text-xs uppercase tracking-wide text-slate-400">
+                    <span className="text-xs uppercase tracking-wide text-muted-foreground">
                       Estimated total
                     </span>
-                    <span className="text-lg font-semibold text-slate-50">
+                    <span className="text-lg font-semibold text-primary">
                       {estimatedTotal
                         ? `$${estimatedTotal.toLocaleString(undefined, {
                             minimumFractionDigits: 2,
@@ -995,7 +995,7 @@ const ProductsPage: React.FC = () => {
                         : "—"}
                     </span>
                   </div>
-                  <p className="mt-1 text-[11px] text-slate-500">
+                  <p className="mt-1 text-[11px] text-muted-foreground">
                     Final totals and taxes (if applicable) will be confirmed on
                     the checkout screen.
                   </p>
@@ -1049,11 +1049,11 @@ const ProductsPage: React.FC = () => {
           </section>
 
           {/* ROI */}
-          <section className="mb-12 border-t border-slate-800 pt-10">
-            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+          <section className="mb-12 border-t border-border pt-10 bg-muted/30 -mx-4 px-4 py-10 rounded-xl">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl text-primary">
               The Clear ROI: What to Expect from Our Data
             </h2>
-            <p className="mt-3 max-w-3xl text-sm text-slate-300">
+            <p className="mt-3 max-w-3xl text-sm text-slate-700">
               <strong>
                 Properly worked MCA data consistently outperforms cheap,
                 recycled lists—aged segments can convert in the low double
@@ -1090,11 +1090,11 @@ const ProductsPage: React.FC = () => {
           </section>
 
           {/* Full pack warning */}
-          <section className="mb-12 border-t border-slate-800 pt-10">
-            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+          <section className="mb-12 border-t border-border pt-10">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl text-primary">
               A Warning for Brokers: Avoiding &quot;Full Pack&quot; Scams
             </h2>
-            <p className="mt-3 max-w-3xl text-sm text-slate-300">
+            <p className="mt-3 max-w-3xl text-sm text-slate-700">
               <strong>
                 “Full pack” lists bundle random data sources, hide age and
                 sourcing, and are usually sold to as many buyers as possible.
@@ -1122,8 +1122,8 @@ const ProductsPage: React.FC = () => {
           </section>
 
           {/* FAQ */}
-          <section className="mb-12 border-t border-slate-800 pt-10">
-            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+          <section className="mb-12 border-t border-border pt-10">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl text-primary">
               Frequently Asked Questions About MCA Leads
             </h2>
             <dl className="mt-4 space-y-6">
