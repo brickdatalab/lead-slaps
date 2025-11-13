@@ -255,7 +255,7 @@ const Products = () => {
                 Pulse Data: Maximum Volume for High-Performance Call Centers
               </h2>
               <p className="mb-8 font-body text-lg leading-[1.7] text-text-primary">
-                The Pulse Database is our all-in-one, high-volume solution built to fuel the largest sales floors. It combines our deep archive of aged submissions with powerful trigger data (like UCC filings) to give your team a nearly limitless pool of prospects and a strategic 'reason to call.' This is the most cost-effective data in the industry, period. It's designed for one purpose: to give your sales team the maximum number of dials and email sends possible, ensuring your pipeline is never empty.
+                The Pulse Database is our all-in-one, high-volume solution built to fuel the largest sales floors. It combines our deep archive of aged submissions with powerful trigger data to give your team a nearly limitless pool of prospects and a strategic 'reason to call.' This is the most cost-effective data in the industry, period. It's designed for one purpose: to give your sales team the maximum number of dials and email sends possible, ensuring your pipeline is never empty.
               </p>
               
               <h3 className="mb-4 font-headline text-2xl font-semibold text-text-primary">
