@@ -436,7 +436,7 @@ const ProductsPage: React.FC = () => {
 
   return (
     <>
-      <main className="min-h-screen bg-slate-950 text-slate-50">
+      <main className="min-h-screen bg-background text-foreground">
         <div className="mx-auto max-w-6xl px-4 py-10 lg:py-16">
           {/* Hero */}
           <section className="mb-12 lg:mb-16">
@@ -459,13 +459,13 @@ const ProductsPage: React.FC = () => {
 
               <div className="flex flex-wrap items-center gap-4">
                 <button
-                  className="inline-flex items-center justify-center rounded-full bg-sky-400 px-6 py-2 text-sm font-medium text-slate-950 shadow-sm transition hover:bg-sky-300"
+                  className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2 text-sm font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
                   onClick={scrollToConfigurator}
                 >
                   Start order
                 </button>
                 <button
-                  className="inline-flex items-center justify-center rounded-full border border-slate-700 px-6 py-2 text-sm font-medium text-slate-100 transition hover:border-slate-500 hover:bg-slate-900"
+                  className="inline-flex items-center justify-center rounded-full border-2 border-dashed border-primary px-6 py-2 text-sm font-medium text-primary transition hover:bg-primary/5"
                   onClick={() => {
                     window.location.href = "/contact";
                   }}
@@ -475,7 +475,7 @@ const ProductsPage: React.FC = () => {
               </div>
 
               {/* Trust bar */}
-              <div className="mt-4 grid gap-3 rounded-xl border border-slate-800 bg-slate-900/60 p-4 text-xs text-slate-300 sm:grid-cols-3 sm:text-sm">
+              <div className="mt-4 grid gap-3 rounded-xl border border-border bg-card p-4 text-xs text-muted-foreground sm:grid-cols-3 sm:text-sm">
                 <div className="flex items-center gap-2">
                   <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/10 text-xs text-emerald-400">
                     ✓
@@ -499,11 +499,11 @@ const ProductsPage: React.FC = () => {
           </section>
 
           {/* Definition / pain */}
-          <section className="mb-12 border-t border-slate-800 pt-10">
-            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+          <section className="mb-12 border-t border-border pt-10">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl text-primary">
               What Are MCA Leads (And Why Most Providers Fail You?)
             </h2>
-            <div className="mt-4 space-y-4 text-sm leading-relaxed text-slate-300">
+            <div className="mt-4 space-y-4 text-sm leading-relaxed text-slate-700">
               <p>
                 <strong>
                   Merchant Cash Advance (MCA) leads are businesses that have
@@ -530,11 +530,11 @@ const ProductsPage: React.FC = () => {
           </section>
 
           {/* Product tiers */}
-          <section className="mb-12 border-t border-slate-800 pt-10">
-            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+          <section className="mb-12 border-t border-border pt-10">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl text-primary">
               Three MCA Data Tiers. One Clean Pipeline.
             </h2>
-            <p className="mt-3 max-w-3xl text-sm text-slate-300">
+            <p className="mt-3 max-w-3xl text-sm text-slate-700">
               Every merchant starts as a Direct Submission and ages into Alpha
               Data, then Pulse Data. Each record lives in exactly one band at a
               time, so you never pay fresh prices for aged data or buy the same
@@ -848,12 +848,12 @@ const ProductsPage: React.FC = () => {
 
                 {/* Step 2 */}
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                     Step 2 · Choose age band &amp; quantity
                   </p>
 
                   {activeSegments.length === 0 && (
-                    <p className="mt-2 text-xs text-slate-500">
+                    <p className="mt-2 text-xs text-muted-foreground">
                       No active segments for this product. Try another tier or
                       check back as new volume is added.
                     </p>
