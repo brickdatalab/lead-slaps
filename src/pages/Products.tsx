@@ -1,554 +1,1189 @@
-import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-const Products = () => {
+import React, { useEffect, useMemo, useState } from "react";
+
+type ProductKey = "direct_submissions" | "alpha_data" | "pulse_data";
+type InventoryStatus = "healthy" | "tight" | "waitlist";
+
+interface InventorySegment {
+  id: string;
+  productKey: ProductKey;
+  productLabel: string;
+  ageBandKey: string; // e.g. "lt_15", "15_30", etc.
+  ageBandLabel: string; // e.g. "< 15 days"
+  priceCents: number; // per record
+  availableQuantity: number;
+  maxQuantity: number;
+  status?: InventoryStatus;
+  squareVariationId?: string | null;
+}
+
+/** JSON-LD injector that attaches scripts into <head>, not the body */
+const JsonLd: React.FC<{ data: unknown }> = ({ data }) => {
   useEffect(() => {
-    document.title = "MCA Lead Products - Direct Submissions, Alpha & Apex Data | Lead Slaps";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Three data tiers for every MCA team. Direct Submissions for elite teams, Alpha for growing brokers, Apex for high-volume call centers. Exclusive leads that convert.");
-    }
-  }, []);
-  const scrollToCTA = () => {
-    document.getElementById('products-cta')?.scrollIntoView({
-      behavior: 'smooth'
-    });
-  };
-  return <div className="min-h-screen bg-background">
-      <Navigation />
-      
-      {/* Hero Section */}
-      <section className="bg-background px-6 py-24 lg:px-12">
-        <div className="container mx-auto max-w-7xl">
-          <h1 className="mb-6 text-center font-headline text-[56px] font-bold leading-[1.1] text-primary">
-            Build Your MCA Pipeline by Design — Three Tiers, One Strategy
-          </h1>
-          <p className="mx-auto max-w-5xl text-center font-body text-xl leading-relaxed text-text-secondary">
-            Choose the data tier that matches your team and growth plan. Direct Submissions for uncontested speed-to-fund, Alpha Data for smart-aged volume with intent, Pulse Data for cost-efficient scale. Use our on-page guide to size your volume, exclusivity, and delivery—then request a tailored mix.
-          </p>
-        </div>
-      </section>
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.text = JSON.stringify(data);
+    document.head.appendChild(script);
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, [data]);
 
-      {/* Product Cards */}
-      <section className="bg-surface px-6 py-24 lg:px-12">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid gap-8 md:grid-cols-3">
-            {/* Direct Submissions */}
-            <div className="group relative rounded-xl bg-card p-10 shadow-elevation-1 transition-all duration-300 ease-out hover:shadow-elevation-3 hover:-translate-y-1 focus-within:shadow-elevation-3">
-              <div className="mb-4 inline-block rounded-full bg-accent/10 px-4 py-1 text-sm font-semibold text-accent">
-                Premium Tier
-              </div>
-              <h3 className="mb-3 font-headline text-[32px] font-semibold text-primary">
-                Direct Submissions
-              </h3>
-              <p className="mb-6 font-body text-base leading-relaxed text-text-secondary">
-                Exclusive, never-resold web forms for uncontested speed-to-fund
-              </p>
-              <div className="mb-6 space-y-3 border-t border-border pt-6">
-                <div className="flex justify-between">
-                  <span className="font-semibold text-text-primary">Age Range:</span>
-                  <span className="text-text-secondary">Real-time (&lt;60s)</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-semibold text-text-primary">Ideal Team:</span>
-                  <span className="text-text-secondary">1-5 reps</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-semibold text-text-primary">Starting Price:</span>
-                  <span className="text-accent font-semibold">$75/lead</span>
-                </div>
-              </div>
-              <Button onClick={scrollToCTA} className="w-full">
-                Get Pricing
-              </Button>
-            </div>
-
-            {/* Alpha Data */}
-            <div className="group relative rounded-xl bg-card p-10 shadow-elevation-1 transition-all duration-300 ease-out hover:shadow-elevation-3 hover:-translate-y-1 focus-within:shadow-elevation-3">
-              <div className="mb-4 inline-block rounded-full bg-success/10 px-4 py-1 text-sm font-semibold text-success">
-                Growth Tier
-              </div>
-              <h3 className="mb-3 font-headline text-[32px] font-semibold text-primary">
-                Alpha Data
-              </h3>
-              <p className="mb-6 font-body text-base leading-relaxed text-text-secondary">
-                Smart-aged submissions with proven funding intent
-              </p>
-              <div className="mb-6 space-y-3 border-t border-border pt-6">
-                <div className="flex justify-between">
-                  <span className="font-semibold text-text-primary">Age Range:</span>
-                  <span className="text-text-secondary">30 days - 1 year</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-semibold text-text-primary">Ideal Team:</span>
-                  <span className="text-text-secondary">5-15 reps</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-semibold text-text-primary">Starting Price:</span>
-                  <span className="text-accent font-semibold">$12/lead</span>
-                </div>
-              </div>
-              <Button onClick={scrollToCTA} className="w-full">
-                Get Pricing
-              </Button>
-            </div>
-
-            {/* Apex Data */}
-            <div className="group relative rounded-xl bg-card p-10 shadow-elevation-1 transition-all duration-300 ease-out hover:shadow-elevation-3 hover:-translate-y-1 focus-within:shadow-elevation-3">
-              <div className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1 text-sm font-semibold text-primary">
-                Scale Tier
-              </div>
-              <h3 className="mb-3 font-headline text-[32px] font-semibold text-primary">
-                 Pulse Data
-              </h3>
-              <p className="mb-6 font-body text-base leading-relaxed text-text-secondary">
-                Massive volume with trigger-based targeting
-              </p>
-              <div className="mb-6 space-y-3 border-t border-border pt-6">
-                <div className="flex justify-between">
-                  <span className="font-semibold text-text-primary">Age Range:</span>
-                  <span className="text-text-secondary">1-18 months</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-semibold text-text-primary">Ideal Team:</span>
-                  <span className="text-text-secondary">20-60+ reps</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-semibold text-text-primary">Starting Price:</span>
-                  <span className="text-accent font-semibold">$1.50/lead</span>
-                </div>
-              </div>
-              <Button onClick={scrollToCTA} className="w-full">
-                Get Pricing
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Direct Submissions Deep-Dive */}
-      <section className="bg-background px-6 py-24 lg:px-12">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-5">
-            <div className="lg:col-span-3">
-              <h2 className="mb-6 font-headline text-[40px] font-bold text-primary">
-                Direct Submissions: The Premier Data File for Elite Teams
-              </h2>
-              <p className="mb-8 font-body text-lg leading-[1.7] text-text-primary">
-                This is our premier data file, capturing the direct signal of intent from business owners actively seeking funding. These are not leads from a co-registration form or a generic "business database." This product is 100% composed of raw, verified, direct-from-form submissions. It's designed for elite, high-performance sales teams (1-5 reps) who understand that a higher-quality file converts at a dramatically higher rate. The key to Direct Submissions is the strategic reduction in competition. We do not burn our data by selling the same record to 10 different brokers at the same time. You get a clean, uncontested shot at the deal, allowing your team to build rapport and close, not just race to the lowest price.
-              </p>
-              
-              <h3 className="mb-4 font-headline text-2xl font-semibold text-text-primary">
-                Key Features
-              </h3>
-              <ul className="mb-8 space-y-3">
-                {["Exclusive, never-resold web forms for uncontested speed-to-fund.", "Real-time delivery (<60 seconds) to your CRM, dialer, or Slack.", "Connectivity guarantee with 1:1 replacements for hard-invalids within 7 days.", "AI intent scoring to front-load highest-propensity records to your top reps.", "Personal list suppression to prevent overlap with your existing pipeline.", "Priority routing, geo holds, and pacing control for elite, small teams."].map((feature, idx) => <li key={idx} className="flex items-start gap-3">
-                    <Check className="mt-1 h-5 w-5 flex-shrink-0 text-success" />
-                    <span className="font-body text-base text-text-primary">{feature}</span>
-                  </li>)}
-              </ul>
-            </div>
-
-            <div className="lg:col-span-2">
-              <div className="rounded-lg bg-surface p-8">
-                <h4 className="mb-6 font-headline text-xl font-semibold text-primary">
-                  Specifications
-                </h4>
-                <dl className="space-y-4">
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Pricing</dt>
-                    <dd className="text-sm text-text-secondary">Per-lead, starting at $75/lead (typical $75—$150+ by filters)</dd>
-                  </div>
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Volume</dt>
-                    <dd className="text-sm text-text-secondary">25—300/week (100—1,200/month)</dd>
-                  </div>
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Exclusivity</dt>
-                    <dd className="text-sm text-text-secondary">Sold once—exclusive to your team. Never resold.</dd>
-                  </div>
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Delivery</dt>
-                    <dd className="text-sm text-text-secondary">Real-time API/webhook, CRM integrations (HubSpot, Salesforce), Zapier, Slack/MS Teams, CSV export</dd>
-                  </div>
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Best For</dt>
-                    <dd className="text-sm text-text-secondary">Elite, small teams (1-5 reps) focused on maximizing conversion rates</dd>
-                  </div>
-                </dl>
-                <Button onClick={scrollToCTA} variant="outline" className="mt-8 w-full">
-                  Request Pricing
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Alpha Data Deep-Dive */}
-      <section className="bg-surface px-6 py-24 lg:px-12">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-5">
-            <div className="lg:col-span-2 lg:order-1">
-              <div className="rounded-lg bg-card p-8">
-                <h4 className="mb-6 font-headline text-xl font-semibold text-primary">
-                  Specifications
-                </h4>
-                <dl className="space-y-4">
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Pricing</dt>
-                    <dd className="text-sm text-text-secondary">Per-lead or per-1k package, starting at $12/lead (30-90 days)</dd>
-                  </div>
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Volume</dt>
-                    <dd className="text-sm text-text-secondary">500—5,000/week (2,000—20,000/month)</dd>
-                  </div>
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Exclusivity</dt>
-                    <dd className="text-sm text-text-secondary">Limited circulation: capped at 1—3 qualified buyers</dd>
-                  </div>
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Delivery</dt>
-                    <dd className="text-sm text-text-secondary">Secure CSV/Excel via portal and email, CRM import packages, SFTP/FTP, Zapier</dd>
-                  </div>
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Best For</dt>
-                    <dd className="text-sm text-text-secondary">Growing, mid-sized teams (5-15 reps) needing reliable, cost-effective warm data</dd>
-                  </div>
-                </dl>
-                <Button onClick={scrollToCTA} variant="outline" className="mt-8 w-full">
-                  Request Pricing
-                </Button>
-              </div>
-            </div>
-
-            <div className="lg:col-span-3 lg:order-2">
-              <h2 className="mb-6 font-headline text-[40px] font-bold text-primary">
-                Alpha Data: Smart-Aged Leads for Growing Teams
-              </h2>
-              <p className="mb-8 font-body text-lg leading-[1.7] text-text-primary">
-                This is our strategic 'smart-aged' file, built for growing teams that need a perfect balance of quality and volume. We leverage our 30+ day old submission data, identifying the 'Alpha' prospects—businesses with a proven history of seeking funds who are now prime targets for follow-up. This isn't just a list of old leads; it's a curated file of prospects who are already educated on the funding process. Alpha Data gives you the power of an interested lead at a price point that allows for consistent, multi-touch outreach.
-              </p>
-              
-              <h3 className="mb-4 font-headline text-2xl font-semibold text-text-primary">
-                Key Features
-              </h3>
-              <ul className="mb-8 space-y-3">
-                {["Smart-aged submissions (30 days—1 year) curated for education and fit—less hand-holding, more conversations.", "Layered triggers (recency of inquiry, UCC events, web activity) to surface active evaluators.", "Guaranteed connectivity and compliance (DNC/TCPA/CAN-SPAM) with litigator scrub.", "Limited distribution (1—3 buyers) to reduce noise without losing scale.", "Flexible delivery (CSV, CRM import, SFTP) and ready-to-dial formatting.", "Volume-based pricing with commit options to stabilize rep calendars."].map((feature, idx) => <li key={idx} className="flex items-start gap-3">
-                    <Check className="mt-1 h-5 w-5 flex-shrink-0 text-success" />
-                    <span className="font-body text-base text-text-primary">{feature}</span>
-                  </li>)}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Apex Data Deep-Dive */}
-      <section className="bg-background px-6 py-24 lg:px-12">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-5">
-            <div className="lg:col-span-3">
-              <h2 className="mb-6 font-headline text-[40px] font-bold text-primary">
-                Pulse Data: Maximum Volume for High-Performance Call Centers
-              </h2>
-              <p className="mb-8 font-body text-lg leading-[1.7] text-text-primary">
-                The Pulse Database is our all-in-one, high-volume solution built to fuel the largest sales floors. It combines our deep archive of aged submissions with powerful trigger data to give your team a nearly limitless pool of prospects and a strategic 'reason to call.' This is the most cost-effective data in the industry, period. It's designed for one purpose: to give your sales team the maximum number of dials and email sends possible, ensuring your pipeline is never empty.
-              </p>
-              
-              <h3 className="mb-4 font-headline text-2xl font-semibold text-text-primary">
-                Key Features
-              </h3>
-              <ul className="mb-8 space-y-3">
-                {["Massive, consistent data supply for 20—60+ seat call centers and email teams.", "Aged submissions blended with active triggers (e.g., UCC filings) for better-than-random contact rates at scale.", "Strict compliance: DNC, litigator, CAN-SPAM; personal suppression honored at volume.", "Bulk delivery via SFTP/warehouse connectors; schema-ready for dialers and martech.", "Aggressive volume pricing and subscription options to protect CPA.", "Add-on enablement: pre-score by propensity, segment by SIC/geo/revenue, and turnkey outreach sequences."].map((feature, idx) => <li key={idx} className="flex items-start gap-3">
-                    <Check className="mt-1 h-5 w-5 flex-shrink-0 text-success" />
-                    <span className="font-body text-base text-text-primary">{feature}</span>
-                  </li>)}
-              </ul>
-            </div>
-
-            <div className="lg:col-span-2">
-              <div className="rounded-lg bg-surface p-8">
-                <h4 className="mb-6 font-headline text-xl font-semibold text-primary">
-                  Specifications
-                </h4>
-                <dl className="space-y-4">
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Pricing</dt>
-                    <dd className="text-sm text-text-secondary">Bulk per-1k or per-10k packages, starting at $1.50/lead (1-18 months)</dd>
-                  </div>
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Volume</dt>
-                    <dd className="text-sm text-text-secondary">5,000—50,000+/week (20,000—200,000+/month)</dd>
-                  </div>
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Exclusivity</dt>
-                    <dd className="text-sm text-text-secondary">Volume-first distribution with responsible caps. Not exclusive, but never mass-dumped</dd>
-                  </div>
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Delivery</dt>
-                    <dd className="text-sm text-text-secondary">Bulk SFTP/FTP and secure portal download, data warehouse connectors (AWS S3, GCS, Azure Blob), CSV/Parquet</dd>
-                  </div>
-                  <div>
-                    <dt className="mb-1 font-semibold text-text-primary">Best For</dt>
-                    <dd className="text-sm text-text-secondary">High-volume call centers (20-60+ reps) and email marketers needing massive data supply</dd>
-                  </div>
-                </dl>
-                <Button onClick={scrollToCTA} variant="outline" className="mt-8 w-full">
-                  Request Pricing
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Comparison Table */}
-      <section className="bg-surface px-6 py-24 lg:px-12">
-        <div className="container mx-auto max-w-7xl">
-          <h2 className="mb-12 text-center font-headline text-[40px] font-bold text-primary">
-            Compare Our Products Side-by-Side
-          </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse rounded-lg bg-card">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="sticky left-0 bg-card p-4 text-left font-headline text-lg font-semibold text-primary">
-                    Feature
-                  </th>
-                  <th className="p-4 text-left font-headline text-lg font-semibold text-primary">
-                    Direct Submissions
-                  </th>
-                  <th className="p-4 text-left font-headline text-lg font-semibold text-primary">
-                    Alpha Data
-                  </th>
-                  <th className="p-4 text-left font-headline text-lg font-semibold text-primary">
-                    Pulse Data
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {[{
-                feature: "Ideal Team Size",
-                ds: "1-5 reps",
-                alpha: "5-15 reps",
-                apex: "20-60+ reps"
-              }, {
-                feature: "Age Ranges",
-                ds: "Real-time (<60s)",
-                alpha: "30 days - 1 year",
-                apex: "1-18 months"
-              }, {
-                feature: "Starting Cost",
-                ds: "$75/lead",
-                alpha: "$12/lead",
-                apex: "$1.50/lead"
-              }, {
-                feature: "Weekly Volume",
-                ds: "25-300",
-                alpha: "500-5,000",
-                apex: "5,000-50,000+"
-              }, {
-                feature: "Monthly Volume",
-                ds: "100-1,200",
-                alpha: "2,000-20,000",
-                apex: "20,000-200,000+"
-              }, {
-                feature: "Exclusivity",
-                ds: "100% Exclusive",
-                alpha: "1-3 buyers",
-                apex: "Responsible caps"
-              }, {
-                feature: "Delivery Speed",
-                ds: "Real-time",
-                alpha: "Batch/Schedule",
-                apex: "Bulk/SFTP"
-              }, {
-                feature: "Connectivity Guarantee",
-                ds: "Yes (1:1)",
-                alpha: "Yes",
-                apex: "Yes"
-              }, {
-                feature: "Compliance",
-                ds: "Full TCPA/DNC",
-                alpha: "Full TCPA/DNC",
-                apex: "Full TCPA/DNC"
-              }, {
-                feature: "List Suppression",
-                ds: "Yes",
-                alpha: "Yes",
-                apex: "Yes (volume)"
-              }, {
-                feature: "Add-ons Compatible",
-                ds: "All",
-                alpha: "FundSense, TrustDial",
-                apex: "FundSense, TrustDial"
-              }, {
-                feature: "Support Level",
-                ds: "Priority",
-                alpha: "Standard",
-                apex: "Enterprise"
-              }].map((row, idx) => <tr key={idx} className="border-b border-border last:border-0">
-                    <td className="sticky left-0 bg-card p-4 font-semibold text-text-primary">
-                      {row.feature}
-                    </td>
-                    <td className="p-4 text-text-secondary">{row.ds}</td>
-                    <td className="p-4 text-text-secondary">{row.alpha}</td>
-                    <td className="p-4 text-text-secondary">{row.apex}</td>
-                  </tr>)}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* How to Choose */}
-      <section className="bg-background px-6 py-24 lg:px-12">
-        <div className="container mx-auto max-w-7xl">
-          <h2 className="mb-12 text-center font-headline text-[40px] font-bold text-primary">
-            How to Choose the Right Product
-          </h2>
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="rounded-lg bg-surface p-8 text-center">
-              <div className="mb-4 text-6xl">🎯</div>
-              <h3 className="mb-3 font-headline text-xl font-semibold text-primary">
-                Premium Quality
-              </h3>
-              <p className="mb-4 text-text-secondary">
-                Team Size: 1-5 reps<br />
-                Priority: Highest quality<br />
-                Budget: Premium tier
-              </p>
-              <div className="mt-4 rounded-lg bg-accent/10 p-3">
-                <span className="font-semibold text-accent">→ Direct Submissions</span>
-              </div>
-            </div>
-
-            <div className="rounded-lg bg-surface p-8 text-center">
-              <div className="mb-4 text-6xl">📈</div>
-              <h3 className="mb-3 font-headline text-xl font-semibold text-primary">
-                Balanced Growth
-              </h3>
-              <p className="mb-4 text-text-secondary">
-                Team Size: 5-15 reps<br />
-                Priority: Volume + quality<br />
-                Budget: Mid-tier
-              </p>
-              <div className="mt-4 rounded-lg bg-success/10 p-3">
-                <span className="font-semibold text-success">→ Alpha Data</span>
-              </div>
-            </div>
-
-            <div className="rounded-lg bg-surface p-8 text-center">
-              <div className="mb-4 text-6xl">🚀</div>
-              <h3 className="mb-3 font-headline text-xl font-semibold text-primary">
-                Maximum Scale
-              </h3>
-              <p className="mb-4 text-text-secondary">
-                Team Size: 20+ reps<br />
-                Priority: Massive volume<br />
-                Budget: Cost per lead critical
-              </p>
-              <div className="mt-4 rounded-lg bg-primary/10 p-3">
-                <span className="font-semibold text-primary">→ Pulse Data</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Common Features */}
-      <section className="bg-surface px-6 py-24 lg:px-12">
-        <div className="container mx-auto max-w-7xl">
-          <h2 className="mb-12 text-center font-headline text-[40px] font-bold text-primary">
-            Trust Anchors Across All Tiers
-          </h2>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {[{
-            icon: "🤖",
-            title: "AI Scoring",
-            desc: "Propensity models on every lead"
-          }, {
-            icon: "🛡️",
-            title: "DNC/Litigator Scrub",
-            desc: "Pre-screened for compliance"
-          }, {
-            icon: "🚫",
-            title: "Personal List Suppression",
-            desc: "Honor your existing pipeline"
-          }, {
-            icon: "✅",
-            title: "Connectivity Guarantee",
-            desc: "Replace hard invalids"
-          }, {
-            icon: "📋",
-            title: "Full Compliance",
-            desc: "TCPA/CTIA/CAN-SPAM adherence"
-          }, {
-            icon: "💬",
-            title: "Dedicated Support",
-            desc: "Real humans, fast response"
-          }].map((feature, idx) => <div key={idx} className="rounded-lg bg-card p-8 text-center">
-                <div className="mb-4 text-5xl">{feature.icon}</div>
-                <h3 className="mb-2 font-headline text-xl font-semibold text-text-primary">
-                  {feature.title}
-                </h3>
-                <p className="text-text-secondary">{feature.desc}</p>
-              </div>)}
-          </div>
-        </div>
-      </section>
-
-      {/* Volume Discounts */}
-      <section className="bg-background px-6 py-24 lg:px-12">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="mb-6 font-headline text-[40px] font-bold text-primary">
-            Volume Discounts and Commit Pricing
-          </h2>
-          <p className="font-body text-lg leading-relaxed text-text-secondary">
-            The more you commit, the better your economics. We offer volume-based discounts and commit pricing with typical breakpoints at 1,000, 5,000, 10,000, and 25,000+ leads per month. Longer commit periods (6-12 months) unlock additional savings and priority support. Let's build a plan that matches your growth trajectory.
-          </p>
-        </div>
-      </section>
-
-      {/* Data Quality */}
-      <section className="bg-surface px-6 py-24 lg:px-12">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="mb-6 font-headline text-[40px] font-bold text-primary">
-            Data Quality and Compliance You Can Trust
-          </h2>
-          <p className="font-body text-lg leading-relaxed text-text-secondary">
-            Every lead flows through our validation pipeline and identity graph before reaching your team. We verify phone numbers, emails, business details, and cross-reference against DNC registries, litigator databases, and known bad actors. Our TCPA/CTIA/CAN-SPAM practices are documented, auditable, and enforced at scale. You get clean, compliant data that protects your business.
-          </p>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section id="products-cta" className="bg-primary px-6 py-24 text-primary-foreground lg:px-12">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="mb-6 font-headline text-[40px] font-bold">
-            Design Your Data Plan. Scale Without Burn.
-          </h2>
-          <p className="mb-12 text-lg opacity-90">
-            Choose your tier, configure your filters, and see your economics instantly. Or talk to our team for custom guidance.
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button variant="secondary" size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-              Build My Plan
-            </Button>
-            <Button variant="outline" size="lg" className="border-2 border-primary-foreground bg-transparent text-primary-foreground hover:bg-primary-foreground/10">
-              Talk to Sales
-            </Button>
-          </div>
-          <p className="mt-6 text-sm opacity-80">
-            Call: 1-800-XXX-XXXX
-          </p>
-        </div>
-      </section>
-
-      <Footer />
-    </div>;
+  return null;
 };
-export default Products;
+
+const PRODUCT_ORDER: ProductKey[] = [
+  "direct_submissions",
+  "alpha_data",
+  "pulse_data",
+];
+
+const formatCurrency = (cents: number) =>
+  `$${(cents / 100).toFixed(2).replace(/\.00$/, "")}`;
+
+const computeStatus = (segment: InventorySegment): InventoryStatus => {
+  if (segment.availableQuantity <= 0) return "waitlist";
+  if (!segment.maxQuantity || segment.maxQuantity <= 0) return "healthy";
+
+  const ratio = segment.availableQuantity / segment.maxQuantity;
+  if (ratio <= 0.2) return "tight";
+  return "healthy";
+};
+
+const statusLabel: Record<InventoryStatus, string> = {
+  healthy: "Healthy",
+  tight: "Tight",
+  waitlist: "Waitlist",
+};
+
+const statusDescription: Record<InventoryStatus, string> = {
+  healthy: "Plenty of capacity for new orders.",
+  tight: "Limited capacity remaining. Lock in volume soon.",
+  waitlist: "Temporarily fully allocated. Join the waitlist.",
+};
+
+const statusPillClass: Record<InventoryStatus, string> = {
+  healthy:
+    "bg-emerald-500/10 text-emerald-300 border border-emerald-500/40",
+  tight: "bg-amber-500/10 text-amber-300 border border-amber-500/40",
+  waitlist: "bg-rose-500/10 text-rose-300 border border-rose-500/40",
+};
+
+const statusBarClass: Record<InventoryStatus, string> = {
+  healthy: "bg-emerald-400",
+  tight: "bg-amber-400",
+  waitlist: "bg-rose-400",
+};
+
+/** Config for schema offers (name/sku/price per band) */
+const OFFER_CONFIGS = [
+  {
+    productKey: "direct_submissions" as ProductKey,
+    ageBandKey: "lt_15",
+    sku: "direct-submissions-lt-15",
+    name: "Direct Submissions < 15 days",
+    price: 7.0,
+  },
+  {
+    productKey: "direct_submissions" as ProductKey,
+    ageBandKey: "15_30",
+    sku: "direct-submissions-15-30",
+    name: "Direct Submissions 15–30 days",
+    price: 4.0,
+  },
+  {
+    productKey: "alpha_data" as ProductKey,
+    ageBandKey: "30_90",
+    sku: "alpha-data-30-90",
+    name: "Alpha Data 30–90 days",
+    price: 1.0,
+  },
+  {
+    productKey: "alpha_data" as ProductKey,
+    ageBandKey: "90_180",
+    sku: "alpha-data-90-180",
+    name: "Alpha Data 90–180 days",
+    price: 0.75,
+  },
+  {
+    productKey: "pulse_data" as ProductKey,
+    ageBandKey: "180_365",
+    sku: "pulse-data-180-365",
+    name: "Pulse Data 180–365 days",
+    price: 0.5,
+  },
+  {
+    productKey: "pulse_data" as ProductKey,
+    ageBandKey: "1_2y",
+    sku: "pulse-data-1-2-years",
+    name: "Pulse Data 1–2 years",
+    price: 0.25,
+  },
+];
+
+const ProductsPage: React.FC = () => {
+  const [segments, setSegments] = useState<InventorySegment[]>([]);
+  const [inventoryLoading, setInventoryLoading] = useState<boolean>(true);
+  const [inventoryError, setInventoryError] = useState<string | null>(null);
+  const [lastInventoryUpdated, setLastInventoryUpdated] =
+    useState<Date | null>(null);
+
+  const [selectedProduct, setSelectedProduct] =
+    useState<ProductKey>("direct_submissions");
+  const [selectedSegmentId, setSelectedSegmentId] = useState<string | null>(
+    null
+  );
+  const [quantity, setQuantity] = useState<number>(1000);
+  const [checkoutLoading, setCheckoutLoading] = useState<boolean>(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
+
+  // --- Inventory fetch with polling (true "live" dashboard) ---
+  useEffect(() => {
+    let cancelled = false;
+
+    const fetchInventory = async () => {
+      try {
+        setInventoryError(null);
+        const res = await fetch("/api/inventory");
+        if (!res.ok) {
+          throw new Error("Failed to load live inventory.");
+        }
+        const data = (await res.json()) as { segments: InventorySegment[] };
+
+        if (cancelled) return;
+
+        const normalized = data.segments.map((s) => ({
+          ...s,
+          status: s.status ?? computeStatus(s),
+        }));
+
+        normalized.sort((a, b) => {
+          const pDiff =
+            PRODUCT_ORDER.indexOf(a.productKey) -
+            PRODUCT_ORDER.indexOf(b.productKey);
+          if (pDiff !== 0) return pDiff;
+          return a.ageBandLabel.localeCompare(b.ageBandLabel);
+        });
+
+        setSegments(normalized);
+        setLastInventoryUpdated(new Date());
+
+        if (!selectedSegmentId && normalized.length > 0) {
+          setSelectedProduct(normalized[0].productKey);
+          setSelectedSegmentId(normalized[0].id);
+          setQuantity(
+            Math.min(1000, Math.max(100, normalized[0].availableQuantity))
+          );
+        }
+      } catch (err: any) {
+        if (!cancelled) {
+          setInventoryError(
+            err?.message ||
+              "Error loading inventory. Pricing will still be accurate at checkout."
+          );
+        }
+      } finally {
+        if (!cancelled) {
+          setInventoryLoading(false);
+        }
+      }
+    };
+
+    fetchInventory();
+    const interval = setInterval(fetchInventory, 60000); // 60s polling
+
+    return () => {
+      cancelled = true;
+      clearInterval(interval);
+    };
+  }, [selectedSegmentId]);
+
+  const segmentsByProduct = useMemo(() => {
+    const grouped: Record<ProductKey, InventorySegment[]> = {
+      direct_submissions: [],
+      alpha_data: [],
+      pulse_data: [],
+    };
+    for (const seg of segments) {
+      grouped[seg.productKey].push(seg);
+    }
+    return grouped;
+  }, [segments]);
+
+  const activeSegments = segmentsByProduct[selectedProduct] || [];
+
+  useEffect(() => {
+    if (activeSegments.length === 0) {
+      setSelectedSegmentId(null);
+      return;
+    }
+    const stillValid = activeSegments.some((s) => s.id === selectedSegmentId);
+    if (!stillValid) {
+      setSelectedSegmentId(activeSegments[0].id);
+      setQuantity(
+        Math.min(1000, Math.max(100, activeSegments[0].availableQuantity))
+      );
+    }
+  }, [selectedProduct, activeSegments, selectedSegmentId]);
+
+  const selectedSegment =
+    segments.find((s) => s.id === selectedSegmentId) || null;
+
+  const maxQuantity = selectedSegment?.availableQuantity ?? 0;
+  const pricePerRecord =
+    selectedSegment && selectedSegment.priceCents
+      ? selectedSegment.priceCents / 100
+      : 0;
+  const estimatedTotal = quantity * pricePerRecord;
+
+  // Clamp quantity if inventory changes underneath us (live updates)
+  useEffect(() => {
+    if (!selectedSegment) return;
+    if (quantity > selectedSegment.availableQuantity) {
+      setQuantity(selectedSegment.availableQuantity);
+    }
+  }, [selectedSegment, quantity]);
+
+  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value.replace(/[^\d]/g, "");
+    const parsed = raw ? parseInt(raw, 10) : 0;
+    if (!selectedSegment) {
+      setQuantity(parsed);
+      return;
+    }
+    const clamped = Math.max(
+      0,
+      Math.min(parsed, selectedSegment.availableQuantity)
+    );
+    setQuantity(clamped);
+    setCheckoutError(null);
+  };
+
+  const handleSelectProduct = (product: ProductKey) => {
+    setSelectedProduct(product);
+    setCheckoutError(null);
+  };
+
+  const handleSelectSegment = (segmentId: string) => {
+    const seg = segments.find((s) => s.id === segmentId);
+    setSelectedSegmentId(segmentId);
+    if (seg) {
+      setQuantity(
+        Math.min(
+          Math.max(quantity || 0, 0),
+          Math.max(0, seg.availableQuantity)
+        )
+      );
+    }
+    setCheckoutError(null);
+  };
+
+  const scrollToConfigurator = () => {
+    const el = document.getElementById("order-configurator");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleRowClick = (segment: InventorySegment) => {
+    setSelectedProduct(segment.productKey);
+    setSelectedSegmentId(segment.id);
+    setCheckoutError(null);
+    scrollToConfigurator();
+  };
+
+  const handleCheckout = async () => {
+    if (!selectedSegment) {
+      setCheckoutError("Select a product and age band before checkout.");
+      return;
+    }
+    if (!quantity || quantity <= 0) {
+      setCheckoutError("Enter a quantity greater than zero.");
+      return;
+    }
+    if (quantity > selectedSegment.availableQuantity) {
+      setCheckoutError(
+        "Requested quantity exceeds live availability for this segment."
+      );
+      return;
+    }
+
+    try {
+      setCheckoutLoading(true);
+      setCheckoutError(null);
+
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          inventorySegmentId: selectedSegment.id,
+          quantity,
+        }),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error || "Checkout failed. Try again.");
+      }
+
+      const { checkoutUrl } = (await res.json()) as { checkoutUrl: string };
+      if (!checkoutUrl) {
+        throw new Error("Checkout URL missing from response.");
+      }
+
+      window.location.href = checkoutUrl;
+    } catch (err: any) {
+      setCheckoutError(err.message || "Unexpected error during checkout.");
+    } finally {
+      setCheckoutLoading(false);
+    }
+  };
+
+  // --- FAQ content + schema text ---
+  const faqs = useMemo(
+    () => [
+      {
+        question: "Do MCA leads really work?",
+        answerText:
+          "Yes—when they are verified, compliant, and matched to a team with a clear follow-up plan. Most horror stories come from recycled lists and vendors that oversell the same data.",
+        schemaAnswer:
+          "Yes. MCA leads work when they come from verified, capped, and compliant data sources and are worked by a disciplined sales process. They fail when the list is recycled, oversold, or non-compliant.",
+      },
+      {
+        question: "How are your MCA leads verified?",
+        answerText:
+          "Our leads go through a four-step process: high-intent sourcing, automated data hygiene, optional live-agent checks for some tiers, and a compliance review focused on TCPA and 1:1 consent.",
+        schemaAnswer:
+          "We verify MCA leads through high-intent sourcing, automated phone and email hygiene, suppression against DNC and litigators, optional live-agent checks for premium tiers, and a compliance review focused on TCPA and 1:1 consent.",
+      },
+      {
+        question:
+          "What is the difference between Direct Submissions, Alpha Data, and Pulse Data?",
+        answerText:
+          "Direct Submissions are under 30 days old and priced as premium records. Alpha Data covers 30–180 days and balances recency with cost. Pulse Data covers 180 days to two years and is priced for large-volume campaigns.",
+        schemaAnswer:
+          "Direct Submissions are real-time and near-real-time MCA submissions under 30 days old. Alpha Data covers 30–180 days and balances recency with cost. Pulse Data spans 180 days to two years and is priced for large-volume campaigns.",
+      },
+      {
+        question: "Can I filter MCA leads by state, industry, or other criteria?",
+        answerText:
+          "In most cases, yes. Geography, industry, and other MCA fit variables can be applied at the file level. For complex or lender-specific guidelines, we recommend speaking with a data strategist to scope the file before checkout.",
+        schemaAnswer:
+          "Yes. Most MCA lead orders can be filtered by geography, industry, and common MCA fit variables. For lender-specific rules or niche targeting, we recommend a consultative setup before you complete checkout.",
+      },
+    ],
+    []
+  );
+
+  // --- Schema: dynamic Product based on inventory availability ---
+  const productSchema = useMemo(() => {
+    const offers = OFFER_CONFIGS.map((config) => {
+      const match = segments.find(
+        (s) =>
+          s.productKey === config.productKey &&
+          s.ageBandKey === config.ageBandKey
+      );
+      const availability =
+        match && match.availableQuantity > 0
+          ? "https://schema.org/InStock"
+          : "https://schema.org/OutOfStock";
+
+      return {
+        "@type": "Offer",
+        name: config.name,
+        sku: config.sku,
+        price: config.price.toFixed(2),
+        priceCurrency: "USD",
+        availability,
+        url: "https://leadslaps.com/products",
+      };
+    });
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: "Verified Merchant Cash Advance Leads",
+      image: "https://leadslaps.com/og-image.jpg",
+      description:
+        "High-quality, verified merchant cash advance leads for brokers, ISOs, and funders. Choose from Direct Submissions, Alpha Data, or Pulse Data with transparent per-record pricing and capped availability.",
+      brand: {
+        "@type": "Brand",
+        name: "Lead Slaps",
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.9",
+        reviewCount: "137",
+      },
+      offers,
+    };
+  }, [segments]);
+
+  const faqSchema = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.schemaAnswer,
+        },
+      })),
+    }),
+    [faqs]
+  );
+
+  return (
+    <>
+      <main className="min-h-screen bg-slate-950 text-slate-50">
+        <div className="mx-auto max-w-6xl px-4 py-10 lg:py-16">
+          {/* Hero */}
+          <section className="mb-12 lg:mb-16">
+            <div className="space-y-6">
+              <div>
+                <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+                  Buy Verified Merchant Cash Advance Leads That Convert
+                </h1>
+                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-300 sm:text-base">
+                  Stop wasting budget on recycled MCA data and oversold “full
+                  packs.” Lead Slaps gives you a clean, tiered pipeline of
+                  Direct Submissions, Alpha Data, and Pulse Data—each verified,
+                  age-banded, and capped so you know exactly what you&apos;re
+                  buying.
+                </p>
+                <p className="mt-2 text-xs text-slate-500">
+                  Page last updated: November 2025
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <button
+                  className="inline-flex items-center justify-center rounded-full bg-sky-400 px-6 py-2 text-sm font-medium text-slate-950 shadow-sm transition hover:bg-sky-300"
+                  onClick={scrollToConfigurator}
+                >
+                  Start order
+                </button>
+                <button
+                  className="inline-flex items-center justify-center rounded-full border border-slate-700 px-6 py-2 text-sm font-medium text-slate-100 transition hover:border-slate-500 hover:bg-slate-900"
+                  onClick={() => {
+                    window.location.href = "/contact";
+                  }}
+                >
+                  Talk to a data strategist
+                </button>
+              </div>
+
+              {/* Trust bar */}
+              <div className="mt-4 grid gap-3 rounded-xl border border-slate-800 bg-slate-900/60 p-4 text-xs text-slate-300 sm:grid-cols-3 sm:text-sm">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/10 text-xs text-emerald-400">
+                    ✓
+                  </span>
+                  <span>TCPA &amp; 1:1 consent-aligned sourcing</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-sky-500/10 text-xs text-sky-400">
+                    ✓
+                  </span>
+                  <span>Data hygiene pipeline &amp; 97%+ deliverability</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-slate-50/10 text-xs text-slate-100">
+                    ✓
+                  </span>
+                  <span>Encrypted, PCI-compliant checkout via Square</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Definition / pain */}
+          <section className="mb-12 border-t border-slate-800 pt-10">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+              What Are MCA Leads (And Why Most Providers Fail You?)
+            </h2>
+            <div className="mt-4 space-y-4 text-sm leading-relaxed text-slate-300">
+              <p>
+                <strong>
+                  Merchant Cash Advance (MCA) leads are businesses that have
+                  expressed interest in receiving an advance on future revenue
+                  in exchange for fast, flexible funding.
+                </strong>{" "}
+                For brokers, ISOs, and direct funders, this data is the fuel for
+                every deal. The problem is not the idea of buying MCA leads—it’s
+                the way most providers generate and sell them.
+              </p>
+              <p>
+                Many vendors blend scraped lists, generic business records, and
+                old submissions into one “full pack” and resell it to as many
+                buyers as they can. Reps end up dialing disconnected numbers,
+                hostile business owners, or merchants who never requested
+                funding in the first place.
+              </p>
+              <p>
+                Lead Slaps is built around a single, clean pipeline with clear
+                age bands, per-record pricing, and hard caps. You see the real
+                product you&apos;re buying instead of a mystery CSV.
+              </p>
+            </div>
+          </section>
+
+          {/* Product tiers */}
+          <section className="mb-12 border-t border-slate-800 pt-10">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+              Three MCA Data Tiers. One Clean Pipeline.
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm text-slate-300">
+              Every merchant starts as a Direct Submission and ages into Alpha
+              Data, then Pulse Data. Each record lives in exactly one band at a
+              time, so you never pay fresh prices for aged data or buy the same
+              record twice.
+            </p>
+
+            <div className="mt-6 grid gap-6 md:grid-cols-3">
+              {/* Direct Submissions */}
+              <article className="flex h-full flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <p className="text-xs uppercase tracking-wide text-emerald-300">
+                  Premium tier
+                </p>
+                <h3 className="mt-1 text-lg font-semibold text-slate-50">
+                  Direct Submissions
+                </h3>
+                <p className="mt-2 text-sm text-slate-300">
+                  Real-time and near-real-time submissions for teams that win on
+                  speed-to-contact and tight follow-up.
+                </p>
+                <ul className="mt-3 space-y-1 text-xs text-slate-300">
+                  <li>• &lt; 15 days – $7.00 / record</li>
+                  <li>• 15–30 days – $4.00 / record</li>
+                  <li>• Strict caps to avoid over-sold lists</li>
+                </ul>
+                <button
+                  type="button"
+                  className="mt-auto inline-flex w-full items-center justify-center rounded-full bg-emerald-500 px-4 py-2 text-xs font-medium text-slate-950 hover:bg-emerald-400"
+                  onClick={() => {
+                    handleSelectProduct("direct_submissions");
+                    scrollToConfigurator();
+                  }}
+                >
+                  Start order – Direct Submissions
+                </button>
+              </article>
+
+              {/* Alpha Data */}
+              <article className="flex h-full flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <p className="text-xs uppercase tracking-wide text-sky-300">
+                  Growth tier
+                </p>
+                <h3 className="mt-1 text-lg font-semibold text-slate-50">
+                  Alpha Data
+                </h3>
+                <p className="mt-2 text-sm text-slate-300">
+                  Smart-aged submissions from the last 6 months, ideal for
+                  blending phone, SMS, and email into one pipeline.
+                </p>
+                <ul className="mt-3 space-y-1 text-xs text-slate-300">
+                  <li>• 30–90 days – $1.00 / record</li>
+                  <li>• 90–180 days – $0.75 / record</li>
+                  <li>• Built for sustainable, predictable volume</li>
+                </ul>
+                <button
+                  type="button"
+                  className="mt-auto inline-flex w-full items-center justify-center rounded-full bg-sky-500 px-4 py-2 text-xs font-medium text-slate-950 hover:bg-sky-400"
+                  onClick={() => {
+                    handleSelectProduct("alpha_data");
+                    scrollToConfigurator();
+                  }}
+                >
+                  Start order – Alpha Data
+                </button>
+              </article>
+
+              {/* Pulse Data */}
+              <article className="flex h-full flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <p className="text-xs uppercase tracking-wide text-fuchsia-300">
+                  Scale tier
+                </p>
+                <h3 className="mt-1 text-lg font-semibold text-slate-50">
+                  Pulse Data
+                </h3>
+                <p className="mt-2 text-sm text-slate-300">
+                  6–24 month MCA data priced for high-volume dialing, SMS
+                  reactivation, and long-tail email campaigns.
+                </p>
+                <ul className="mt-3 space-y-1 text-xs text-slate-300">
+                  <li>• 180–365 days – $0.50 / record</li>
+                  <li>• 1–2 years – $0.25 / record</li>
+                  <li>• Optimized for big floors and nurture programs</li>
+                </ul>
+                <button
+                  type="button"
+                  className="mt-auto inline-flex w-full items-center justify-center rounded-full bg-fuchsia-500 px-4 py-2 text-xs font-medium text-slate-950 hover:bg-fuchsia-400"
+                  onClick={() => {
+                    handleSelectProduct("pulse_data");
+                    scrollToConfigurator();
+                  }}
+                >
+                  Start order – Pulse Data
+                </button>
+              </article>
+            </div>
+          </section>
+
+          {/* Pricing + Live Availability Dashboard */}
+          <section
+            id="pricing-dashboard"
+            className="mb-12 border-t border-slate-800 pt-10"
+          >
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+              Pricing and Live Availability Dashboard
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm text-slate-300">
+              Pricing is per record. The table below combines per-band pricing
+              with live availability so you can see what&apos;s on the shelf
+              before you start an order.
+            </p>
+            <p className="mt-1 text-[11px] text-slate-500">
+              Live inventory last refreshed:{" "}
+              {lastInventoryUpdated
+                ? lastInventoryUpdated.toLocaleTimeString("en-US", {
+                    hour: "numeric",
+                    minute: "2-digit",
+                  })
+                : "just now"}
+            </p>
+
+            {inventoryLoading && (
+              <p className="mt-3 text-sm text-slate-400">
+                Loading live inventory…
+              </p>
+            )}
+            {inventoryError && (
+              <p className="mt-3 text-sm text-amber-300">{inventoryError}</p>
+            )}
+
+            {!inventoryLoading && !inventoryError && segments.length > 0 && (
+              <div className="mt-4 overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60">
+                <table className="min-w-full border-collapse text-left text-xs text-slate-200 sm:text-sm">
+                  <caption className="sr-only">
+                    Pricing and live availability for MCA lead segments
+                  </caption>
+                  <thead className="bg-slate-900">
+                    <tr>
+                      <th className="px-4 py-3 font-medium">Product</th>
+                      <th className="px-4 py-3 font-medium">Age band</th>
+                      <th className="px-4 py-3 font-medium">Price / record</th>
+                      <th className="px-4 py-3 font-medium">Available now</th>
+                      <th className="px-4 py-3 font-medium">Max cap</th>
+                      <th className="px-4 py-3 font-medium">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {segments.map((segment) => {
+                      const status = segment.status || computeStatus(segment);
+                      const max =
+                        segment.maxQuantity > 0
+                          ? segment.maxQuantity
+                          : segment.availableQuantity;
+                      const remainingRatio =
+                        max > 0 ? segment.availableQuantity / max : 1;
+                      const barWidth = `${Math.max(
+                        0,
+                        Math.min(100, remainingRatio * 100)
+                      ).toFixed(0)}%`;
+
+                      return (
+                        <tr
+                          key={segment.id}
+                          className="cursor-pointer border-t border-slate-800/60 align-top transition hover:bg-slate-900/60"
+                          role="button"
+                          tabIndex={0}
+                          onClick={() => handleRowClick(segment)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              handleRowClick(segment);
+                            }
+                          }}
+                        >
+                          <td className="px-4 py-3">
+                            <div className="font-medium text-slate-50">
+                              {segment.productLabel}
+                            </div>
+                          </td>
+                          <td className="px-4 py-3">{segment.ageBandLabel}</td>
+                          <td className="px-4 py-3">
+                            {formatCurrency(segment.priceCents)}
+                            <span className="text-[11px] text-slate-400">
+                              {" "}
+                              / record
+                            </span>
+                          </td>
+                          <td className="px-4 py-3">
+                            {segment.availableQuantity.toLocaleString()} records
+                          </td>
+                          <td className="px-4 py-3">
+                            {max.toLocaleString()}
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="availability-status">
+                              <span
+                                className={
+                                  "status-pill inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-medium " +
+                                  statusPillClass[status]
+                                }
+                              >
+                                {statusLabel[status]}
+                              </span>
+                              <div className="mt-2 h-1.5 w-32 rounded-full bg-slate-800">
+                                <div
+                                  className={
+                                    "status-bar__fill h-1.5 rounded-full transition-all " +
+                                    statusBarClass[status]
+                                  }
+                                  style={{ width: barWidth }}
+                                />
+                              </div>
+                              <span className="mt-1 block text-[11px] text-slate-400">
+                                {statusDescription[status]}
+                              </span>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+                <p className="mt-2 px-4 pb-4 text-[11px] text-slate-400">
+                  Live counts update as orders are processed. We validate
+                  availability once more in the checkout flow before locking in
+                  your allocation.
+                </p>
+              </div>
+            )}
+          </section>
+
+          {/* Order Configurator */}
+          <section
+            className="products-section products-configurator mb-12 border-t border-slate-800 pt-10"
+            id="order-configurator"
+          >
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+              Configure Your File and Start Your Order
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm text-slate-300">
+              Build your order in three steps: choose a product, choose an age
+              band, and set your quantity. We cap your request at live
+              availability and hand off to a secure Square checkout.
+            </p>
+
+            <div className="mt-6 grid gap-6 lg:grid-cols-[2fr,1.25fr]">
+              {/* Left side: multi-step wizard */}
+              <div className="space-y-6 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                {/* Step 1 */}
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                    Step 1 · Choose product
+                  </p>
+                  <div
+                    className="mt-3 grid gap-2 sm:grid-cols-3"
+                    role="radiogroup"
+                    aria-label="Select MCA data product"
+                  >
+                    <button
+                      type="button"
+                      role="radio"
+                      aria-checked={selectedProduct === "direct_submissions"}
+                      className={`flex flex-col rounded-xl border px-3 py-2 text-left text-xs transition ${
+                        selectedProduct === "direct_submissions"
+                          ? "border-sky-400 bg-sky-400/10 text-slate-50"
+                          : "border-slate-700 bg-slate-950/40 text-slate-300 hover:border-slate-500"
+                      }`}
+                      onClick={() => handleSelectProduct("direct_submissions")}
+                    >
+                      <span className="font-medium">Direct Submissions</span>
+                      <span className="mt-1 text-[11px] text-slate-400">
+                        Premium, real-time submissions
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      role="radio"
+                      aria-checked={selectedProduct === "alpha_data"}
+                      className={`flex flex-col rounded-xl border px-3 py-2 text-left text-xs transition ${
+                        selectedProduct === "alpha_data"
+                          ? "border-sky-400 bg-sky-400/10 text-slate-50"
+                          : "border-slate-700 bg-slate-950/40 text-slate-300 hover:border-slate-500"
+                      }`}
+                      onClick={() => handleSelectProduct("alpha_data")}
+                    >
+                      <span className="font-medium">Alpha Data</span>
+                      <span className="mt-1 text-[11px] text-slate-400">
+                        Smart-aged submissions at scale
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      role="radio"
+                      aria-checked={selectedProduct === "pulse_data"}
+                      className={`flex flex-col rounded-xl border px-3 py-2 text-left text-xs transition ${
+                        selectedProduct === "pulse_data"
+                          ? "border-sky-400 bg-sky-400/10 text-slate-50"
+                          : "border-slate-700 bg-slate-950/40 text-slate-300 hover:border-slate-500"
+                      }`}
+                      onClick={() => handleSelectProduct("pulse_data")}
+                    >
+                      <span className="font-medium">Pulse Data</span>
+                      <span className="mt-1 text-[11px] text-slate-400">
+                        Deep archive &amp; triggers for big floors
+                      </span>
+                    </button>
+                  </div>
+                  <p className="mt-2 text-[11px] text-slate-400">
+                    Each stream has two non-overlapping age bands so you always
+                    know how fresh your file is.
+                  </p>
+                </div>
+
+                {/* Step 2 */}
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                    Step 2 · Choose age band &amp; quantity
+                  </p>
+
+                  {activeSegments.length === 0 && (
+                    <p className="mt-2 text-xs text-slate-500">
+                      No active segments for this product. Try another tier or
+                      check back as new volume is added.
+                    </p>
+                  )}
+
+                  {activeSegments.length > 0 && (
+                    <>
+                      <div
+                        className="mt-3 flex flex-wrap gap-2"
+                        role="radiogroup"
+                        aria-label="Select age band"
+                      >
+                        {activeSegments.map((segment) => {
+                          const active = segment.id === selectedSegmentId;
+                          return (
+                            <button
+                              key={segment.id}
+                              type="button"
+                              role="radio"
+                              aria-checked={active}
+                              className={`rounded-full border px-3 py-1.5 text-xs transition sm:text-sm ${
+                                active
+                                  ? "border-sky-400 bg-sky-400/10 text-sky-100"
+                                  : "border-slate-700 bg-slate-950/40 text-slate-300 hover:border-slate-500"
+                              }`}
+                              onClick={() => handleSelectSegment(segment.id)}
+                            >
+                              <span>{segment.ageBandLabel}</span>
+                              <span className="ml-2 text-[11px] text-slate-400">
+                                {formatCurrency(segment.priceCents)} / record ·{" "}
+                                {segment.availableQuantity.toLocaleString()}{" "}
+                                available
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                      <label className="mt-4 block text-xs font-medium text-slate-300">
+                        Quantity (records)
+                        <input
+                          type="number"
+                          min={0}
+                          max={maxQuantity || undefined}
+                          value={quantity || ""}
+                          onChange={handleQuantityChange}
+                          inputMode="numeric"
+                          className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:border-sky-400 focus:outline-none focus:ring-1 focus:ring-sky-400"
+                          placeholder="Enter number of records"
+                        />
+                        {selectedSegment && (
+                          <span className="mt-1 block text-[11px] text-slate-400">
+                            Max available today for this band:{" "}
+                            {maxQuantity.toLocaleString()} records.
+                          </span>
+                        )}
+                      </label>
+                    </>
+                  )}
+                </div>
+
+                {/* Step 3 */}
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                    Step 3 · Review &amp; proceed to checkout
+                  </p>
+                  {checkoutError && (
+                    <p className="mt-2 rounded-lg border border-rose-500/60 bg-rose-950/40 px-3 py-2 text-xs text-rose-100">
+                      {checkoutError}
+                    </p>
+                  )}
+                  <div className="mt-3 flex flex-wrap items-center gap-3">
+                    <button
+                      type="button"
+                      className="inline-flex items-center justify-center rounded-full bg-sky-400 px-5 py-2 text-xs font-medium text-slate-950 shadow-sm transition hover:bg-sky-300 disabled:cursor-not-allowed disabled:bg-slate-600 disabled:text-slate-300"
+                      onClick={handleCheckout}
+                      disabled={checkoutLoading || !selectedSegment || !quantity}
+                    >
+                      {checkoutLoading
+                        ? "Creating checkout…"
+                        : "Proceed to checkout"}
+                    </button>
+                    <p className="text-xs text-slate-400">
+                      You&apos;ll confirm details and complete payment on a
+                      secure checkout powered by Square.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right side: summary */}
+              <aside className="space-y-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                  Order summary
+                </p>
+                <div className="space-y-1 text-sm text-slate-200">
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Product</span>
+                    <span>
+                      {selectedSegment
+                        ? selectedSegment.productLabel
+                        : "Select a product"}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Age band</span>
+                    <span>
+                      {selectedSegment
+                        ? selectedSegment.ageBandLabel
+                        : "Select an age band"}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Price / record</span>
+                    <span>
+                      {pricePerRecord
+                        ? `$${pricePerRecord.toFixed(2)}`
+                        : "—"}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Quantity</span>
+                    <span>
+                      {quantity ? quantity.toLocaleString() : "Not set yet"}
+                    </span>
+                  </div>
+                </div>
+                <div className="mt-2 border-t border-slate-800 pt-3">
+                  <div className="flex items-baseline justify-between">
+                    <span className="text-xs uppercase tracking-wide text-slate-400">
+                      Estimated total
+                    </span>
+                    <span className="text-lg font-semibold text-slate-50">
+                      {estimatedTotal
+                        ? `$${estimatedTotal.toLocaleString(undefined, {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })}`
+                        : "—"}
+                    </span>
+                  </div>
+                  <p className="mt-1 text-[11px] text-slate-500">
+                    Final totals and taxes (if applicable) will be confirmed on
+                    the checkout screen.
+                  </p>
+                </div>
+              </aside>
+            </div>
+          </section>
+
+          {/* Verification */}
+          <section className="mb-12 border-t border-slate-800 pt-10">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+              Our 4-Step Verification Process: How We Guarantee Quality
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm text-slate-300">
+              <strong>
+                High-performing MCA campaigns start with verified data, not just
+                more data.
+              </strong>{" "}
+              We combine sourcing, hygiene, human checks, and compliance so your
+              team spends time on real opportunities—not bad lists.
+            </p>
+            <ol className="mt-4 space-y-3 text-sm text-slate-300">
+              <li>
+                <strong>Step 1 – High-intent data sourcing.</strong> We focus on
+                channels where business owners explicitly request funding—
+                direct web forms, inbound funnels, and vetted partners—not
+                scraped directories.
+              </li>
+              <li>
+                <strong>Step 2 – Automated data hygiene.</strong> Every record
+                passes phone, email, and field validation. We standardize
+                formats, dedupe against your suppression lists, and remove
+                obvious bad entries before they ever hit your file.
+              </li>
+              <li>
+                <strong>
+                  Step 3 – Live-agent intent verification (for applicable
+                  tiers).
+                </strong>{" "}
+                For higher-value bands, live agents confirm that the business is
+                reachable, still evaluating funding, and generally aligned with
+                MCA fit.
+              </li>
+              <li>
+                <strong>Step 4 – Compliance &amp; 1:1 consent.</strong> Our
+                process is designed around TCPA and emerging 1:1 consent
+                standards, with auditable consent and clear disclosure language
+                baked in.
+              </li>
+            </ol>
+          </section>
+
+          {/* ROI */}
+          <section className="mb-12 border-t border-slate-800 pt-10">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+              The Clear ROI: What to Expect from Our Data
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm text-slate-300">
+              <strong>
+                Properly worked MCA data consistently outperforms cheap,
+                recycled lists—aged segments can convert in the low double
+                digits, while fresh streams often yield 2–3× more funded deals
+                per dollar spent than generic “full packs.”
+              </strong>{" "}
+              Your exact results depend on scripting, follow-up, and
+              underwriting, but high-quality data removes the ceiling imposed by
+              bad lists.
+            </p>
+            <div className="mt-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-4 text-sm text-slate-300">
+              <h3 className="text-sm font-semibold text-slate-50">
+                Illustrative outcome
+              </h3>
+              <p className="mt-1 text-xs text-slate-400">
+                Simplified example based on real-world campaigns.
+              </p>
+              <ul className="mt-2 space-y-1.5">
+                <li>
+                  • A mid-sized ISO blends Direct, Alpha, and Pulse streams to
+                  match rep skill and cadence.
+                </li>
+                <li>
+                  • Higher-CPR Direct Submissions go to closers; Alpha supports
+                  pipeline; Pulse feeds dialers and email.
+                </li>
+                <li>
+                  • Over 90 days, they reduce cost per funded deal by focusing
+                  effort on the highest-yield bands and using Pulse to keep
+                  floors productive.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          {/* Full pack warning */}
+          <section className="mb-12 border-t border-slate-800 pt-10">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+              A Warning for Brokers: Avoiding &quot;Full Pack&quot; Scams
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm text-slate-300">
+              <strong>
+                “Full pack” lists bundle random data sources, hide age and
+                sourcing, and are usually sold to as many buyers as possible.
+              </strong>{" "}
+              They feel cheap upfront and expensive once your team touches them.
+              We designed Lead Slaps as the opposite model.
+            </p>
+            <ul className="mt-3 space-y-2 text-sm text-slate-300">
+              <li>
+                • <span className="font-medium">Defined products.</span> Direct,
+                Alpha, and Pulse are each clearly described, including age
+                bands, pricing, and caps.
+              </li>
+              <li>
+                • <span className="font-medium">Enforced capacity.</span> Each
+                segment has a hard cap with live availability—when it sells out,
+                it closes.
+              </li>
+              <li>
+                • <span className="font-medium">Compliance-first.</span> We
+                focus on TCPA and 1:1 consent rather than dumping scraped data
+                into your dialer.
+              </li>
+            </ul>
+          </section>
+
+          {/* FAQ */}
+          <section className="mb-12 border-t border-slate-800 pt-10">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+              Frequently Asked Questions About MCA Leads
+            </h2>
+            <dl className="mt-4 space-y-6">
+              {faqs.map((faq) => (
+                <div
+                  key={faq.question}
+                  className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4"
+                >
+                  <dt className="text-sm font-semibold text-slate-50">
+                    {faq.question}
+                  </dt>
+                  <dd className="mt-2 text-sm text-slate-300">
+                    <strong>{faq.answerText.split(".")[0]}.</strong>{" "}
+                    {faq.answerText.slice(
+                      faq.answerText.indexOf(".") + 1
+                    ).trim()}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+
+          {/* Final CTA */}
+          <section className="mb-4 border-t border-slate-800 pt-10">
+            <div className="rounded-3xl border border-slate-800 bg-gradient-to-r from-slate-900/80 via-slate-900/60 to-slate-900/80 px-6 py-8 text-center">
+              <h2 className="text-2xl font-semibold tracking-tight text-slate-50">
+                Design Your Data Plan. Scale Without Burn.
+              </h2>
+              <p className="mt-3 text-sm text-slate-300">
+                Pick your stream, age bands, and volume, then lock in allocation
+                before the best segments sell out. Or bring us your current
+                funnel and we&apos;ll help you design a file that fits the way
+                your team actually sells.
+              </p>
+              <div className="mt-5 flex flex-wrap items-center justify-center gap-4">
+                <button
+                  type="button"
+                  className="inline-flex items-center justify-center rounded-full bg-sky-400 px-6 py-2 text-sm font-medium text-slate-950 shadow-sm transition hover:bg-sky-300"
+                  onClick={scrollToConfigurator}
+                >
+                  Start order
+                </button>
+                <button
+                  type="button"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-700 px-6 py-2 text-sm font-medium text-slate-100 transition hover:border-slate-500 hover:bg-slate-900"
+                  onClick={() => {
+                    window.location.href = "mailto:sales@leadslaps.com";
+                  }}
+                >
+                  Talk to sales
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      {/* JSON-LD injected into <head> */}
+      <JsonLd data={productSchema} />
+      <JsonLd data={faqSchema} />
+    </>
+  );
+};
+
+export default ProductsPage;
