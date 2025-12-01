@@ -3,13 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 const AddOns = () => {
   useEffect(() => {
     document.title = "AI-Powered MCA Lead Add-Ons - FundSense, StatementSnap, TrustDial | Lead Slaps";
@@ -18,13 +12,12 @@ const AddOns = () => {
       metaDescription.setAttribute("content", "Transform leads into winners with AI add-ons. FundSense scoring, StatementSnap underwriting, and TrustDial verification. Close faster, convert more.");
     }
   }, []);
-
   const scrollToCTA = () => {
-    document.getElementById('addons-cta')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('addons-cta')?.scrollIntoView({
+      behavior: 'smooth'
+    });
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* Hero Section */}
@@ -68,34 +61,20 @@ const AddOns = () => {
                 Key Features
               </h3>
               <ul className="mb-8 space-y-3">
-                {[
-                  "Actionable scoring: 0—100 score with A—F grades and top drivers so reps know who to call and why.",
-                  "Smart routing: Score-based assignment and sequencing to maximize closer time on high-likelihood deals.",
-                  "Predictive signals: Incorporates omni-channel data to surface \"hidden gold.\"",
-                  "Continuous refresh: Scores update as new data arrives; versioning ensures transparency.",
-                  "Measurable lift: Typical customers see higher contact-to-close efficiency and reduced cost per funded deal."
-                ].map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
+                {["Actionable scoring: 0—100 score with A—F grades and top drivers so reps know who to call and why.", "Smart routing: Score-based assignment and sequencing to maximize closer time on high-likelihood deals.", "Predictive signals: Incorporates omni-channel data to surface \"hidden gold.\"", "Continuous refresh: Scores update as new data arrives; versioning ensures transparency.", "Measurable lift: Typical customers see higher contact-to-close efficiency and reduced cost per funded deal."].map((feature, idx) => <li key={idx} className="flex items-start gap-3">
                     <Check className="mt-1 h-5 w-5 flex-shrink-0 text-success" />
                     <span className="font-body text-base text-text-primary">{feature}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
 
               <h3 className="mb-4 font-headline text-2xl font-semibold text-text-primary">
                 Use Cases
               </h3>
               <ul className="space-y-2">
-                {[
-                  "Prioritize daily calling lists",
-                  "Segment campaigns (phone vs email)",
-                  "Post-campaign audit for reactivation"
-                ].map((useCase, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
+                {["Prioritize daily calling lists", "Segment campaigns (phone vs email)", "Post-campaign audit for reactivation"].map((useCase, idx) => <li key={idx} className="flex items-start gap-3">
                     <span className="text-accent">•</span>
                     <span className="text-text-secondary">{useCase}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
 
@@ -107,8 +86,8 @@ const AddOns = () => {
                 <dl className="space-y-4">
                   <div>
                     <dt className="mb-1 font-semibold text-text-primary">Pricing</dt>
-                    <dd className="text-sm text-text-secondary">
-                      Per-lead: $1.75—$3.50 (tiered by volume)<br />
+                    <dd className="text-sm text-text-secondary">Per-lead: $1 — $3 (tiered by volume)
+Subscription: $299—$1,499/month with lead allowance<br />
                       Subscription: $299—$1,499/month with lead allowance
                     </dd>
                   </div>
@@ -118,9 +97,7 @@ const AddOns = () => {
                   </div>
                   <div>
                     <dt className="mb-1 font-semibold text-text-primary">Data Fields</dt>
-                    <dd className="text-sm text-text-secondary">
-                      fundability_score (0—100), grade (A—F), confidence (0—1), top_signals (list), risk_flags (list)
-                    </dd>
+                    <dd className="text-sm text-text-secondary">fundability_score (0 — 100), grade (A — F), confidence (0.0 — 1.0), top_signals (list), risk_flags (list)</dd>
                   </div>
                 </dl>
                 <Button onClick={scrollToCTA} className="mt-8 w-full">
@@ -144,9 +121,7 @@ const AddOns = () => {
                 <dl className="space-y-4">
                   <div>
                     <dt className="mb-1 font-semibold text-text-primary">Pricing</dt>
-                    <dd className="text-sm text-text-secondary">
-                      Per completed package: $59—$119 (depends on doc sources and turnaround; optional Rush +$30)
-                    </dd>
+                    <dd className="text-sm text-text-secondary">Per completed package: $10 (depends on doc sources and turnaround; optional Rush +$30)</dd>
                   </div>
                   <div>
                     <dt className="mb-1 font-semibold text-text-primary">Delivery</dt>
@@ -190,34 +165,20 @@ const AddOns = () => {
                 Key Features
               </h3>
               <ul className="mb-8 space-y-3">
-                {[
-                  "Pre-underwriting automation: Extracts and standardizes income, NSFs, days negative, seasonality, and stacking indicators.",
-                  "Decision-ready output: PDF + JSON summary aligned to funder expectations.",
-                  "Fast turnaround: Same-day standard; optional 2—4 hour rush for hot files.",
-                  "Quality control: Human-in-the-loop verification on edge cases; confidence scores on all metrics.",
-                  "Seamless delivery: Secure merchant intake, automated CRM/webhook delivery, audit trail for compliance."
-                ].map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
+                {["Pre-underwriting automation: Extracts and standardizes income, NSFs, days negative, seasonality, and stacking indicators.", "Decision-ready output: PDF + JSON summary aligned to funder expectations.", "Fast turnaround: Same-day standard; optional 2—4 hour rush for hot files.", "Quality control: Human-in-the-loop verification on edge cases; confidence scores on all metrics.", "Seamless delivery: Secure merchant intake, automated CRM/webhook delivery, audit trail for compliance."].map((feature, idx) => <li key={idx} className="flex items-start gap-3">
                     <Check className="mt-1 h-5 w-5 flex-shrink-0 text-success" />
                     <span className="font-body text-base text-text-primary">{feature}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
 
               <h3 className="mb-4 font-headline text-2xl font-semibold text-text-primary">
                 Use Cases
               </h3>
               <ul className="space-y-2">
-                {[
-                  "Speed-to-underwrite for Direct Submissions",
-                  "Reduce ops burden by offloading bank statement parsing",
-                  "Improve funder acceptance with standardized packages"
-                ].map((useCase, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
+                {["Speed-to-underwrite for Direct Submissions", "Reduce ops burden by offloading bank statement parsing", "Improve funder acceptance with standardized packages"].map((useCase, idx) => <li key={idx} className="flex items-start gap-3">
                     <span className="text-accent">•</span>
                     <span className="text-text-secondary">{useCase}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
           </div>
@@ -253,34 +214,20 @@ const AddOns = () => {
                 Key Features
               </h3>
               <ul className="mb-8 space-y-3">
-                {[
-                  "Omnichannel verification: Phone reachability/line type, email SMTP check, address DPV, and identity match in one pass.",
-                  "Connection boost: \"Best channel\" and \"best time window\" recommendations increase live answers.",
-                  "Waste reduction: Remove wrong numbers/disposable emails before a single dial or send.",
-                  "Compliance-friendly: Flags risky records and line types to support TCPA-safe outreach.",
-                  "Scalable modes: Real-time at capture and batch for existing databases with clear pass/fail fields."
-                ].map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
+                {["Omnichannel verification: Phone reachability/line type, email SMTP check, address DPV, and identity match in one pass.", "Connection boost: \"Best channel\" and \"best time window\" recommendations increase live answers.", "Waste reduction: Remove wrong numbers/disposable emails before a single dial or send.", "Compliance-friendly: Flags risky records and line types to support TCPA-safe outreach.", "Scalable modes: Real-time at capture and batch for existing databases with clear pass/fail fields."].map((feature, idx) => <li key={idx} className="flex items-start gap-3">
                     <Check className="mt-1 h-5 w-5 flex-shrink-0 text-success" />
                     <span className="font-body text-base text-text-primary">{feature}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
 
               <h3 className="mb-4 font-headline text-2xl font-semibold text-text-primary">
                 Use Cases
               </h3>
               <ul className="space-y-2">
-                {[
-                  "Boost connect rates by verifying phone/email",
-                  "Eliminate wasted spend on bad data",
-                  "Compliance peace of mind by flagging risky records"
-                ].map((useCase, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
+                {["Boost connect rates by verifying phone/email", "Eliminate wasted spend on bad data", "Compliance peace of mind by flagging risky records"].map((useCase, idx) => <li key={idx} className="flex items-start gap-3">
                     <span className="text-accent">•</span>
                     <span className="text-text-secondary">{useCase}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
 
@@ -292,7 +239,7 @@ const AddOns = () => {
                 <dl className="space-y-4">
                   <div>
                     <dt className="mb-1 font-semibold text-text-primary">Pricing</dt>
-                    <dd className="text-sm text-text-secondary">Per-lead: $0.45—$1.10 (tiered by monthly volume and channels verified)</dd>
+                    <dd className="text-sm text-text-secondary">Per-lead: $0.45</dd>
                   </div>
                   <div>
                     <dt className="mb-1 font-semibold text-text-primary">Delivery</dt>
@@ -300,9 +247,16 @@ const AddOns = () => {
                   </div>
                   <div>
                     <dt className="mb-1 font-semibold text-text-primary">Data Fields</dt>
-                    <dd className="text-sm text-text-secondary">
-                      verified_phone (Y/N), verified_email (Y/N), match_score (0—100), best_channel, reachability_score
-                    </dd>
+                    <dd className="text-sm text-text-secondary">Verified Phone Type
+Verified Phone Connection Status
+Verified Email
+Phone Linked to Name+
+Match Score (0—100)
+Best Channel
+Reachability Score
+Litigation Association
+State DNC
+MCA Seed</dd>
                   </div>
                   <div>
                     <dt className="mb-1 font-semibold text-text-primary">Checks</dt>
@@ -595,57 +549,44 @@ const AddOns = () => {
             Frequently Asked Questions
           </h2>
           <Accordion type="single" collapsible className="space-y-4">
-            {[
-              {
-                q: "How are add-ons priced?",
-                a: "Add-ons are priced either per-lead or via monthly subscription based on volume. Per-lead pricing ranges from $0.45 to $3.50 depending on the add-on and monthly volume. Subscriptions start at $299/month and include lead allowances."
-              },
-              {
-                q: "Can I use add-ons with any product tier?",
-                a: "FundSense and TrustDial work with all product tiers (Direct Submissions, Alpha Data, and Apex Data). StatementSnap is exclusively available for Direct Submissions customers."
-              },
-              {
-                q: "What's included in the subscription pricing?",
-                a: "Subscription pricing includes a monthly lead allowance, priority support, dashboard access, and API/webhook integration. Overage pricing applies if you exceed your monthly allowance."
-              },
-              {
-                q: "How do you ensure data accuracy?",
-                a: "We use multi-source verification, human-in-the-loop QA for edge cases, and continuous monitoring. Every data point is cross-referenced and scored for confidence before delivery."
-              },
-              {
-                q: "What are your SLAs and support commitments?",
-                a: "Standard customers receive business-hours support with 24-hour response times. Premium and Enterprise customers get priority support with 2-4 hour response times and dedicated account management."
-              },
-              {
-                q: "How does billing work for add-ons?",
-                a: "Per-lead add-ons are billed monthly based on usage. Subscriptions are billed monthly in advance. We provide detailed usage reports and invoices via your dashboard."
-              },
-              {
-                q: "Are add-ons TCPA/CTIA compliant?",
-                a: "Yes. All add-ons are designed with compliance in mind. TrustDial specifically flags risky records, and all services maintain audit trails for regulatory compliance."
-              },
-              {
-                q: "Can I trial an add-on before committing?",
-                a: "Yes. We offer proof-of-concept trials on your own data for qualified prospects. Contact sales to discuss trial options."
-              },
-              {
-                q: "What data sources power FundSense?",
-                a: "FundSense uses omni-channel data including credit signals, business registration data, web activity, UCC filings, and proprietary intent signals from our lead network."
-              },
-              {
-                q: "How long does StatementSnap take?",
-                a: "Standard turnaround is same-day (within 8 business hours). Rush service delivers in 2-4 hours for an additional fee. Simple cases often process in under an hour."
-              }
-            ].map((faq, idx) => (
-              <AccordionItem key={idx} value={`item-${idx}`} className="rounded-lg bg-surface px-6">
+            {[{
+            q: "How are add-ons priced?",
+            a: "Add-ons are priced either per-lead or via monthly subscription based on volume. Per-lead pricing ranges from $0.45 to $3.50 depending on the add-on and monthly volume. Subscriptions start at $299/month and include lead allowances."
+          }, {
+            q: "Can I use add-ons with any product tier?",
+            a: "FundSense and TrustDial work with all product tiers (Direct Submissions, Alpha Data, and Apex Data). StatementSnap is exclusively available for Direct Submissions customers."
+          }, {
+            q: "What's included in the subscription pricing?",
+            a: "Subscription pricing includes a monthly lead allowance, priority support, dashboard access, and API/webhook integration. Overage pricing applies if you exceed your monthly allowance."
+          }, {
+            q: "How do you ensure data accuracy?",
+            a: "We use multi-source verification, human-in-the-loop QA for edge cases, and continuous monitoring. Every data point is cross-referenced and scored for confidence before delivery."
+          }, {
+            q: "What are your SLAs and support commitments?",
+            a: "Standard customers receive business-hours support with 24-hour response times. Premium and Enterprise customers get priority support with 2-4 hour response times and dedicated account management."
+          }, {
+            q: "How does billing work for add-ons?",
+            a: "Per-lead add-ons are billed monthly based on usage. Subscriptions are billed monthly in advance. We provide detailed usage reports and invoices via your dashboard."
+          }, {
+            q: "Are add-ons TCPA/CTIA compliant?",
+            a: "Yes. All add-ons are designed with compliance in mind. TrustDial specifically flags risky records, and all services maintain audit trails for regulatory compliance."
+          }, {
+            q: "Can I trial an add-on before committing?",
+            a: "Yes. We offer proof-of-concept trials on your own data for qualified prospects. Contact sales to discuss trial options."
+          }, {
+            q: "What data sources power FundSense?",
+            a: "FundSense uses omni-channel data including credit signals, business registration data, web activity, UCC filings, and proprietary intent signals from our lead network."
+          }, {
+            q: "How long does StatementSnap take?",
+            a: "Standard turnaround is same-day (within 8 business hours). Rush service delivers in 2-4 hours for an additional fee. Simple cases often process in under an hour."
+          }].map((faq, idx) => <AccordionItem key={idx} value={`item-${idx}`} className="rounded-lg bg-surface px-6">
                 <AccordionTrigger className="font-headline text-lg font-semibold text-primary">
                   {faq.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-text-secondary">
                   {faq.a}
                 </AccordionContent>
-              </AccordionItem>
-            ))}
+              </AccordionItem>)}
           </Accordion>
         </div>
       </section>
@@ -660,18 +601,10 @@ const AddOns = () => {
             Configure your products and add-ons to see real-time pricing. Or request a custom proof-of-concept on your own data.
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              variant="secondary"
-              size="lg"
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
-            >
+            <Button variant="secondary" size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
               Configure My Add‑Ons
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-2 border-primary-foreground bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
-            >
+            <Button variant="outline" size="lg" className="border-2 border-primary-foreground bg-transparent text-primary-foreground hover:bg-primary-foreground/10">
               See It on My Data
             </Button>
           </div>
@@ -682,8 +615,6 @@ const AddOns = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default AddOns;
