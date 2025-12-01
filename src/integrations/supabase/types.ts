@@ -771,6 +771,33 @@ export type Database = {
           },
         ]
       }
+      phone_notes: {
+        Row: {
+          category: string | null
+          created_at: string
+          id: string
+          text: string | null
+          type: string | null
+          url: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          id?: string
+          text?: string | null
+          type?: string | null
+          url?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          id?: string
+          text?: string | null
+          type?: string | null
+          url?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           company_name: string | null
