@@ -87,6 +87,18 @@ const ProductPreview = () => {
                     {product.description}
                   </p>
                   
+                  {/* Exclusive explanation for Fresh Submission leads */}
+                  {product.title === "Fresh Submission Exclusive MCA Leads" && (
+                    <div className="mb-4 p-4 bg-muted/30 rounded-lg border border-border">
+                      <h4 className="font-heading text-sm font-semibold text-primary mb-2">
+                        Exclusive Leads for Merchant Cash Advances Explained
+                      </h4>
+                      <p className="font-body text-sm leading-relaxed text-text-secondary">
+                        Many providers define "exclusive" loosely. At Leadslaps, our exclusive merchant cash advance leads are sold only once. We do not offer "semi-exclusive" or "shared" leads. You are the sole provider contacting that merchant, dramatically increasing your contact and conversion rates and eliminating the race to the bottom.
+                      </p>
+                    </div>
+                  )}
+                  
                   {/* Pricing */}
                   <div className="mb-6 pt-4 border-t border-border">
                     <p className="font-body text-sm text-text-muted">Starting at</p>
