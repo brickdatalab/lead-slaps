@@ -54,8 +54,8 @@ const Products = () => {
           </p>
           
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <Button size="lg" onClick={scrollToConfigurator}>
-              Start order
+            <Button size="lg" asChild>
+              <a href="/products">Create Dataset</a>
             </Button>
           </div>
 
