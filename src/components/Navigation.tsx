@@ -33,7 +33,7 @@ const Navigation = () => {
             </a>
           ))}
           <Button variant="default" size="default" asChild>
-            <a href="/products">View Products</a>
+            <a href="/products">Build Dataset</a>
           </Button>
         </div>
 
@@ -67,7 +67,7 @@ const Navigation = () => {
             ))}
             <Button variant="default" size="lg" asChild className="mt-4">
               <a href="/products" onClick={() => setMobileMenuOpen(false)}>
-                View Products
+                Build Dataset
               </a>
             </Button>
           </div>
