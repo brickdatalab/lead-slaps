@@ -86,8 +86,7 @@ const AddOns = () => {
                 <dl className="space-y-4">
                   <div>
                     <dt className="mb-1 font-semibold text-text-primary">Pricing</dt>
-                    <dd className="text-sm text-text-secondary">Per-lead: $1 — $3 (tiered by volume)
-Subscription: $299—$1,499/month with lead allowance<br />
+                    <dd className="text-sm text-text-secondary">Per-lead: $1 (tiered by volume)<br />
                       Subscription: $299—$1,499/month with lead allowance
                     </dd>
                   </div>
