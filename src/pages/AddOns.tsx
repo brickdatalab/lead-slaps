@@ -247,16 +247,20 @@ Subscription: $299—$1,499/month with lead allowance<br />
                   </div>
                   <div>
                     <dt className="mb-1 font-semibold text-text-primary">Data Fields</dt>
-                    <dd className="text-sm text-text-secondary">Verified Phone Type
-Verified Phone Connection Status
-Verified Email
-Phone Linked to Name+
-Match Score (0—100)
-Best Channel
-Reachability Score
-Litigation Association
-State DNC
-MCA Seed</dd>
+                    <dd className="text-sm text-text-secondary">
+                      <ul className="space-y-1">
+                        <li>• Verified Phone Type</li>
+                        <li>• Verified Phone Connection Status</li>
+                        <li>• Verified Email</li>
+                        <li>• Phone Linked to Name+</li>
+                        <li>• Match Score (0—100)</li>
+                        <li>• Best Channel</li>
+                        <li>• Reachability Score</li>
+                        <li>• Litigation Association</li>
+                        <li>• State DNC</li>
+                        <li>• MCA Seed</li>
+                      </ul>
+                    </dd>
                   </div>
                   <div>
                     <dt className="mb-1 font-semibold text-text-primary">Checks</dt>
