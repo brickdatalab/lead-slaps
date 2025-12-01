@@ -6,6 +6,7 @@ import HowItWorks from "@/components/HowItWorks";
 import Problem from "@/components/Problem";
 import Solution from "@/components/Solution";
 import ProductPreview from "@/components/ProductPreview";
+import SEOContent from "@/components/SEOContent";
 import AddOns from "@/components/AddOns";
 import WhyDifferent from "@/components/WhyDifferent";
 import Delivery from "@/components/Delivery";
@@ -19,8 +20,8 @@ const Index = () => {
   return (
     <main className="min-h-screen">
       <Helmet>
-        <title>Buy MCA Leads | Exclusive Live Transfers & Fresh Submissions | Lead Slaps</title>
-        <meta name="description" content="Stop competing for the same leads. Buy exclusive MCA leads, live transfers, and aged data. 100% TCPA compliant and delivered to your CRM in real-time." />
+        <title>Buy Exclusive & Verified MCA Leads | Fresh Trigger Leads | Competitive Pricing</title>
+        <meta name="description" content="Buy merchant cash advance leads with transparent pricing. Exclusive, verified, and fresh MCA trigger leads delivered in real-time. TCPA compliant, no competition, higher conversions." />
         <link rel="canonical" href="https://leadslaps.com/" />
       </Helmet>
       <Navigation />
@@ -31,6 +32,7 @@ const Index = () => {
       <Problem />
       <Solution />
       <ProductPreview />
+      <SEOContent />
       <AddOns />
       <WhyDifferent />
       <Delivery />
