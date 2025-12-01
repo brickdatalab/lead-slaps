@@ -115,7 +115,7 @@ const Products = () => {
               description="Real-time and near-real-time submissions for teams that win on speed-to-contact and disciplined follow-up."
               features={[
                 "< 15 days – $3.00 / record",
-                "15–30 days – $4.00 / record",
+                "15–30 days – $2.00 / record",
                 "Strict caps to avoid oversold lists"
               ]}
               onStartOrder={() => handleProductSelect('direct_submissions')}
