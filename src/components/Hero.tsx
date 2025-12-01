@@ -25,11 +25,11 @@ const Hero = () => {
               Trusted by top MCA brokers, ISOs, and funders
             </p>
           </div>
-          <div className="lg:col-span-2 relative -mt-8 lg:-mt-12">
+          <div className="lg:col-span-2">
             <img
               src={heroVisual}
               alt="Real-time MCA lead analytics dashboard showing conversion rates and lead quality metrics"
-              className="h-auto w-full opacity-70 mix-blend-luminosity"
+              className="h-auto w-full rounded-lg shadow-card"
             />
           </div>
         </div>
