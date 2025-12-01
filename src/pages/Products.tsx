@@ -57,9 +57,6 @@ const Products = () => {
             <Button size="lg" onClick={scrollToConfigurator}>
               Start order
             </Button>
-            <Button size="lg" variant="outline" asChild>
-              <a href="/contact">Talk to a data strategist</a>
-            </Button>
           </div>
 
           {/* Trust Bar */}
