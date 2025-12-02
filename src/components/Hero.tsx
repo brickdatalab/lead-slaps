@@ -11,7 +11,7 @@ const Hero = () => {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] decorative-blob decorative-blob-primary" />
       
       <div className="container-padding relative">
-        <div className="max-w-7xl mx-auto section-padding">
+        <div className="max-w-[1400px] mx-auto section-padding">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Column - Content */}
             <div className="space-y-8">
