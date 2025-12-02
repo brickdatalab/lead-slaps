@@ -1,122 +1,60 @@
-import { ArrowRight, Phone, Zap, TrendingUp } from "lucide-react";
-import constructionImage from "@/assets/product-live-transfer.png";
-import retailImage from "@/assets/product-fresh-submissions.png";
-import contractorImage from "@/assets/product-aged-leads.png";
+import { ProductTierCard } from "@/components/products/ProductTierCard";
+import { useNavigate } from "react-router-dom";
 
 const ProductPreview = () => {
-  const products = [
-    {
-      title: "Live Transfer MCA Leads",
-      subtitle: "Real Conversations, Real Intent",
-      description:
-        "For teams that want to speak directly with qualified, interested merchants. We handle the initial contact and transfer the call to your closer.",
-      href: "/products",
-      icon: Phone,
-      image: constructionImage,
-      priceRange: "$75-$150/transfer",
-    },
-    {
-      title: "Fresh Submission Exclusive MCA Leads",
-      subtitle: "Real-Time, Uncontested",
-      description:
-        "Our premier offering. Real-time, consent-based leads from direct web form submissions, sold only to you. Delivered in under 60 seconds.",
-      href: "/products",
-      icon: Zap,
-      image: retailImage,
-      priceRange: "$40-$80/lead",
-    },
-    {
-      title: "Aged MCA Leads",
-      subtitle: "Qualified, Lower CPL",
-      description:
-        "High-quality, curated aged leads for teams that need consistent volume at a lower cost per lead. Perfect for multi-touch campaigns.",
-      href: "/products",
-      icon: TrendingUp,
-      image: contractorImage,
-      priceRange: "$5-$15/lead",
-    },
-  ];
+  const navigate = useNavigate();
+
+  const handleStartOrder = (productKey: string) => {
+    navigate(`/products#order-configurator`);
+  };
 
   return (
-    <section className="bg-slate-50 py-24">
+    <section className="bg-white py-24">
       <div className="container mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="mb-16 text-center">
+        <div className="mb-12 text-center">
           <h2 className="font-heading text-4xl font-bold text-primary md:text-[40px]">
-            Choose the Right MCA Leads for Your Pipeline
+            Three MCA Data Tiers. One Clean Pipeline.
           </h2>
           <p className="mt-4 mx-auto max-w-3xl font-body text-lg text-text-secondary">
-            Three proven lead types to match your team size, sales process, and budget
+            Every merchant starts as a Direct Submission and ages into Alpha Data, then Pulse Data. Each record lives in exactly one band at a time, so you never pay fresh prices for aged data or buy the same record twice.
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3">
-          {products.map((product) => {
-            const Icon = product.icon;
-            return (
-              <div
-                key={product.title}
-                className="group rounded-lg bg-card overflow-hidden shadow-card transition-all hover:shadow-card-hover hover:-translate-y-1"
-              >
-                {/* Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={`${product.title} - ${product.subtitle}`}
-                    className="w-full h-full object-cover transition-transform group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent">
-                      <Icon className="h-6 w-6 text-white" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-8">
-                  <h3 className="mb-2 font-heading text-2xl font-semibold text-text-primary">
-                    {product.title}
-                  </h3>
-                  {product.subtitle && (
-                    <p className="mb-3 font-body text-sm font-medium text-accent">
-                      {product.subtitle}
-                    </p>
-                  )}
-                  <p className="mb-4 font-body text-base leading-relaxed text-text-secondary">
-                    {product.description}
-                  </p>
-                  
-                  {/* Exclusive explanation for Fresh Submission leads */}
-                  {product.title === "Fresh Submission Exclusive MCA Leads" && (
-                    <div className="mb-4 p-4 bg-muted/30 rounded-lg border border-border">
-                      <h4 className="font-heading text-sm font-semibold text-primary mb-2">
-                        Exclusive Leads for Merchant Cash Advances Explained
-                      </h4>
-                      <p className="font-body text-sm leading-relaxed text-text-secondary">
-                        Many providers define "exclusive" loosely. At Leadslaps, our exclusive merchant cash advance leads are sold only once. We do not offer "semi-exclusive" or "shared" leads. You are the sole provider contacting that merchant, dramatically increasing your contact and conversion rates and eliminating the race to the bottom.
-                      </p>
-                    </div>
-                  )}
-                  
-                  {/* Pricing */}
-                  <div className="mb-6 pt-4 border-t border-border">
-                    <p className="font-body text-sm text-text-muted">Starting at</p>
-                    <p className="font-heading text-xl font-bold text-accent">
-                      {product.priceRange}
-                    </p>
-                  </div>
-
-                  <a
-                    href={product.href}
-                    className="inline-flex items-center gap-2 font-body text-sm font-semibold text-accent transition-colors hover:text-accent/80"
-                  >
-                    Learn More <ArrowRight className="h-4 w-4" />
-                  </a>
-                </div>
-              </div>
-            );
-          })}
+        <div className="grid md:grid-cols-3 gap-8 pt-4">
+          <ProductTierCard
+            tier="Premium tier"
+            title="Direct Submissions"
+            description="Real-time and near-real-time submissions for teams that win on speed-to-contact and disciplined follow-up."
+            features={[
+              "< 15 days – $3.00 / record",
+              "15–30 days – $2.00 / record",
+              "Strict caps to avoid oversold lists"
+            ]}
+            onStartOrder={() => handleStartOrder('direct_submissions')}
+          />
+          <ProductTierCard
+            tier="Growth tier"
+            title="Alpha Data"
+            description="Smart-aged submissions from the last 6 months, ideal for blending phone, SMS, and email into one consistent pipeline."
+            features={[
+              "30–90 days – $1.00 / record",
+              "90–180 days – $0.75 / record",
+              "Built for sustainable, predictable volume"
+            ]}
+            onStartOrder={() => handleStartOrder('alpha_data')}
+            featured
+          />
+          <ProductTierCard
+            tier="Scale tier"
+            title="Pulse Data"
+            description="6–24 month MCA data priced for high-volume dialing, SMS reactivation, and long-tail email campaigns."
+            features={[
+              "180–365 days – $0.50 / record",
+              "1–2 years – $0.25 / record",
+              "Optimized for big floors & nurture programs"
+            ]}
+            onStartOrder={() => handleStartOrder('pulse_data')}
+          />
         </div>
       </div>
     </section>
