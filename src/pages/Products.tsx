@@ -227,7 +227,6 @@ const Products = () => {
               isLoading={isLoading}
               error={error}
               lastRefreshed={lastRefreshed}
-              onRefresh={refresh}
               onSegmentSelect={handleSegmentSelect}
             />
           </div>
@@ -249,10 +248,8 @@ const Products = () => {
 
             <OrderConfigurator
               segments={segments}
-              selectedProductKey={selectedProductKey}
-              selectedSegmentId={selectedSegmentId}
-              onProductKeyChange={setSelectedProductKey}
-              onSegmentIdChange={setSelectedSegmentId}
+              initialProductKey={selectedProductKey}
+              initialSegmentId={selectedSegmentId}
             />
           </div>
         </div>
