@@ -39,10 +39,10 @@ const Hero = () => {
               
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
+              <Button 
                   asChild 
                   size="lg" 
-                  className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all group"
+                  className="px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl group"
                 >
                   <a href="/products">
                     View Products

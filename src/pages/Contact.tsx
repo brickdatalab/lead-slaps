@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
 
 const Contact = () => {
   return (
@@ -144,12 +145,12 @@ const Contact = () => {
                 />
               </div>
 
-              <button
+              <Button
                 type="submit"
-                className="w-full rounded-md bg-primary px-8 py-4 font-body text-base font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md"
+                className="w-full px-8 py-4 text-base font-semibold shadow-sm hover:shadow-md"
               >
                 Submit Request
-              </button>
+              </Button>
 
               <p className="text-center font-body text-sm text-text-muted">
                 We typically respond within 24 business hours. For urgent inquiries, call us at 1-800-XXX-XXXX

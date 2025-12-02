@@ -80,10 +80,11 @@ export function ProductTierCard({
         {/* CTA Button */}
         <Button 
           onClick={onStartOrder}
+          variant={featured ? "default" : "default"}
           className={`w-full group ${
             featured 
-              ? 'bg-accent hover:bg-accent/90 text-white shadow-md hover:shadow-lg' 
-              : 'bg-primary hover:bg-primary/90 text-white'
+              ? 'bg-accent hover:bg-transparent hover:border-accent hover:text-accent border-2 border-accent shadow-md hover:shadow-lg' 
+              : ''
           }`}
         >
           Start order – {title}

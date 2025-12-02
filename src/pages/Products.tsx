@@ -95,7 +95,7 @@ const Products = () => {
             <Button 
               onClick={scrollToConfigurator}
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all group"
+              className="px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl group"
             >
               Create Dataset
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
