@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.svg";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   const navLinks = [
     { label: "Products", href: "/products" },
@@ -12,8 +15,22 @@ const Navigation = () => {
     { label: "Blog", href: "/blog" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isActiveLink = (href: string) => {
+    if (href === "/") return location.pathname === "/";
+    return location.pathname.startsWith(href);
+  };
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className={`sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-shadow duration-200 ${isScrolled ? "shadow-sm" : ""}`}>
       <nav className="container mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
         <a href="/" className="flex items-center gap-3">
           <img src={logo} alt="Lead Slaps Logo" className="h-10 w-10" />
@@ -26,7 +43,11 @@ const Navigation = () => {
             <a
               key={link.label}
               href={link.href}
-              className="relative font-body text-sm font-medium text-text-secondary transition-colors hover:text-primary after:absolute after:bottom-[-4px] after:left-0 after:h-[3px] after:w-full after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 hover:after:scale-x-100"
+              className={`relative font-body text-sm font-medium transition-colors after:absolute after:bottom-[-4px] after:left-0 after:h-[3px] after:w-full after:origin-left after:bg-primary after:transition-transform after:duration-300 ${
+                isActiveLink(link.href)
+                  ? "text-primary after:scale-x-100"
+                  : "text-text-secondary hover:text-primary after:scale-x-0 hover:after:scale-x-100"
+              }`}
             >
               {link.label}
             </a>
@@ -65,7 +86,11 @@ const Navigation = () => {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="font-body text-lg font-medium text-text-secondary hover:text-primary transition-colors"
+                  className={`font-body text-lg font-medium transition-colors ${
+                    isActiveLink(link.href)
+                      ? "text-primary"
+                      : "text-text-secondary hover:text-primary"
+                  }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
