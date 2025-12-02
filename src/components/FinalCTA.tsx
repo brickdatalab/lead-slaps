@@ -1,44 +1,74 @@
 import { Button } from "@/components/ui/button";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 const FinalCTA = () => {
   return (
-    <section className="relative overflow-hidden bg-primary py-24 text-primary-foreground">
-      {/* Diagonal pattern overlay */}
-      <div 
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 10px,
-            rgba(255,255,255,0.1) 10px,
-            rgba(255,255,255,0.1) 20px
-          )`
-        }}
-      />
-      {/* Radial gradient for depth */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, transparent 70%)'
-        }}
-      />
-      
-      <div className="container relative mx-auto max-w-4xl px-6 text-center lg:px-12">
-        <h2 className="mb-8 font-heading text-4xl font-bold text-primary-foreground md:text-[40px]">
-          Ready to Stop Competing and Start Converting?
-        </h2>
-        <p className="mb-12 font-body text-lg text-white/90">
-          Explore our product tiers, configure your data plan with powerful AI add-ons, and build the high-performance pipeline your team deserves.
-        </p>
-        <Button 
-          variant="secondary" 
-          size="lg" 
-          asChild 
-          className="bg-white text-primary hover:bg-white/90 font-semibold shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-        >
-          <a href="/products">Build Your Plan</a>
-        </Button>
+    <section className="relative bg-primary overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        {/* Diagonal Pattern */}
+        <div
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 20px,
+              rgba(255,255,255,0.1) 20px,
+              rgba(255,255,255,0.1) 40px
+            )`,
+          }}
+        />
+        {/* Radial Gradient */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `radial-gradient(ellipse at center, rgba(20,184,166,0.15) 0%, transparent 70%)`,
+          }}
+        />
+        {/* Decorative Blobs */}
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-white/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container-padding relative">
+        <div className="max-w-4xl mx-auto py-20 md:py-28 text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-white/90 text-sm font-medium mb-6 backdrop-blur-sm">
+            <Sparkles className="w-4 h-4" />
+            Start Converting Today
+          </div>
+          
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+            Ready to Stop Competing and{" "}
+            <span className="text-accent">Start Converting?</span>
+          </h2>
+          
+          <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Explore our product tiers, configure your data plan with powerful AI add-ons, and build the high-performance pipeline your team deserves.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="bg-accent hover:bg-accent/90 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all group"
+            >
+              <a href="/products">
+                Build Your Plan
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-base font-semibold backdrop-blur-sm"
+            >
+              <a href="/contact">Talk to Sales</a>
+            </Button>
+          </div>
+        </div>
       </div>
     </section>
   );
