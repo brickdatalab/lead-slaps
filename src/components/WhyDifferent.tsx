@@ -30,48 +30,57 @@ const WhyDifferent = () => {
   ];
 
   return (
-    <section id="why-us" className="bg-slate-50 py-24">
-      <div className="container mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="mb-16 text-center">
-          <h2 className="font-heading text-4xl font-bold text-primary md:text-[40px]">
-            Why Lead Slaps Is Different
-          </h2>
-          <p className="mt-4 mx-auto max-w-3xl font-body text-lg text-text-secondary">
-            We're not just a lead vendor—we're your strategic partner in growth
-          </p>
-        </div>
+    <section className="relative bg-slate-50 section-padding overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] decorative-blob decorative-blob-accent opacity-30" />
+      
+      <div className="container-padding relative">
+        <div className="max-w-6xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-1.5 bg-accent/10 rounded-full text-accent text-sm font-medium mb-4">
+              Why Choose Us
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Why Lead Slaps Is Different
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              We're not just a lead vendor—we're your strategic partner in growth
+            </p>
+          </div>
 
-        <div className="grid gap-12 lg:grid-cols-2 items-center">
-          {/* Features */}
-          <div className="space-y-8">
-            {features.map((feature) => (
-              <div key={feature.title} className="flex gap-6">
-                <div className="flex-shrink-0">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10 border-2 border-accent/20">
-                    <feature.icon className="h-6 w-6 text-accent" />
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Features Grid */}
+            <div className="grid sm:grid-cols-2 gap-6">
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 group"
+                >
+                  <div className="icon-container mb-4 group-hover:scale-110 transition-transform">
+                    <feature.icon className="w-5 h-5" />
                   </div>
-                </div>
-                <div>
-                  <h3 className="mb-3 font-heading text-xl font-semibold text-text-primary">
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">
                     {feature.title}
                   </h3>
-                  <p className="font-body text-base leading-relaxed text-text-secondary">
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {/* Image */}
-          <div className="relative rounded-xl overflow-hidden shadow-xl">
-            <img
-              src={diverseBusinessImage}
-              alt="Diverse small business owners across industries served by Lead Slaps MCA leads"
-              className="w-full h-auto"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+            {/* Image */}
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-br from-accent/10 to-primary/10 rounded-2xl blur-xl" />
+              <div className="relative rounded-xl overflow-hidden shadow-lg border border-slate-200">
+                <img
+                  src={diverseBusinessImage}
+                  alt="Diverse small business owners across industries served by Lead Slaps MCA leads"
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
