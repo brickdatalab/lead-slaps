@@ -34,7 +34,7 @@ const Footer = () => {
                 <Phone className="h-4 w-4 text-primary" />
                 <a
                   href="tel:+18555323362"
-                  className="font-body text-sm text-slate-300 transition-colors hover:text-white"
+                  className="font-body text-sm text-slate-300 transition-all hover:text-white hover:underline underline-offset-2"
                 >
                   (855) LEAD-MCA
                 </a>
@@ -43,7 +43,7 @@ const Footer = () => {
                 <Mail className="h-4 w-4 text-primary" />
                 <a
                   href="mailto:sales@leadslaps.com"
-                  className="font-body text-sm text-slate-300 transition-colors hover:text-white"
+                  className="font-body text-sm text-slate-300 transition-all hover:text-white hover:underline underline-offset-2"
                 >
                   sales@leadslaps.com
                 </a>
@@ -64,7 +64,7 @@ const Footer = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="font-body text-sm text-slate-300 transition-colors hover:text-white"
+                    className="font-body text-sm text-slate-300 transition-all hover:text-white hover:underline underline-offset-2"
                   >
                     {link.label}
                   </a>
@@ -82,7 +82,7 @@ const Footer = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="font-body text-sm text-slate-300 transition-colors hover:text-white"
+                    className="font-body text-sm text-slate-300 transition-all hover:text-white hover:underline underline-offset-2"
                   >
                     {link.label}
                   </a>
@@ -100,7 +100,7 @@ const Footer = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="font-body text-sm text-slate-300 transition-colors hover:text-white"
+                    className="font-body text-sm text-slate-300 transition-all hover:text-white hover:underline underline-offset-2"
                   >
                     {link.label}
                   </a>
