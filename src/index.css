@@ -436,8 +436,11 @@
   height: 50px;
 }
 
-/* Global Primary Button Hover - Outline Effect */
-[class*="bg-primary"]:hover:not([class*="bg-primary/"]):not(.no-hover-outline) {
+/* Primary Button Hover - Outline Effect (buttons and links only) */
+button.bg-primary:hover,
+a.bg-primary:hover,
+button[class*="bg-primary"]:hover,
+a[class*="bg-primary"]:hover {
   background-color: transparent !important;
   border: 2px solid hsl(var(--primary)) !important;
   color: hsl(var(--primary)) !important;
