@@ -52,28 +52,33 @@ const Navigation = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div 
-          className="fixed inset-0 z-[100] pt-24 lg:hidden"
-          style={{ backgroundColor: '#ffffff' }}
-        >
-          <div className="container mx-auto flex flex-col gap-6 px-6 py-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="font-body text-lg font-medium text-text-secondary"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
-            <Button variant="default" size="lg" asChild className="mt-4 border-2 border-primary transition-all hover:bg-background hover:text-primary">
-              <a href="/products" onClick={() => setMobileMenuOpen(false)}>
-                Build Dataset
-              </a>
-            </Button>
+        <>
+          {/* Overlay */}
+          <div 
+            className="fixed inset-0 top-20 z-40 bg-black/50 lg:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          {/* Menu */}
+          <div className="fixed left-0 right-0 top-20 z-50 bg-white shadow-lg lg:hidden animate-fade-in">
+            <div className="container mx-auto flex flex-col gap-6 px-6 py-8">
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="font-body text-lg font-medium text-text-secondary hover:text-primary transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <Button variant="default" size="lg" asChild className="mt-4 border-2 border-primary transition-all hover:bg-background hover:text-primary">
+                <a href="/products" onClick={() => setMobileMenuOpen(false)}>
+                  Build Dataset
+                </a>
+              </Button>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );
