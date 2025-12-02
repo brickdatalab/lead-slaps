@@ -90,15 +90,15 @@ const Products = () => {
               Stop wasting budget on recycled MCA data and oversold 'full packs.' Lead Slaps gives you a clean, tiered pipeline of Direct Submissions, Alpha Data, and Pulse Data—each verified, age-banded, and capped so you know exactly what you're buying.
             </p>
             
-            <p className="text-sm text-slate-500 mb-8">Page last updated: November 2025</p>
-            
             <Button 
-              onClick={scrollToConfigurator}
+              asChild
               size="lg"
               className="px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl group"
             >
-              Create Dataset
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <a href="/build-data-set">
+                Create Dataset
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
           </div>
         </div>
@@ -437,12 +437,14 @@ const Products = () => {
               Pick your stream, age bands, and volume, then lock in allocation before the best segments sell out. Or bring us your current funnel and we'll help you design a file that fits the way your team actually sells.
             </p>
             <Button
-              onClick={scrollToConfigurator}
+              asChild
               size="lg"
               className="bg-accent hover:bg-accent/90 text-white px-8 py-6 text-base font-semibold shadow-lg"
             >
-              Start Order
-              <ArrowRight className="ml-2 w-4 h-4" />
+              <a href="/build-data-set">
+                Start Order
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
             </Button>
           </div>
         </div>
