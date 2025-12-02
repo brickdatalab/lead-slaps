@@ -5,7 +5,7 @@ const ProductPreview = () => {
   const navigate = useNavigate();
 
   const handleStartOrder = (productKey: string) => {
-    navigate(`/products#order-configurator`);
+    navigate('/build-data-set');
   };
 
   return (

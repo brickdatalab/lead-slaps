@@ -53,7 +53,7 @@ const FinalCTA = () => {
             size="lg"
             className="bg-accent hover:bg-accent/90 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all group"
           >
-            <a href="/products">
+            <a href="/build-data-set">
               Build Your Plan
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>

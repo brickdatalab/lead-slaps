@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -11,6 +12,7 @@ import { useInventorySegments, ProductKey } from "@/hooks/useInventorySegments";
 import { Shield, Lock, CheckCircle, Target, Sparkles, Phone, ShieldCheck, ArrowRight, Database } from "lucide-react";
 
 const Products = () => {
+  const navigate = useNavigate();
   const { segments, isLoading, error, lastRefreshed, refresh } = useInventorySegments(60000);
   const [selectedProductKey, setSelectedProductKey] = useState<ProductKey | null>(null);
   const [selectedSegmentId, setSelectedSegmentId] = useState<string | null>(null);
@@ -20,9 +22,7 @@ const Products = () => {
   };
 
   const handleProductSelect = (productKey: ProductKey) => {
-    setSelectedProductKey(productKey);
-    setSelectedSegmentId(null);
-    scrollToConfigurator();
+    navigate('/build-data-set');
   };
 
   const handleSegmentSelect = (productKey: ProductKey, segmentId: string) => {
