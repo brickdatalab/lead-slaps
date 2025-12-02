@@ -53,7 +53,7 @@ const Navigation = () => {
             </a>
           ))}
           <Button variant="default" size="default" asChild className="border-2 border-primary transition-all hover:bg-background hover:text-primary">
-            <a href="/products">Build Dataset</a>
+            <a href="/build-data-set">Build Dataset</a>
           </Button>
         </div>
 
@@ -97,7 +97,7 @@ const Navigation = () => {
                 </a>
               ))}
               <Button variant="default" size="lg" asChild className="mt-4 border-2 border-primary transition-all hover:bg-background hover:text-primary">
-                <a href="/products" onClick={() => setMobileMenuOpen(false)}>
+                <a href="/build-data-set" onClick={() => setMobileMenuOpen(false)}>
                   Build Dataset
                 </a>
               </Button>
