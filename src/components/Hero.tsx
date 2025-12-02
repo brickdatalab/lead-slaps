@@ -53,9 +53,9 @@ const Hero = () => {
                   asChild 
                   variant="outline" 
                   size="lg" 
-                  className="border-slate-300 hover:border-primary hover:bg-primary/5 px-8 py-6 text-base font-semibold"
+                  className="px-8 py-6 text-base font-semibold"
                 >
-                  <a href="/addons">Explore Add-Ons</a>
+                  <a href="/add-ons">Explore Add-Ons</a>
                 </Button>
               </div>
               
