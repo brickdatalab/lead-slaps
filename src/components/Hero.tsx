@@ -19,9 +19,6 @@ const Hero = () => {
               <Button variant="default" size="lg" asChild className="border-2 border-primary transition-all hover:bg-background hover:text-primary">
                 <a href="/products">View Products</a>
               </Button>
-              <Button variant="outline" size="lg" asChild>
-                <a href="#how-it-works">See How It Works</a>
-              </Button>
             </div>
             <p className="mt-6 font-body text-sm text-text-muted">
               Trusted by top MCA brokers, ISOs, and funders
