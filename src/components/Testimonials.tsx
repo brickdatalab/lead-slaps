@@ -29,7 +29,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="bg-surface py-24">
+    <section className="bg-white py-24">
       <div className="container mx-auto max-w-7xl px-6 lg:px-12">
         <div className="mb-16 text-center">
           <h2 className="font-heading text-4xl font-bold text-primary md:text-[40px]">
@@ -44,7 +44,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="rounded-lg bg-card p-8 shadow-card hover:shadow-lg transition-shadow"
+              className="rounded-lg bg-card p-8 shadow-card transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
               <Quote className="mb-4 h-8 w-8 text-accent" />
               <p className="mb-6 font-body text-base leading-relaxed text-text-primary">

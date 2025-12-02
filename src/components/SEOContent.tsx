@@ -1,6 +1,6 @@
 const SEOContent = () => {
   return (
-    <section className="bg-background py-24">
+    <section className="bg-white py-24">
       <div className="container mx-auto max-w-6xl px-6 lg:px-12">
         
         {/* Cash Advance Leads Pricing */}

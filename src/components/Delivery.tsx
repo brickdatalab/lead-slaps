@@ -23,7 +23,7 @@ const Delivery = () => {
   ];
 
   return (
-    <section className="bg-background py-24">
+    <section className="bg-slate-50 py-24">
       <div className="container mx-auto max-w-7xl px-6 lg:px-12">
         <div className="mb-16 text-center">
           <h2 className="mb-4 font-heading text-4xl font-bold text-primary md:text-[40px]">
@@ -36,7 +36,7 @@ const Delivery = () => {
 
         <div className="grid gap-12 md:grid-cols-3">
           {methods.map((method) => (
-            <div key={method.title} className="rounded-lg bg-surface p-8">
+            <div key={method.title} className="rounded-lg bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
               <method.icon className="mb-4 h-10 w-10 text-accent" />
               <h3 className="mb-3 font-heading text-xl font-semibold text-text-primary">
                 {method.title}

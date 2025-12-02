@@ -78,7 +78,7 @@ const FAQ = () => {
   }, []);
 
   return (
-    <section id="faq" className="bg-background px-6 py-24 lg:px-12">
+    <section id="faq" className="bg-slate-50 px-6 py-24 lg:px-12">
       <div className="container mx-auto max-w-4xl">
         <div className="mb-16 text-center">
           <h2 className="font-heading text-4xl font-bold text-primary md:text-[40px]">
@@ -91,7 +91,7 @@ const FAQ = () => {
 
         <div className="space-y-8">
           {faqs.map((faq, index) => (
-            <div key={index} className="rounded-lg bg-surface p-8 shadow-sm hover:shadow-md transition-shadow">
+            <div key={index} className="rounded-lg bg-surface p-8 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
               <h3 className="mb-4 font-heading text-xl font-semibold text-text-primary">
                 {faq.question}
               </h3>

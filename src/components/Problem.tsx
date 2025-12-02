@@ -1,6 +1,6 @@
 const Problem = () => {
   return (
-    <section className="bg-surface py-24">
+    <section className="bg-slate-50 py-24">
       <div className="container mx-auto max-w-4xl px-6 text-center lg:px-12">
         <h2 className="mb-8 font-heading text-4xl font-bold text-primary md:text-[40px]">
           Why Most MCA Leads Are Low Quality (The Race to the Bottom)

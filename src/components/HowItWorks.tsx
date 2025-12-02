@@ -23,7 +23,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="bg-background py-24">
+    <section id="how-it-works" className="bg-white py-24">
       <div className="container mx-auto max-w-7xl px-6 lg:px-12">
         <div className="mb-16 text-center">
           <h2 className="mb-4 font-heading text-4xl font-bold text-primary md:text-[40px]">
