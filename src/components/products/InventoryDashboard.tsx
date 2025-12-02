@@ -124,8 +124,8 @@ export function InventoryDashboard({
                 >
                   <td className="py-3 px-4">{segment.productLabel}</td>
                   <td className="py-3 px-4">{segment.ageBandLabel}</td>
-                  <td className="py-3 px-4">{formatPrice(segment.priceCents)} / record</td>
-                  <td className="py-3 px-4">{formatNumber(segment.availableQuantity)} records</td>
+                  <td className="py-3 px-4">{formatPrice(segment.priceCents)}</td>
+                  <td className="py-3 px-4">{formatNumber(segment.availableQuantity)}</td>
                   <td className="py-3 px-4">{formatNumber(segment.maxQuantity)}</td>
                   <td className="py-3 px-4">
                     <div className="space-y-2">
