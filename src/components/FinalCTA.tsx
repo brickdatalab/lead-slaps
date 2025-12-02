@@ -48,26 +48,16 @@ const FinalCTA = () => {
             Explore our product tiers, configure your data plan with powerful AI add-ons, and build the high-performance pipeline your team deserves.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-accent hover:bg-accent/90 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all group"
-            >
-              <a href="/products">
-                Build Your Plan
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-base font-semibold backdrop-blur-sm"
-            >
-              <a href="/contact">Talk to Sales</a>
-            </Button>
-          </div>
+          <Button
+            asChild
+            size="lg"
+            className="bg-accent hover:bg-accent/90 text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all group"
+          >
+            <a href="/products">
+              Build Your Plan
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </Button>
         </div>
       </div>
     </section>
