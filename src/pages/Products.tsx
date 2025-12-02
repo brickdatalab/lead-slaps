@@ -54,8 +54,8 @@ const Products = () => {
           </p>
           
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <Button size="lg" asChild>
-              <a href="/products">Create Dataset</a>
+            <Button size="lg" asChild className="border-2 border-primary transition-all hover:bg-background hover:text-primary">
+              <a href="#order-configurator">Create Dataset</a>
             </Button>
           </div>
 
@@ -346,11 +346,8 @@ const Products = () => {
             Pick your stream, age bands, and volume, then lock in allocation before the best segments sell out. Or bring us your current funnel and we'll help you design a file that fits the way your team actually sells.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" onClick={scrollToConfigurator}>
+            <Button size="lg" onClick={scrollToConfigurator} className="border-2 border-primary transition-all hover:bg-background hover:text-primary">
               Start order
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <a href="mailto:sales@leadslaps.com">Talk to sales</a>
             </Button>
           </div>
         </div>

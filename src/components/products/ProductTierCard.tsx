@@ -28,7 +28,7 @@ export function ProductTierCard({ tier, title, description, features, onStartOrd
             </li>
           ))}
         </ul>
-        <Button onClick={onStartOrder} className="w-full">
+        <Button onClick={onStartOrder} className="w-full border-2 border-primary transition-all hover:bg-background hover:text-primary">
           Start order – {title}
         </Button>
       </CardContent>
