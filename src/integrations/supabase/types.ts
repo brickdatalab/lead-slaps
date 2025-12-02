@@ -140,6 +140,35 @@ export type Database = {
         }
         Relationships: []
       }
+      inventory_snapshots: {
+        Row: {
+          available_quantity: number
+          captured_at: string
+          id: string
+          segment_id: string
+        }
+        Insert: {
+          available_quantity: number
+          captured_at?: string
+          id?: string
+          segment_id: string
+        }
+        Update: {
+          available_quantity?: number
+          captured_at?: string
+          id?: string
+          segment_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "inventory_snapshots_segment_id_fkey"
+            columns: ["segment_id"]
+            isOneToOne: false
+            referencedRelation: "inventory_segments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       order_items: {
         Row: {
           created_at: string
