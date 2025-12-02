@@ -43,7 +43,7 @@ const Navigation = () => {
             <a
               key={link.label}
               href={link.href}
-              className={`relative font-body text-sm font-medium transition-colors after:absolute after:bottom-[-4px] after:left-0 after:h-[3px] after:w-full after:origin-left after:bg-primary after:transition-transform after:duration-300 ${
+              className={`relative font-body text-sm font-medium transition-colors focus:outline-none focus-visible:outline-none after:absolute after:bottom-[-4px] after:left-0 after:h-[3px] after:w-full after:origin-left after:bg-primary after:transition-transform after:duration-300 ${
                 isActiveLink(link.href)
                   ? "text-primary after:scale-x-100"
                   : "text-text-secondary hover:text-primary after:scale-x-0 hover:after:scale-x-100"
