@@ -511,7 +511,10 @@ export type Database = {
       }
     }
     Functions: {
-      [_ in never]: never
+      update_customer_lifetime_spend: {
+        Args: { p_customer_id: string }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
