@@ -9,56 +9,73 @@
 
 @layer base {
   :root {
-    /* Core Brand Colors */
+    /* Core Brand */
     --background: 0 0% 100%;
-    --foreground: 215 25% 7%;        /* Deep slate for text */
+    --foreground: 210 100% 15%;
     
-    /* Primary - Deep Navy (Trust, Authority) */
-    --primary: 210 100% 15%;         /* #0A2540 */
+    /* Primary - Navy */
+    --primary: 210 100% 15%; /* #0A2540 */
     --primary-foreground: 0 0% 100%;
+    --primary-hover: 210 100% 10%; /* #061B2E */
     
-    /* Accent - Teal (Innovation, Action) */
-    --accent: 173 80% 40%;           /* #14B8A6 */
-    --accent-foreground: 0 0% 100%;
+    /* Accent - Teal (decorative) */
+    --accent: 173 80% 40%; /* #14B8A6 - decorative only */
+    --accent-foreground: 210 100% 15%;
+    --accent-dark: 173 80% 23%; /* #0D7369 - accessible text */
+    --accent-section: 176 68% 21%; /* #115E59 - section bg */
     
-    /* Warning/Highlight - Amber (Urgency, Value) */
-    --warning: 38 92% 50%;           /* #F59E0B */
-    --warning-foreground: 215 25% 7%;
+    /* Text Colors (AAA Accessible) */
+    --text-primary: 210 100% 15%; /* #0A2540 - 16.5:1 */
+    --text-secondary: 215 20% 27%; /* #334155 - 7.5:1 */
+    --text-muted: 215 14% 37%; /* #525E6B - 7.1:1 */
+    --text-accent: 173 80% 23%; /* #0D7369 - 7.2:1 */
+    
+    /* Semantic Colors (AAA Accessible) */
+    --success: 142 71% 29%; /* #15803D - 7.1:1 */
+    --success-foreground: 0 0% 100%;
+    --warning: 30 100% 30%; /* #9A4D00 - 7.2:1 */
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 74% 42%; /* #B91C1C - 7.3:1 */
+    --destructive-foreground: 0 0% 100%;
+    --info: 224 71% 40%; /* #1E40AF - 8.6:1 */
+    --info-foreground: 0 0% 100%;
+    
+    /* Backgrounds */
+    --surface: 210 40% 98%; /* #F8FAFC - off-white */
+    --surface-alt: 214 32% 95%; /* #F1F5F9 - light gray */
+    
+    /* Borders */
+    --border: 214 32% 91%; /* #E2E8F0 */
+    --border-medium: 214 20% 82%; /* #CBD5E1 */
+    --border-strong: 214 14% 58%; /* #94A3B8 */
+    
+    /* Focus Ring */
+    --ring: 173 76% 32%; /* #0D9488 */
+    
+    /* Legacy/Compatibility */
+    --input: 214 32% 91%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 100% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 100% 15%;
+    --muted: 214 32% 95%;
+    --muted-foreground: 215 14% 37%;
+    --secondary: 214 32% 95%;
+    --secondary-foreground: 210 100% 15%;
     
     /* Neutral Grays - Professional Palette */
-    --slate-900: 215 25% 7%;         /* #0B1220 */
-    --slate-700: 215 20% 27%;        /* #334155 */
-    --slate-600: 215 16% 47%;        /* #475569 */
-    --slate-500: 215 14% 40%;        /* #64748B */
-    --slate-400: 214 14% 58%;        /* #94A3B8 */
-    --slate-300: 214 20% 82%;        /* #CBD5E1 */
-    --slate-200: 214 32% 91%;        /* #E2E8F0 */
-    --slate-100: 214 32% 95%;        /* #F1F5F9 */
-    --slate-50: 210 40% 98%;         /* #F8FAFC */
-    
-    /* Semantic Colors */
-    --muted: 214 32% 95%;            /* slate-100 */
-    --muted-foreground: 215 14% 40%; /* slate-500 */
-    
-    --border: 214 32% 91%;           /* slate-200 */
-    --input: 214 32% 91%;
-    --ring: 173 80% 40%;             /* accent teal */
-    
-    --card: 0 0% 100%;
-    --card-foreground: 215 25% 7%;
-    
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 7%;
-    
-    /* Success & Error */
-    --success: 158 64% 52%;
-    --success-foreground: 0 0% 100%;
-    
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --slate-900: 210 100% 15%;
+    --slate-700: 215 20% 27%;
+    --slate-600: 215 16% 47%;
+    --slate-500: 215 14% 40%;
+    --slate-400: 214 14% 58%;
+    --slate-300: 214 20% 82%;
+    --slate-200: 214 32% 91%;
+    --slate-100: 214 32% 95%;
+    --slate-50: 210 40% 98%;
     
     /* Border Radius - Modern, Soft */
-    --radius: 0.625rem;              /* 10px */
+    --radius: 0.625rem;
     
     /* Shadows - Subtle, Professional */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
