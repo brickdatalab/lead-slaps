@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { ArrowRight, Calendar, Clock } from "lucide-react";
+import heroDataAnalytics from '@/assets/hero-data-analytics.png';
+import dashboardCrmInterface from '@/assets/dashboard-crm-interface.png';
+import productLiveTransfer from '@/assets/product-live-transfer.png';
+import productFreshSubmissions from '@/assets/product-fresh-submissions.png';
 
 const blogPosts = [
   {
@@ -14,7 +18,7 @@ const blogPosts = [
     date: "March 3, 2025",
     readTime: "8 min read",
     category: "Qualifying for MCA",
-    image: "/src/assets/hero-data-analytics.png"
+    image: heroDataAnalytics
   },
   {
     id: 2,
@@ -24,7 +28,7 @@ const blogPosts = [
     date: "March 17, 2025",
     readTime: "7 min read",
     category: "Understanding MCA",
-    image: "/src/assets/dashboard-crm-interface.png"
+    image: dashboardCrmInterface
   },
   {
     id: 3,
@@ -34,7 +38,7 @@ const blogPosts = [
     date: "April 7, 2025",
     readTime: "7 min read",
     category: "MCA Lead Generation",
-    image: "/src/assets/product-live-transfer.png"
+    image: productLiveTransfer
   },
   {
     id: 4,
@@ -44,7 +48,7 @@ const blogPosts = [
     date: "April 21, 2025",
     readTime: "9 min read",
     category: "Trends and Innovations",
-    image: "/src/assets/product-fresh-submissions.png"
+    image: productFreshSubmissions
   }
 ];
 
