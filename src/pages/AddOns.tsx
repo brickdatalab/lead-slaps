@@ -45,25 +45,6 @@ const AddOns = () => {
             <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
               Lead Slaps add-ons infuse your lead flow with underwriting intelligence, data accuracy, and prioritization—so you close faster with less effort. Layer these AI-powered enhancements onto any qualifying product to reveal hidden potential, validate contact data, and deliver underwriting-ready packages that put you ahead of the competition.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                onClick={scrollToCTA}
-                size="lg"
-                className="px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl group"
-              >
-                Configure Add-Ons
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button 
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-slate-300 hover:border-primary px-8 py-6 text-base font-semibold"
-              >
-                <a href="/products">View Products First</a>
-              </Button>
-            </div>
           </div>
         </div>
       </section>
@@ -124,7 +105,7 @@ const AddOns = () => {
               </div>
               
               {/* Right - Technical Details Card */}
-              <div className="lg:sticky lg:top-8">
+              <div className="lg:sticky lg:top-24">
                 <Card className="border border-slate-200 shadow-sm overflow-hidden">
                   <div className="h-1 bg-gradient-to-r from-accent to-primary" />
                   <div className="p-6">
@@ -180,7 +161,7 @@ const AddOns = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               {/* Left - Technical Details Card (switched order for visual variety) */}
-              <div className="lg:sticky lg:top-8 order-2 lg:order-1">
+              <div className="lg:sticky lg:top-24 order-2 lg:order-1">
                 <Card className="border border-slate-200 shadow-sm overflow-hidden">
                   <div className="h-1 bg-gradient-to-r from-blue-500 to-primary" />
                   <div className="p-6">
@@ -332,7 +313,7 @@ const AddOns = () => {
               </div>
               
               {/* Right - Technical Details Card */}
-              <div className="lg:sticky lg:top-8">
+              <div className="lg:sticky lg:top-24">
                 <Card className="border border-slate-200 shadow-sm overflow-hidden">
                   <div className="h-1 bg-gradient-to-r from-green-500 to-accent" />
                   <div className="p-6">
