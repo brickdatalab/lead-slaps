@@ -10,9 +10,9 @@ const Hero = () => {
       <div className="absolute top-20 right-0 w-[500px] h-[500px] decorative-blob decorative-blob-accent" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] decorative-blob decorative-blob-primary" />
       
-      <div className="container-padding relative">
+      <div className="px-8 md:px-16 lg:px-24 relative">
         <div className="max-w-[1400px] mx-auto section-padding">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left Column - Content */}
             <div className="space-y-8">
               {/* Accent Line */}
