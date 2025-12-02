@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -6,6 +7,11 @@ import { useInventorySegments } from "@/hooks/useInventorySegments";
 
 const BuildDataSet = () => {
   const { segments } = useInventorySegments(60000);
+
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <main className="min-h-screen bg-slate-50">
