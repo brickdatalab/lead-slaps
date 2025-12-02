@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Navigation from '@/components/Navigation';
@@ -7,28 +6,19 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ProductTierCard } from "@/components/products/ProductTierCard";
 import { InventoryDashboard } from "@/components/products/InventoryDashboard";
-import { OrderConfigurator } from "@/components/products/OrderConfigurator";
 import { useInventorySegments, ProductKey } from "@/hooks/useInventorySegments";
 import { Shield, Lock, CheckCircle, Target, Sparkles, Phone, ShieldCheck, ArrowRight, Database } from "lucide-react";
 
 const Products = () => {
   const navigate = useNavigate();
-  const { segments, isLoading, error, lastRefreshed, refresh } = useInventorySegments(60000);
-  const [selectedProductKey, setSelectedProductKey] = useState<ProductKey | null>(null);
-  const [selectedSegmentId, setSelectedSegmentId] = useState<string | null>(null);
-
-  const scrollToConfigurator = () => {
-    document.getElementById('order-configurator')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const { segments, isLoading, error, lastRefreshed } = useInventorySegments(60000);
 
   const handleProductSelect = (productKey: ProductKey) => {
     navigate('/build-data-set');
   };
 
   const handleSegmentSelect = (productKey: ProductKey, segmentId: string) => {
-    setSelectedProductKey(productKey);
-    setSelectedSegmentId(segmentId);
-    scrollToConfigurator();
+    navigate('/build-data-set');
   };
 
   const verificationSteps = [
@@ -233,27 +223,6 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Order Configurator */}
-      <section id="order-configurator" className="bg-slate-50 section-padding">
-        <div className="container-padding">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                Configure Your File and Start Your Order
-              </h2>
-              <p className="text-lg text-slate-600">
-                Build your order in three steps: choose a product, choose an age band, and set your quantity. We cap your request at live availability and hand off to a secure Square checkout.
-              </p>
-            </div>
-
-            <OrderConfigurator
-              segments={segments}
-              initialProductKey={selectedProductKey}
-              initialSegmentId={selectedSegmentId}
-            />
-          </div>
-        </div>
-      </section>
 
       {/* Verification Process */}
       <section className="bg-white section-padding relative overflow-hidden">
