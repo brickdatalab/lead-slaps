@@ -24,7 +24,7 @@ const AddOns = () => {
   ];
 
   return (
-    <section className="bg-background py-24">
+    <section className="bg-white py-24">
       <div className="container mx-auto max-w-7xl px-6 lg:px-12">
         <div className="mb-16 text-center">
           <h2 className="mb-4 font-heading text-4xl font-bold text-primary md:text-[40px]">

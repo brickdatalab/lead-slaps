@@ -1,6 +1,6 @@
 const Solution = () => {
   return (
-    <section className="bg-background py-24">
+    <section className="bg-white py-24">
       <div className="container mx-auto max-w-4xl px-6 text-center lg:px-12">
         <h2 className="mb-8 font-heading text-4xl font-bold text-primary md:text-[40px]">
           The Scalability Partner Model: Exclusive MCA Leads Without the Race to the Bottom
