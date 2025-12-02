@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Check } from 'lucide-react';
+import { Check, ArrowRight, Star } from 'lucide-react';
 
 interface ProductTierCardProps {
   tier: string;
@@ -12,34 +12,82 @@ interface ProductTierCardProps {
   featured?: boolean;
 }
 
-export function ProductTierCard({ tier, title, description, features, onStartOrder, featured = false }: ProductTierCardProps) {
+export function ProductTierCard({
+  tier,
+  title,
+  description,
+  features,
+  onStartOrder,
+  featured = false
+}: ProductTierCardProps) {
   return (
-    <Card className={`flex flex-col h-full transition-all duration-300 hover:-translate-y-1 ${
-      featured 
-        ? 'shadow-xl border-primary/30 ring-2 ring-primary/20 hover:shadow-2xl' 
-        : 'shadow-md hover:shadow-lg'
-    }`}>
-      <CardHeader className="relative">
-        {featured && (
-          <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4">
+    <Card 
+      className={`relative overflow-hidden transition-all duration-300 hover:-translate-y-1 ${
+        featured 
+          ? 'card-featured border-2 border-accent/40 shadow-lg scale-[1.02]' 
+          : 'border border-slate-200 hover:border-slate-300 hover:shadow-md'
+      }`}
+    >
+      {/* Top Accent Bar */}
+      {!featured && (
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-slate-300 to-slate-200" />
+      )}
+      
+      {/* Featured Badge */}
+      {featured && (
+        <div className="absolute -top-px left-1/2 -translate-x-1/2">
+          <Badge className="bg-gradient-to-r from-primary to-accent text-white px-4 py-1 font-semibold shadow-md badge-glow rounded-b-lg rounded-t-none">
+            <Star className="w-3 h-3 mr-1 fill-current" />
             Most Popular
           </Badge>
-        )}
-        <Badge variant="secondary" className="w-fit mb-2">{tier}</Badge>
-        <CardTitle className="text-2xl">{title}</CardTitle>
-        <CardDescription className="text-base">{description}</CardDescription>
+        </div>
+      )}
+
+      <CardHeader className={`pb-4 ${featured ? 'pt-10' : 'pt-6'}`}>
+        {/* Tier Badge */}
+        <Badge 
+          variant="secondary" 
+          className={`w-fit mb-3 ${
+            featured 
+              ? 'bg-accent/10 text-accent border-accent/20' 
+              : 'bg-slate-100 text-slate-600'
+          }`}
+        >
+          {tier}
+        </Badge>
+        
+        <CardTitle className="text-xl font-bold text-slate-900">{title}</CardTitle>
+        <CardDescription className="text-slate-600 mt-2 leading-relaxed">
+          {description}
+        </CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 flex flex-col justify-between">
+
+      <CardContent className="pt-0">
+        {/* Features List */}
         <ul className="space-y-3 mb-6">
           {features.map((feature, idx) => (
-            <li key={idx} className="flex items-start gap-2">
-              <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-              <span className="text-sm">{feature}</span>
+            <li key={idx} className="flex items-start gap-3">
+              <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                featured ? 'bg-accent/10' : 'bg-slate-100'
+              }`}>
+                <Check className={`w-3 h-3 ${featured ? 'text-accent' : 'text-slate-600'}`} />
+              </div>
+              <span className="text-sm text-slate-700">{feature}</span>
             </li>
           ))}
         </ul>
-        <Button onClick={onStartOrder} className="w-full border-2 border-primary transition-all hover:bg-background hover:text-primary">
+
+        {/* CTA Button */}
+        <Button 
+          onClick={onStartOrder}
+          className={`w-full group ${
+            featured 
+              ? 'bg-accent hover:bg-accent/90 text-white shadow-md hover:shadow-lg' 
+              : 'bg-primary hover:bg-primary/90 text-white'
+          }`}
+        >
           Start order – {title}
+          <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Button>
       </CardContent>
     </Card>
