@@ -26,7 +26,7 @@ const Navigation = () => {
             <a
               key={link.label}
               href={link.href}
-              className="font-body text-sm font-medium text-text-secondary transition-colors hover:text-primary"
+              className="relative font-body text-sm font-medium text-text-secondary transition-colors hover:text-primary after:absolute after:bottom-[-4px] after:left-0 after:h-[3px] after:w-full after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 hover:after:scale-x-100"
             >
               {link.label}
             </a>
