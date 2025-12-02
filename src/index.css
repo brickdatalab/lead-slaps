@@ -159,17 +159,26 @@
     @apply transition-colors duration-200;
   }
   
-  /* Focus States - exclude nav links */
-  *:focus-visible:not(nav a) {
+  /* Focus States - only for interactive elements, not nav */
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [role="button"]:focus-visible {
     @apply outline-none ring-2 ring-accent ring-offset-2;
   }
   
-  /* Nav links - remove focus ring */
+  /* Nav links - completely remove all focus styling */
+  nav a,
+  nav a:hover,
   nav a:focus,
-  nav a:focus-visible {
+  nav a:focus-visible,
+  nav a:active {
     outline: none !important;
     box-shadow: none !important;
+    border: none !important;
     --tw-ring-shadow: none !important;
+    --tw-ring-color: transparent !important;
   }
 }
 
