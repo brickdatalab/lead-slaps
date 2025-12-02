@@ -52,7 +52,7 @@ const Navigation = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="fixed inset-x-0 top-20 bottom-0 z-50 bg-white lg:hidden">
+        <div className="fixed inset-0 z-[100] bg-white pt-24 lg:hidden">
           <div className="container mx-auto flex flex-col gap-6 px-6 py-8">
             {navLinks.map((link) => (
               <a
