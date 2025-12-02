@@ -41,7 +41,7 @@ const Products = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="bg-background px-6 py-24 lg:px-12">
+      <section className="bg-white px-6 py-20 lg:px-12">
         <div className="container mx-auto max-w-7xl">
           <h1 className="mb-6 text-center font-headline text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-primary">
             Buy Verified Merchant Cash Advance Leads That Convert
@@ -61,15 +61,15 @@ const Products = () => {
 
           {/* Trust Bar */}
           <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto mt-12">
-            <div className="flex items-center gap-3 p-4 border border-border rounded-lg bg-card">
+            <div className="flex items-center gap-3 p-4 border border-slate-200 rounded-lg bg-slate-50 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5">
               <Shield className="h-6 w-6 text-accent shrink-0" />
               <p className="text-sm">TCPA & 1:1 consent-aligned sourcing</p>
             </div>
-            <div className="flex items-center gap-3 p-4 border border-border rounded-lg bg-card">
+            <div className="flex items-center gap-3 p-4 border border-slate-200 rounded-lg bg-slate-50 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5">
               <CheckCircle className="h-6 w-6 text-accent shrink-0" />
               <p className="text-sm">Data hygiene pipeline & 97%+ deliverability</p>
             </div>
-            <div className="flex items-center gap-3 p-4 border border-border rounded-lg bg-card">
+            <div className="flex items-center gap-3 p-4 border border-slate-200 rounded-lg bg-slate-50 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5">
               <Lock className="h-6 w-6 text-accent shrink-0" />
               <p className="text-sm">Encrypted, PCI-compliant checkout via Square</p>
             </div>
@@ -78,7 +78,7 @@ const Products = () => {
       </section>
 
       {/* What Are MCA Leads */}
-      <section className="bg-muted/30 px-6 py-16 lg:px-12">
+      <section className="bg-slate-50 px-6 py-20 lg:px-12">
         <div className="container mx-auto max-w-4xl">
           <h2 className="mb-6 font-headline text-3xl md:text-4xl font-bold text-primary">
             What Are MCA Leads (And Why Most Providers Fail You?)
@@ -96,7 +96,7 @@ const Products = () => {
       </section>
 
       {/* Product Tiers */}
-      <section className="bg-background px-6 py-16 lg:px-12">
+      <section className="bg-white px-6 py-20 lg:px-12">
         <div className="container mx-auto max-w-7xl">
           <h2 className="mb-4 text-center font-headline text-3xl md:text-4xl font-bold text-primary">
             Three MCA Data Tiers. One Clean Pipeline.
@@ -105,7 +105,7 @@ const Products = () => {
             Every merchant starts as a Direct Submission and ages into Alpha Data, then Pulse Data. Each record lives in exactly one band at a time, so you never pay fresh prices for aged data or buy the same record twice.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 pt-4">
             <ProductTierCard
               tier="Premium tier"
               title="Direct Submissions"
@@ -127,6 +127,7 @@ const Products = () => {
                 "Built for sustainable, predictable volume"
               ]}
               onStartOrder={() => handleProductSelect('alpha_data')}
+              featured
             />
             <ProductTierCard
               tier="Scale tier"
@@ -144,7 +145,7 @@ const Products = () => {
       </section>
 
       {/* Pricing Dashboard */}
-      <section className="bg-muted/30 px-6 py-16 lg:px-12">
+      <section className="bg-slate-50 px-6 py-20 lg:px-12">
         <div className="container mx-auto max-w-7xl">
           <h2 className="mb-4 font-headline text-3xl md:text-4xl font-bold text-primary">
             Pricing and Live Availability Dashboard
@@ -152,18 +153,20 @@ const Products = () => {
           <p className="mb-8 text-foreground/80 max-w-3xl">
             Pricing is per record. The table below combines per-band pricing with live availability so you can see what's on the shelf before you start an order.
           </p>
-          <InventoryDashboard
-            segments={segments}
-            isLoading={isLoading}
-            error={error}
-            lastRefreshed={lastRefreshed}
-            onSegmentSelect={handleSegmentSelect}
-          />
+          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <InventoryDashboard
+              segments={segments}
+              isLoading={isLoading}
+              error={error}
+              lastRefreshed={lastRefreshed}
+              onSegmentSelect={handleSegmentSelect}
+            />
+          </div>
         </div>
       </section>
 
       {/* Order Configurator */}
-      <section className="bg-background px-6 py-16 lg:px-12">
+      <section className="bg-white px-6 py-20 lg:px-12">
         <div className="container mx-auto max-w-7xl">
           <h2 className="mb-4 font-headline text-3xl md:text-4xl font-bold text-primary">
             Configure Your File and Start Your Order
@@ -180,45 +183,41 @@ const Products = () => {
       </section>
 
       {/* Verification Process */}
-      <section className="bg-muted/30 px-6 py-16 lg:px-12">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="mb-6 font-headline text-3xl md:text-4xl font-bold text-primary">
+      <section className="bg-slate-50 px-6 py-20 lg:px-12">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="mb-6 font-headline text-3xl md:text-4xl font-bold text-primary text-center">
             Our 4-Step Verification Process: How We Guarantee Quality
           </h2>
-          <p className="mb-8 text-foreground/80">
+          <p className="mb-12 text-foreground/80 text-center max-w-3xl mx-auto">
             <strong>High-performing MCA campaigns start with verified data, not just more data.</strong>
           </p>
-          <ol className="space-y-6">
-            <li>
-              <h3 className="font-semibold text-lg text-primary mb-2">1. High-intent data sourcing</h3>
-              <p className="text-foreground/80">
-                Sources are direct web forms, inbound funnels, and vetted partners—not scraped directories or bulk business databases.
-              </p>
-            </li>
-            <li>
-              <h3 className="font-semibold text-lg text-primary mb-2">2. Automated data hygiene</h3>
-              <p className="text-foreground/80">
-                Phone/email validation, deduplication, standardizing fields, and suppression list checks ensure clean, deliverable records.
-              </p>
-            </li>
-            <li>
-              <h3 className="font-semibold text-lg text-primary mb-2">3. Live-agent intent verification (for applicable tiers)</h3>
-              <p className="text-foreground/80">
-                For premium tiers, agents confirm reachability and ongoing funding interest before records are sold.
-              </p>
-            </li>
-            <li>
-              <h3 className="font-semibold text-lg text-primary mb-2">4. Compliance & 1:1 consent</h3>
-              <p className="text-foreground/80">
-                TCPA/1:1-consent alignment and auditable consent trails to protect your campaigns and reputation.
-              </p>
-            </li>
-          </ol>
+          <div className="grid md:grid-cols-4 gap-6 relative">
+            {/* Connecting line - desktop only */}
+            <div className="hidden md:block absolute top-12 left-[12.5%] right-[12.5%] h-0.5 bg-slate-300" />
+            
+            {[
+              { num: 1, icon: "🎯", title: "High-intent data sourcing", desc: "Sources are direct web forms, inbound funnels, and vetted partners—not scraped directories or bulk business databases." },
+              { num: 2, icon: "🧹", title: "Automated data hygiene", desc: "Phone/email validation, deduplication, standardizing fields, and suppression list checks ensure clean, deliverable records." },
+              { num: 3, icon: "📞", title: "Live-agent intent verification", desc: "For premium tiers, agents confirm reachability and ongoing funding interest before records are sold." },
+              { num: 4, icon: "✅", title: "Compliance & 1:1 consent", desc: "TCPA/1:1-consent alignment and auditable consent trails to protect your campaigns and reputation." },
+            ].map((step) => (
+              <div key={step.num} className="relative bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div className="flex flex-col items-center text-center">
+                  <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground text-xl font-bold mb-4 shadow-md">
+                    {step.num}
+                  </div>
+                  <div className="text-2xl mb-3">{step.icon}</div>
+                  <h3 className="font-semibold text-lg text-primary mb-2">{step.title}</h3>
+                  <p className="text-sm text-foreground/80">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Clear ROI */}
-      <section className="bg-background px-6 py-16 lg:px-12">
+      <section className="bg-white px-6 py-20 lg:px-12">
         <div className="container mx-auto max-w-4xl">
           <h2 className="mb-6 font-headline text-3xl md:text-4xl font-bold text-primary">
             The Clear ROI: What to Expect from Our Data
@@ -229,7 +228,7 @@ const Products = () => {
           <p className="mb-6 text-foreground/80">
             Exact results depend on scripting, follow-up, underwriting speed, and team experience—but the pattern holds: clean, age-banded data beats blended mystery lists.
           </p>
-          <div className="bg-card border border-border rounded-lg p-6">
+          <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm">
             <h3 className="font-semibold text-lg text-primary mb-4">Illustrative outcome:</h3>
             <ul className="space-y-2 text-foreground/80">
               <li>• Mid-sized ISO blends Direct, Alpha, and Pulse.</li>
@@ -241,7 +240,7 @@ const Products = () => {
       </section>
 
       {/* Warning About Full Packs */}
-      <section className="bg-muted/30 px-6 py-16 lg:px-12">
+      <section className="bg-slate-50 px-6 py-20 lg:px-12">
         <div className="container mx-auto max-w-4xl">
           <h2 className="mb-6 font-headline text-3xl md:text-4xl font-bold text-primary">
             A Warning for Brokers: Avoiding "Full Pack" Scams
@@ -271,17 +270,17 @@ const Products = () => {
       </section>
 
       {/* FAQ */}
-      <section className="bg-background px-6 py-16 lg:px-12">
+      <section className="bg-white px-6 py-20 lg:px-12">
         <div className="container mx-auto max-w-4xl">
           <h2 className="mb-8 font-headline text-3xl md:text-4xl font-bold text-primary">
             Frequently Asked Questions About MCA Leads
           </h2>
           <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="q1" className="border border-border rounded-lg px-6">
-              <AccordionTrigger className="text-left font-semibold">
+            <AccordionItem value="q1" className="border border-border rounded-lg px-6 py-2 transition-all hover:bg-slate-50 data-[state=open]:border-l-4 data-[state=open]:border-l-primary data-[state=open]:bg-slate-50">
+              <AccordionTrigger className="text-left font-semibold py-4">
                 Do MCA leads really work?
               </AccordionTrigger>
-              <AccordionContent className="text-foreground/80">
+              <AccordionContent className="text-foreground/80 pb-6">
                 <p className="mb-3">
                   <strong>Yes—when they are verified, compliant, and matched to a team with a clear follow-up plan.</strong>
                 </p>
@@ -291,11 +290,11 @@ const Products = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="q2" className="border border-border rounded-lg px-6">
-              <AccordionTrigger className="text-left font-semibold">
+            <AccordionItem value="q2" className="border border-border rounded-lg px-6 py-2 transition-all hover:bg-slate-50 data-[state=open]:border-l-4 data-[state=open]:border-l-primary data-[state=open]:bg-slate-50">
+              <AccordionTrigger className="text-left font-semibold py-4">
                 How are your MCA leads verified?
               </AccordionTrigger>
-              <AccordionContent className="text-foreground/80">
+              <AccordionContent className="text-foreground/80 pb-6">
                 <p className="mb-3">
                   <strong>Our leads go through a four-step process: high-intent sourcing, automated data hygiene, optional live-agent checks for some tiers, and a compliance review focused on TCPA and 1:1 consent.</strong>
                 </p>
@@ -305,11 +304,11 @@ const Products = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="q3" className="border border-border rounded-lg px-6">
-              <AccordionTrigger className="text-left font-semibold">
+            <AccordionItem value="q3" className="border border-border rounded-lg px-6 py-2 transition-all hover:bg-slate-50 data-[state=open]:border-l-4 data-[state=open]:border-l-primary data-[state=open]:bg-slate-50">
+              <AccordionTrigger className="text-left font-semibold py-4">
                 What is the difference between Direct Submissions, Alpha Data, and Pulse Data?
               </AccordionTrigger>
-              <AccordionContent className="text-foreground/80">
+              <AccordionContent className="text-foreground/80 pb-6">
                 <p className="mb-3">
                   <strong>Direct Submissions are under 30 days old and priced as premium records; Alpha Data covers 30–180 days; Pulse Data covers 180 days to two years and is priced for large-volume campaigns.</strong>
                 </p>
@@ -319,11 +318,11 @@ const Products = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="q4" className="border border-border rounded-lg px-6">
-              <AccordionTrigger className="text-left font-semibold">
+            <AccordionItem value="q4" className="border border-border rounded-lg px-6 py-2 transition-all hover:bg-slate-50 data-[state=open]:border-l-4 data-[state=open]:border-l-primary data-[state=open]:bg-slate-50">
+              <AccordionTrigger className="text-left font-semibold py-4">
                 Can I filter MCA leads by state, industry, or other criteria?
               </AccordionTrigger>
-              <AccordionContent className="text-foreground/80">
+              <AccordionContent className="text-foreground/80 pb-6">
                 <p className="mb-3">
                   <strong>In most cases, yes—geography, industry, and other MCA fit variables can be applied at the file level.</strong>
                 </p>
@@ -337,7 +336,7 @@ const Products = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="bg-muted/30 px-6 py-16 lg:px-12">
+      <section className="bg-slate-50 px-6 py-20 lg:px-12">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="mb-6 font-headline text-3xl md:text-4xl font-bold text-primary">
             Design Your Data Plan. Scale Without Burn.

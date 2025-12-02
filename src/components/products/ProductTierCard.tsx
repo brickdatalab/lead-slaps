@@ -9,12 +9,22 @@ interface ProductTierCardProps {
   description: string;
   features: string[];
   onStartOrder: () => void;
+  featured?: boolean;
 }
 
-export function ProductTierCard({ tier, title, description, features, onStartOrder }: ProductTierCardProps) {
+export function ProductTierCard({ tier, title, description, features, onStartOrder, featured = false }: ProductTierCardProps) {
   return (
-    <Card className="flex flex-col h-full hover:shadow-lg transition-shadow">
-      <CardHeader>
+    <Card className={`flex flex-col h-full transition-all duration-300 hover:-translate-y-1 ${
+      featured 
+        ? 'shadow-xl border-primary/30 ring-2 ring-primary/20 hover:shadow-2xl' 
+        : 'shadow-md hover:shadow-lg'
+    }`}>
+      <CardHeader className="relative">
+        {featured && (
+          <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4">
+            Most Popular
+          </Badge>
+        )}
         <Badge variant="secondary" className="w-fit mb-2">{tier}</Badge>
         <CardTitle className="text-2xl">{title}</CardTitle>
         <CardDescription className="text-base">{description}</CardDescription>
