@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { InventorySegment, ProductKey } from '@/hooks/useInventorySegments';
 import { Badge } from '@/components/ui/badge';
-import { ChevronDown, ChevronRight } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
+import { ChevronDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface InventoryDashboardProps {
   segments: InventorySegment[];
@@ -24,17 +26,23 @@ function getStatusConfig(status: SegmentStatus) {
     case 'healthy':
       return {
         color: 'bg-emerald-500 text-white',
+        progressColor: 'bg-emerald-500',
         label: 'Healthy',
+        caption: 'Plenty of capacity available',
       };
     case 'tight':
       return {
         color: 'bg-amber-500 text-white',
+        progressColor: 'bg-amber-500',
         label: 'Tight',
+        caption: 'Limited capacity remaining',
       };
     case 'waitlist':
       return {
         color: 'bg-red-500 text-white',
+        progressColor: 'bg-red-500',
         label: 'Waitlist',
+        caption: 'Temporarily sold out',
       };
   }
 }
@@ -49,8 +57,6 @@ interface GroupedProduct {
 
 function groupByProduct(segments: InventorySegment[]): GroupedProduct[] {
   const groups = new Map<ProductKey, GroupedProduct>();
-  
-  // Define product order
   const productOrder: ProductKey[] = ['direct_submissions', 'alpha_data', 'pulse_data'];
   
   segments.forEach((segment) => {
@@ -69,7 +75,6 @@ function groupByProduct(segments: InventorySegment[]): GroupedProduct[] {
     group.segments.push(segment);
   });
 
-  // Sort by product order
   return productOrder
     .filter((key) => groups.has(key))
     .map((key) => groups.get(key)!);
@@ -137,81 +142,112 @@ export function InventoryDashboard({
         </p>
       )}
       
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse">
-          <thead>
-            <tr className="border-b">
-              <th className="text-left py-3 px-4 font-semibold w-8"></th>
-              <th className="text-left py-3 px-4 font-semibold">Product</th>
-              <th className="text-left py-3 px-4 font-semibold">Available now</th>
-              <th className="text-left py-3 px-4 font-semibold">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {groupedProducts.map((group) => {
-              const isExpanded = expandedProducts.has(group.productKey);
-              const status = getSegmentStatus(group.totalAvailable, group.totalMax);
-              const statusConfig = getStatusConfig(status);
+      <div className="space-y-3">
+        {groupedProducts.map((group) => {
+          const isExpanded = expandedProducts.has(group.productKey);
+          const status = getSegmentStatus(group.totalAvailable, group.totalMax);
+          const statusConfig = getStatusConfig(status);
+          const utilizationPercent = group.totalMax > 0 
+            ? (group.totalAvailable / group.totalMax) * 100 
+            : 0;
 
-              return (
-                <>
-                  {/* Product Row */}
-                  <tr
-                    key={group.productKey}
-                    className="border-b hover:bg-muted/50 cursor-pointer transition-colors"
-                    onClick={() => toggleProduct(group.productKey)}
-                  >
-                    <td className="py-4 px-4">
-                      {isExpanded ? (
-                        <ChevronDown className="w-5 h-5 text-muted-foreground" />
-                      ) : (
-                        <ChevronRight className="w-5 h-5 text-muted-foreground" />
-                      )}
-                    </td>
-                    <td className="py-4 px-4 font-medium">{group.productLabel}</td>
-                    <td className="py-4 px-4">{formatNumber(group.totalAvailable)}</td>
-                    <td className="py-4 px-4">
+          return (
+            <div 
+              key={group.productKey}
+              className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden transition-all duration-200 hover:shadow-md"
+            >
+              {/* Product Header - Clickable */}
+              <div
+                className="p-5 cursor-pointer select-none hover:bg-slate-50 transition-colors"
+                onClick={() => toggleProduct(group.productKey)}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <ChevronDown 
+                      className={cn(
+                        "w-5 h-5 text-slate-400 transition-transform duration-200",
+                        isExpanded && "rotate-180"
+                      )} 
+                    />
+                    <div>
+                      <h3 className="font-semibold text-lg text-slate-900">{group.productLabel}</h3>
+                      <p className="text-sm text-slate-500">
+                        {group.segments.length} age band{group.segments.length !== 1 ? 's' : ''} available
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-6">
+                    <div className="text-right">
+                      <p className="text-2xl font-bold text-slate-900">{formatNumber(group.totalAvailable)}</p>
+                      <p className="text-xs text-slate-500">records available</p>
+                    </div>
+                    
+                    <div className="w-32 space-y-1">
                       <Badge variant="secondary" className={statusConfig.color}>
                         {statusConfig.label}
                       </Badge>
-                    </td>
-                  </tr>
-                  
-                  {/* Expanded Age Band Rows */}
-                  {isExpanded && group.segments.map((segment) => {
-                    const segmentStatus = getSegmentStatus(segment.availableQuantity, segment.maxQuantity);
-                    const segmentStatusConfig = getStatusConfig(segmentStatus);
-                    
-                    return (
-                      <tr
-                        key={segment.id}
-                        className="border-b bg-slate-50 hover:bg-slate-100 cursor-pointer transition-colors"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onSegmentSelect(segment.productKey, segment.id);
-                        }}
-                      >
-                        <td className="py-3 px-4"></td>
-                        <td className="py-3 px-4 pl-8">
-                          <div>
-                            <span className="text-slate-700">{segment.ageBandLabel}</span>
-                            <span className="text-slate-500 ml-3">{formatPrice(segment.priceCents)} / record</span>
+                      <Progress value={utilizationPercent} className="h-2" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Expanded Content */}
+              <div 
+                className={cn(
+                  "grid transition-all duration-200 ease-out",
+                  isExpanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                )}
+              >
+                <div className="overflow-hidden">
+                  <div className="border-t border-slate-100 bg-slate-50/50">
+                    {group.segments.map((segment, idx) => {
+                      const segmentStatus = getSegmentStatus(segment.availableQuantity, segment.maxQuantity);
+                      const segmentStatusConfig = getStatusConfig(segmentStatus);
+                      const segmentUtilization = segment.maxQuantity > 0
+                        ? (segment.availableQuantity / segment.maxQuantity) * 100
+                        : 0;
+                      
+                      return (
+                        <div
+                          key={segment.id}
+                          className={cn(
+                            "p-4 pl-14 cursor-pointer hover:bg-slate-100 transition-colors flex items-center justify-between",
+                            idx !== group.segments.length - 1 && "border-b border-slate-100"
+                          )}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onSegmentSelect(segment.productKey, segment.id);
+                          }}
+                        >
+                          <div className="flex items-center gap-8">
+                            <div>
+                              <p className="font-medium text-slate-800">{segment.ageBandLabel}</p>
+                              <p className="text-sm text-slate-500">{formatPrice(segment.priceCents)} per record</p>
+                            </div>
                           </div>
-                        </td>
-                        <td className="py-3 px-4 text-slate-600">{formatNumber(segment.availableQuantity)}</td>
-                        <td className="py-3 px-4">
-                          <Badge variant="secondary" className={segmentStatusConfig.color}>
-                            {segmentStatusConfig.label}
-                          </Badge>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </>
-              );
-            })}
-          </tbody>
-        </table>
+                          
+                          <div className="flex items-center gap-6">
+                            <div className="text-right">
+                              <p className="font-semibold text-slate-900">{formatNumber(segment.availableQuantity)}</p>
+                              <p className="text-xs text-slate-500">available</p>
+                            </div>
+                            
+                            <div className="w-24 space-y-1">
+                              <Progress value={segmentUtilization} className="h-1.5" />
+                              <p className="text-xs text-slate-400">{segmentStatusConfig.caption}</p>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
