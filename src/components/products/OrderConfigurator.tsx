@@ -16,7 +16,7 @@ export function OrderConfigurator({ segments, initialProductKey, initialSegmentI
   const { toast } = useToast();
   const [selectedProductKey, setSelectedProductKey] = useState<ProductKey | null>(initialProductKey || null);
   const [selectedSegmentId, setSelectedSegmentId] = useState<string | null>(initialSegmentId || null);
-  const [quantity, setQuantity] = useState<number>(0);
+  const [quantityInput, setQuantityInput] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
@@ -30,6 +30,7 @@ export function OrderConfigurator({ segments, initialProductKey, initialSegmentI
     ? segments.filter((s) => s.productKey === selectedProductKey)
     : [];
 
+  const quantity = parseInt(quantityInput) || 0;
   const unitPrice = selectedSegment ? selectedSegment.priceCents / 100 : 0;
   const estimatedTotal = quantity * unitPrice;
   const maxQuantity = selectedSegment?.availableQuantity || 0;
@@ -37,7 +38,7 @@ export function OrderConfigurator({ segments, initialProductKey, initialSegmentI
   const handleProductSelect = (productKey: ProductKey) => {
     setSelectedProductKey(productKey);
     setSelectedSegmentId(null);
-    setQuantity(0);
+    setQuantityInput('');
     setCheckoutError(null);
   };
 
@@ -45,14 +46,21 @@ export function OrderConfigurator({ segments, initialProductKey, initialSegmentI
     const segment = segments.find((s) => s.id === segmentId);
     setSelectedSegmentId(segmentId);
     if (segment && quantity > segment.availableQuantity) {
-      setQuantity(segment.availableQuantity);
+      setQuantityInput(segment.availableQuantity.toString());
     }
     setCheckoutError(null);
   };
 
-  const handleQuantityChange = (value: number) => {
-    const clampedValue = Math.max(0, Math.min(value, maxQuantity));
-    setQuantity(clampedValue);
+  const handleQuantityChange = (value: string) => {
+    // Allow empty string or numbers only
+    if (value === '' || /^\d+$/.test(value)) {
+      const numValue = parseInt(value) || 0;
+      if (value === '' || numValue <= maxQuantity) {
+        setQuantityInput(value);
+      } else {
+        setQuantityInput(maxQuantity.toString());
+      }
+    }
     setCheckoutError(null);
   };
 
@@ -195,11 +203,12 @@ export function OrderConfigurator({ segments, initialProductKey, initialSegmentI
                         <Label htmlFor="quantity">Quantity (records)</Label>
                         <Input
                           id="quantity"
-                          type="number"
-                          min={0}
-                          max={maxQuantity}
-                          value={quantity}
-                          onChange={(e) => handleQuantityChange(parseInt(e.target.value) || 0)}
+                          type="text"
+                          inputMode="numeric"
+                          pattern="[0-9]*"
+                          placeholder="Enter quantity"
+                          value={quantityInput}
+                          onChange={(e) => handleQuantityChange(e.target.value)}
                         />
                         <p className="text-sm text-muted-foreground">
                           Max available today for this band: {maxQuantity.toLocaleString()} records.
