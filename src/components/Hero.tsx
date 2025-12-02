@@ -16,7 +16,7 @@ const Hero = () => {
               Premium merchant cash advance leads for sale — live transfers, real-time submissions, and aged lists. TCPA-compliant. Exclusive or shared. Delivered to your CRM in seconds.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
-              <Button variant="default" size="lg" asChild>
+              <Button variant="default" size="lg" asChild className="border-2 border-primary transition-all hover:bg-background hover:text-primary">
                 <a href="/products">View Products</a>
               </Button>
               <Button variant="outline" size="lg" asChild>
