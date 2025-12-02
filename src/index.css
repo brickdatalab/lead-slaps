@@ -435,3 +435,17 @@
   width: calc(100% + 1.3px);
   height: 50px;
 }
+
+/* Global Primary Button Hover - Outline Effect */
+[class*="bg-primary"]:hover:not([class*="bg-primary/"]):not(.no-hover-outline) {
+  background-color: transparent !important;
+  border: 2px solid hsl(var(--primary)) !important;
+  color: hsl(var(--primary)) !important;
+}
+
+/* Ensure buttons have the border property ready */
+button[class*="bg-primary"],
+a[class*="bg-primary"] {
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
