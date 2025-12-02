@@ -174,3 +174,247 @@
     background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(173 80% 50%) 100%);
   }
 }
+
+/* ============================================
+   LEAD SLAPS - ENHANCED VISUAL DESIGN SYSTEM
+   ============================================ */
+
+/* Subtle Dot Grid Pattern Background */
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, hsl(var(--slate-300)) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-dot-pattern-light {
+  background-image: radial-gradient(circle, hsl(var(--slate-200)) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Subtle Gradient Overlays */
+.bg-gradient-subtle {
+  background: linear-gradient(180deg, hsl(var(--slate-50)) 0%, hsl(0 0% 100%) 100%);
+}
+
+.bg-gradient-primary-subtle {
+  background: linear-gradient(135deg, hsl(210 100% 15% / 0.02) 0%, hsl(173 80% 40% / 0.03) 100%);
+}
+
+/* Section Alternate Backgrounds */
+.section-alt {
+  background-color: hsl(var(--slate-50));
+}
+
+.section-gradient-navy {
+  background: linear-gradient(180deg, hsl(210 100% 15% / 0.03) 0%, transparent 100%);
+}
+
+/* Accent Bars & Borders */
+.accent-bar-top {
+  position: relative;
+}
+.accent-bar-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.accent-border-left {
+  border-left: 4px solid hsl(var(--accent));
+  padding-left: 1.5rem;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Icon Container Styles */
+.icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, hsl(var(--accent) / 0.1) 0%, hsl(var(--accent) / 0.05) 100%);
+  color: hsl(var(--accent));
+}
+
+.icon-container-primary {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.1) 0%, hsl(var(--primary) / 0.05) 100%);
+  color: hsl(var(--primary));
+}
+
+.icon-container-sm {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+}
+
+/* Featured Card Treatment */
+.card-featured {
+  position: relative;
+  background: linear-gradient(180deg, hsl(var(--accent) / 0.03) 0%, hsl(0 0% 100%) 100%);
+  border: 2px solid hsl(var(--accent) / 0.3);
+  box-shadow: 0 8px 32px hsl(var(--accent) / 0.12), 0 4px 12px hsl(var(--primary) / 0.08);
+}
+.card-featured::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* Card Hover Lift Effect */
+.card-hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px hsl(var(--primary) / 0.1), 0 6px 12px hsl(var(--primary) / 0.06);
+}
+
+/* Badge Improvements */
+.badge-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(210 100% 25%) 100%);
+  color: white;
+  font-weight: 600;
+}
+
+.badge-glow {
+  box-shadow: 0 0 12px hsl(var(--accent) / 0.4);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 12px hsl(var(--accent) / 0.3); }
+  50% { box-shadow: 0 0 20px hsl(var(--accent) / 0.5); }
+}
+
+/* Decorative Blob Shapes */
+.decorative-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.decorative-blob-primary {
+  background: hsl(var(--primary) / 0.15);
+}
+
+.decorative-blob-accent {
+  background: hsl(var(--accent) / 0.12);
+}
+
+/* Step Number Badges */
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(210 100% 20%) 100%);
+  color: white;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+/* Connecting Line for Steps */
+.step-connector {
+  position: absolute;
+  top: 1.25rem;
+  left: calc(50% + 1.25rem);
+  width: calc(100% - 2.5rem);
+  height: 2px;
+  background: linear-gradient(90deg, hsl(var(--slate-300)) 0%, hsl(var(--slate-200)) 100%);
+}
+
+/* Checkmark List Items */
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.check-item::before {
+  content: '';
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2314B8A6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E") center/contain no-repeat;
+  margin-top: 0.125rem;
+}
+
+/* Quote Card Styling */
+.quote-card {
+  position: relative;
+  background: white;
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--slate-200));
+  border-left: 4px solid hsl(var(--accent));
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease;
+}
+.quote-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Metric Highlight Box */
+.metric-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, hsl(var(--accent) / 0.1) 0%, hsl(var(--accent) / 0.05) 100%);
+  border-radius: 9999px;
+  color: hsl(var(--accent));
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* Animation Classes */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out forwards;
+}
+
+/* Wave Section Divider */
+.wave-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 50px;
+}
