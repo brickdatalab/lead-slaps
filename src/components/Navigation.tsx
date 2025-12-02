@@ -31,7 +31,7 @@ const Navigation = () => {
 
   return (
     <header className={`sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-shadow duration-200 ${isScrolled ? "shadow-sm" : ""}`}>
-      <nav className="container mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
+      <nav className="container mx-auto flex h-20 max-w-[1600px] items-center justify-between px-6 md:px-12 lg:px-20">
         <a href="/" className="flex items-center gap-3">
           <img src={logo} alt="Lead Slaps Logo" className="h-10 w-10" />
           <span className="font-heading text-2xl font-bold text-primary">Lead Slaps</span>
@@ -43,7 +43,7 @@ const Navigation = () => {
             <a
               key={link.label}
               href={link.href}
-              className={`relative font-body text-sm font-medium transition-colors outline-none ring-0 border-none focus:outline-none focus:ring-0 focus:border-none focus-visible:outline-none focus-visible:ring-0 [&:focus]:outline-none [&:focus-visible]:outline-none after:absolute after:bottom-[-4px] after:left-0 after:h-[3px] after:w-full after:origin-left after:bg-primary after:transition-transform after:duration-300 ${
+              className={`relative font-body text-sm font-medium transition-colors !outline-none !ring-0 !border-none focus:!outline-none focus-visible:!outline-none after:absolute after:bottom-[-4px] after:left-0 after:h-[3px] after:w-full after:origin-left after:bg-primary after:transition-transform after:duration-300 ${
                 isActiveLink(link.href)
                   ? "text-primary after:scale-x-100"
                   : "text-text-secondary hover:text-primary after:scale-x-0 hover:after:scale-x-100"
