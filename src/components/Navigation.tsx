@@ -31,7 +31,7 @@ const Navigation = () => {
               {link.label}
             </a>
           ))}
-          <Button variant="default" size="default" asChild>
+          <Button variant="default" size="default" asChild className="border-2 border-primary transition-all hover:bg-background hover:text-primary">
             <a href="/products">Build Dataset</a>
           </Button>
         </div>
@@ -64,7 +64,7 @@ const Navigation = () => {
                 {link.label}
               </a>
             ))}
-            <Button variant="default" size="lg" asChild className="mt-4">
+            <Button variant="default" size="lg" asChild className="mt-4 border-2 border-primary transition-all hover:bg-background hover:text-primary">
               <a href="/products" onClick={() => setMobileMenuOpen(false)}>
                 Build Dataset
               </a>
