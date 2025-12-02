@@ -159,8 +159,8 @@
     @apply transition-colors duration-200;
   }
   
-  /* Focus States */
-  *:focus-visible {
+  /* Focus States - exclude nav links */
+  *:focus-visible:not(nav a) {
     @apply outline-none ring-2 ring-accent ring-offset-2;
   }
   
