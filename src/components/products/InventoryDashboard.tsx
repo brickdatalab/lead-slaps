@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { InventorySegment, ProductKey } from '@/hooks/useInventorySegments';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface InventoryDashboardProps {
@@ -47,11 +47,29 @@ function getStatusConfig(status: SegmentStatus) {
   }
 }
 
+function formatChange(change: number | null | undefined, percent: number | null | undefined) {
+  if (change === null || change === undefined) return null;
+  
+  const absChange = Math.abs(change);
+  const sign = change >= 0 ? '+' : '-';
+  const percentStr = percent !== null && percent !== undefined 
+    ? ` (${change >= 0 ? '+' : ''}${percent.toFixed(1)}%)`
+    : '';
+  
+  return {
+    text: `${sign}${absChange.toLocaleString()}${percentStr}`,
+    isPositive: change >= 0,
+    isNeutral: change === 0,
+  };
+}
+
 interface GroupedProduct {
   productKey: ProductKey;
   productLabel: string;
   totalAvailable: number;
   totalMax: number;
+  totalChange7d: number | null;
+  totalChangePercent7d: number | null;
   segments: InventorySegment[];
 }
 
@@ -66,13 +84,31 @@ function groupByProduct(segments: InventorySegment[]): GroupedProduct[] {
         productLabel: segment.productLabel,
         totalAvailable: 0,
         totalMax: 0,
+        totalChange7d: null,
+        totalChangePercent7d: null,
         segments: [],
       });
     }
     const group = groups.get(segment.productKey)!;
     group.totalAvailable += segment.availableQuantity;
     group.totalMax += segment.maxQuantity;
+    
+    // Aggregate 7-day change
+    if (segment.change7d !== null && segment.change7d !== undefined) {
+      group.totalChange7d = (group.totalChange7d ?? 0) + segment.change7d;
+    }
+    
     group.segments.push(segment);
+  });
+
+  // Calculate percentage for aggregated totals
+  groups.forEach((group) => {
+    if (group.totalChange7d !== null) {
+      const previousTotal = group.totalAvailable - group.totalChange7d;
+      if (previousTotal !== 0) {
+        group.totalChangePercent7d = (group.totalChange7d / previousTotal) * 100;
+      }
+    }
   });
 
   return productOrder
@@ -180,7 +216,27 @@ export function InventoryDashboard({
                   <div className="flex items-center gap-6">
                     <div className="text-right">
                       <p className="text-2xl font-bold text-slate-900">{formatNumber(group.totalAvailable)}</p>
-                      <p className="text-xs text-slate-500">records available</p>
+                      <div className="flex items-center justify-end gap-1">
+                        {(() => {
+                          const change = formatChange(group.totalChange7d, group.totalChangePercent7d);
+                          if (!change) return <p className="text-xs text-slate-500">records available</p>;
+                          return (
+                            <span className={cn(
+                              "text-xs font-medium flex items-center gap-0.5",
+                              change.isNeutral ? "text-slate-500" : change.isPositive ? "text-emerald-600" : "text-red-600"
+                            )}>
+                              {change.isNeutral ? (
+                                <Minus className="w-3 h-3" />
+                              ) : change.isPositive ? (
+                                <TrendingUp className="w-3 h-3" />
+                              ) : (
+                                <TrendingDown className="w-3 h-3" />
+                              )}
+                              {change.text} 7d
+                            </span>
+                          );
+                        })()}
+                      </div>
                     </div>
                     
                     <div className="w-32 space-y-1">
@@ -231,7 +287,25 @@ export function InventoryDashboard({
                           <div className="flex items-center gap-6">
                             <div className="text-right">
                               <p className="font-semibold text-slate-900">{formatNumber(segment.availableQuantity)}</p>
-                              <p className="text-xs text-slate-500">available</p>
+                              {(() => {
+                                const change = formatChange(segment.change7d, segment.changePercent7d);
+                                if (!change) return <p className="text-xs text-slate-500">available</p>;
+                                return (
+                                  <span className={cn(
+                                    "text-xs font-medium flex items-center justify-end gap-0.5",
+                                    change.isNeutral ? "text-slate-500" : change.isPositive ? "text-emerald-600" : "text-red-600"
+                                  )}>
+                                    {change.isNeutral ? (
+                                      <Minus className="w-3 h-3" />
+                                    ) : change.isPositive ? (
+                                      <TrendingUp className="w-3 h-3" />
+                                    ) : (
+                                      <TrendingDown className="w-3 h-3" />
+                                    )}
+                                    {change.text}
+                                  </span>
+                                );
+                              })()}
                             </div>
                             
                             <div className="w-24 space-y-1">
