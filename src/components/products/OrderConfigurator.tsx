@@ -110,144 +110,177 @@ export function OrderConfigurator({ segments, initialProductKey, initialSegmentI
     { key: 'pulse_data' as ProductKey, label: 'Pulse Data', subtext: 'Deep archive & triggers for big floors' },
   ];
 
-  return (
-    <div id="order-configurator" className="grid md:grid-cols-2 gap-8">
-      <div className="space-y-8">
-        {/* Step 1 */}
-        <div className="space-y-4">
-          <Label className="text-lg font-semibold">Step 1 · Choose product</Label>
-          <div role="radiogroup" className="grid gap-3">
-            {productOptions.map((option) => (
-              <button
-                key={option.key}
-                role="radio"
-                aria-checked={selectedProductKey === option.key}
-                onClick={() => handleProductSelect(option.key)}
-                className={`p-4 border-2 rounded-lg text-left transition-all ${
-                  selectedProductKey === option.key
-                    ? 'border-primary bg-primary/5'
-                    : 'border-border hover:border-primary/50'
-                }`}
-              >
-                <div className="font-semibold">{option.label}</div>
-                <div className="text-sm text-muted-foreground">{option.subtext}</div>
-              </button>
-            ))}
-          </div>
-        </div>
+  const StepIndicator = ({ number, active }: { number: number; active: boolean }) => (
+    <div className={`flex items-center justify-center h-10 w-10 rounded-full text-lg font-bold shrink-0 transition-colors ${
+      active 
+        ? 'bg-primary text-primary-foreground' 
+        : 'bg-slate-200 text-slate-500'
+    }`}>
+      {number}
+    </div>
+  );
 
-        {/* Step 2 */}
-        <div className="space-y-4">
-          <Label className="text-lg font-semibold">Step 2 · Choose age band & quantity</Label>
-          {!selectedProductKey ? (
-            <p className="text-sm text-muted-foreground">Select a product first.</p>
-          ) : filteredSegments.length === 0 ? (
-            <p className="text-sm text-muted-foreground">
-              No active segments for this product. Try another tier or check back as new volume is added.
-            </p>
-          ) : (
-            <>
-              <div role="radiogroup" className="grid gap-3">
-                {filteredSegments.map((segment) => (
+  return (
+    <Card id="order-configurator" className="shadow-lg">
+      <CardContent className="p-8">
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="space-y-8">
+            {/* Step 1 */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <StepIndicator number={1} active={!!selectedProductKey} />
+                <Label className="text-lg font-semibold">Choose product</Label>
+              </div>
+              <div role="radiogroup" className="grid gap-3 ml-14">
+                {productOptions.map((option) => (
                   <button
-                    key={segment.id}
+                    key={option.key}
                     role="radio"
-                    aria-checked={selectedSegmentId === segment.id}
-                    onClick={() => handleSegmentSelect(segment.id)}
+                    aria-checked={selectedProductKey === option.key}
+                    onClick={() => handleProductSelect(option.key)}
                     className={`p-4 border-2 rounded-lg text-left transition-all ${
-                      selectedSegmentId === segment.id
+                      selectedProductKey === option.key
                         ? 'border-primary bg-primary/5'
                         : 'border-border hover:border-primary/50'
                     }`}
                   >
-                    <div className="font-semibold">{segment.ageBandLabel}</div>
-                    <div className="text-sm text-muted-foreground">
-                      ${(segment.priceCents / 100).toFixed(2)} / record · {segment.availableQuantity.toLocaleString()} available
-                    </div>
+                    <div className="font-semibold">{option.label}</div>
+                    <div className="text-sm text-muted-foreground">{option.subtext}</div>
                   </button>
                 ))}
               </div>
+            </div>
 
-              {selectedSegment && (
-                <div className="space-y-2">
-                  <Label htmlFor="quantity">Quantity (records)</Label>
-                  <Input
-                    id="quantity"
-                    type="number"
-                    min={0}
-                    max={maxQuantity}
-                    value={quantity}
-                    onChange={(e) => handleQuantityChange(parseInt(e.target.value) || 0)}
-                  />
+            {/* Divider */}
+            <div className="border-t border-slate-200 ml-5" />
+
+            {/* Step 2 */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <StepIndicator number={2} active={!!selectedSegmentId} />
+                <Label className="text-lg font-semibold">Choose age band & quantity</Label>
+              </div>
+              <div className="ml-14">
+                {!selectedProductKey ? (
+                  <p className="text-sm text-muted-foreground">Select a product first.</p>
+                ) : filteredSegments.length === 0 ? (
                   <p className="text-sm text-muted-foreground">
-                    Max available today for this band: {maxQuantity.toLocaleString()} records.
+                    No active segments for this product. Try another tier or check back as new volume is added.
                   </p>
+                ) : (
+                  <>
+                    <div role="radiogroup" className="grid gap-3">
+                      {filteredSegments.map((segment) => (
+                        <button
+                          key={segment.id}
+                          role="radio"
+                          aria-checked={selectedSegmentId === segment.id}
+                          onClick={() => handleSegmentSelect(segment.id)}
+                          className={`p-4 border-2 rounded-lg text-left transition-all ${
+                            selectedSegmentId === segment.id
+                              ? 'border-primary bg-primary/5'
+                              : 'border-border hover:border-primary/50'
+                          }`}
+                        >
+                          <div className="font-semibold">{segment.ageBandLabel}</div>
+                          <div className="text-sm text-muted-foreground">
+                            ${(segment.priceCents / 100).toFixed(2)} / record · {segment.availableQuantity.toLocaleString()} available
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+
+                    {selectedSegment && (
+                      <div className="space-y-2 mt-4">
+                        <Label htmlFor="quantity">Quantity (records)</Label>
+                        <Input
+                          id="quantity"
+                          type="number"
+                          min={0}
+                          max={maxQuantity}
+                          value={quantity}
+                          onChange={(e) => handleQuantityChange(parseInt(e.target.value) || 0)}
+                        />
+                        <p className="text-sm text-muted-foreground">
+                          Max available today for this band: {maxQuantity.toLocaleString()} records.
+                        </p>
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="border-t border-slate-200 ml-5" />
+
+            {/* Step 3 */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <StepIndicator number={3} active={quantity > 0} />
+                <Label className="text-lg font-semibold">Review & proceed to checkout</Label>
+              </div>
+              <div className="ml-14">
+                {checkoutError && (
+                  <div className="p-3 border border-destructive/50 bg-destructive/10 rounded text-sm text-destructive mb-4">
+                    {checkoutError}
+                  </div>
+                )}
+                <Button
+                  onClick={handleCheckout}
+                  disabled={!selectedSegmentId || quantity <= 0 || isSubmitting}
+                  className="w-full border-2 border-primary transition-all hover:bg-background hover:text-primary"
+                  size="lg"
+                >
+                  {isSubmitting ? 'Creating checkout…' : 'Proceed to checkout'}
+                </Button>
+                <p className="text-xs text-muted-foreground text-center mt-3">
+                  You'll confirm details and complete payment on a secure checkout powered by Square.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Order Summary */}
+          <Card className="h-fit shadow-md bg-slate-50">
+            <CardHeader>
+              <CardTitle>Order summary</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Product:</span>
+                  <span className="font-medium">{selectedSegment?.productLabel || 'Select a product'}</span>
                 </div>
-              )}
-            </>
-          )}
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Age band:</span>
+                  <span className="font-medium">{selectedSegment?.ageBandLabel || 'Select an age band'}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Price / record:</span>
+                  <span className="font-medium">{selectedSegment ? `$${unitPrice.toFixed(2)}` : '—'}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Quantity:</span>
+                  <span className="font-medium">{quantity > 0 ? quantity.toLocaleString() : 'Not set yet'}</span>
+                </div>
+              </div>
+              
+              <div className="border-t pt-4">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-lg font-semibold">Estimated total</span>
+                  <span className="text-2xl font-bold text-primary">
+                    {estimatedTotal > 0 ? `$${estimatedTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '—'}
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  Final totals and any applicable taxes will be confirmed on the checkout screen.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
-
-        {/* Step 3 */}
-        <div className="space-y-4">
-          <Label className="text-lg font-semibold">Step 3 · Review & proceed to checkout</Label>
-          {checkoutError && (
-            <div className="p-3 border border-destructive/50 bg-destructive/10 rounded text-sm text-destructive">
-              {checkoutError}
-            </div>
-          )}
-          <Button
-            onClick={handleCheckout}
-            disabled={!selectedSegmentId || quantity <= 0 || isSubmitting}
-            className="w-full"
-            size="lg"
-          >
-            {isSubmitting ? 'Creating checkout…' : 'Proceed to checkout'}
-          </Button>
-          <p className="text-xs text-muted-foreground text-center">
-            You'll confirm details and complete payment on a secure checkout powered by Square.
-          </p>
-        </div>
-      </div>
-
-      {/* Order Summary */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Order summary</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Product:</span>
-              <span className="font-medium">{selectedSegment?.productLabel || 'Select a product'}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Age band:</span>
-              <span className="font-medium">{selectedSegment?.ageBandLabel || 'Select an age band'}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Price / record:</span>
-              <span className="font-medium">{selectedSegment ? `$${unitPrice.toFixed(2)}` : '—'}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Quantity:</span>
-              <span className="font-medium">{quantity > 0 ? quantity.toLocaleString() : 'Not set yet'}</span>
-            </div>
-          </div>
-          
-          <div className="border-t pt-4">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-lg font-semibold">Estimated total</span>
-              <span className="text-2xl font-bold">
-                {estimatedTotal > 0 ? `$${estimatedTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '—'}
-              </span>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Final totals and any applicable taxes will be confirmed on the checkout screen.
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
