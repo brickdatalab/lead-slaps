@@ -94,10 +94,10 @@ const Navigation = () => {
                   key={link.label}
                   href={link.href}
                   style={{ outline: "none", boxShadow: "none" }}
-                  className={`text-lg font-medium transition-colors ${
+                  className={`text-lg font-medium ${
                     isActive(link.href)
                       ? "text-primary"
-                      : "text-slate-600 hover:text-primary"
+                      : "text-slate-600"
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
