@@ -47,10 +47,10 @@ const Navigation = () => {
               key={link.label}
               href={link.href}
               style={{ outline: "none", boxShadow: "none" }}
-              className={`relative text-base font-medium transition-colors after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:origin-left after:bg-primary after:transition-transform after:duration-300 ${
+              className={`relative text-base font-medium ${
                 isActive(link.href)
-                  ? "text-primary after:scale-x-100"
-                  : "text-slate-600 hover:text-primary after:scale-x-0 hover:after:scale-x-100"
+                  ? "text-primary after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-primary"
+                  : "text-slate-600"
               }`}
             >
               {link.label}
