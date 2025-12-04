@@ -1,11 +1,11 @@
-import { Shield, CheckCircle, Target, Zap } from "lucide-react";
+import { Shield, CheckCircle, Target, Lightning } from "@phosphor-icons/react";
 
 const TrustBar = () => {
   const features = [
     { icon: Shield, text: "100% TCPA Compliant" },
     { icon: CheckCircle, text: "Verified Connectivity" },
     { icon: Target, text: "High-Intent Prospects" },
-    { icon: Zap, text: "Real-Time Delivery" },
+    { icon: Lightning, text: "Real-Time Delivery" },
   ];
 
   return (

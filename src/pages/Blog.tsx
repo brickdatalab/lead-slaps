@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { ArrowRight, Calendar, Clock } from "lucide-react";
+import { ArrowRight, Calendar, Clock } from "@phosphor-icons/react";
 import heroDataAnalytics from '@/assets/hero-data-analytics.png';
 import dashboardCrmInterface from '@/assets/dashboard-crm-interface.png';
 import productLiveTransfer from '@/assets/product-live-transfer.png';

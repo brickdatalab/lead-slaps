@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle } from "@phosphor-icons/react";
 import heroVisual from "@/assets/hero-data-analytics.png";
 
 const Hero = () => {
@@ -49,11 +49,11 @@ const Hero = () => {
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>
-                <Button 
-                  asChild 
-                  variant="outline" 
-                  size="lg" 
-                  className="px-8 py-6 text-base font-semibold"
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="px-8 py-6 text-base font-semibold border-2 border-slate-900 text-slate-900 bg-transparent hover:bg-slate-900 hover:text-white hover:shadow-lg transition-all duration-200"
                 >
                   <a href="/add-ons">Explore Add-Ons</a>
                 </Button>

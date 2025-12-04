@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { InventorySegment, ProductKey } from '@/hooks/useInventorySegments';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { ChevronDown, TrendingUp, TrendingDown, Minus } from 'lucide-react';
+import { CaretDown, TrendUp, TrendDown, Minus } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 
 interface InventoryDashboardProps {
@@ -199,7 +199,7 @@ export function InventoryDashboard({
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <ChevronDown 
+                    <CaretDown 
                       className={cn(
                         "w-5 h-5 text-slate-400 transition-transform duration-200",
                         isExpanded && "rotate-180"
@@ -228,9 +228,9 @@ export function InventoryDashboard({
                               {change.isNeutral ? (
                                 <Minus className="w-3 h-3" />
                               ) : change.isPositive ? (
-                                <TrendingUp className="w-3 h-3" />
+                                <TrendUp className="w-3 h-3" />
                               ) : (
-                                <TrendingDown className="w-3 h-3" />
+                                <TrendDown className="w-3 h-3" />
                               )}
                               {change.text} 7d
                             </span>
@@ -298,9 +298,9 @@ export function InventoryDashboard({
                                     {change.isNeutral ? (
                                       <Minus className="w-3 h-3" />
                                     ) : change.isPositive ? (
-                                      <TrendingUp className="w-3 h-3" />
+                                      <TrendUp className="w-3 h-3" />
                                     ) : (
-                                      <TrendingDown className="w-3 h-3" />
+                                      <TrendDown className="w-3 h-3" />
                                     )}
                                     {change.text}
                                   </span>

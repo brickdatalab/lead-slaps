@@ -1,4 +1,4 @@
-import { Quote, TrendingUp, Star } from "lucide-react";
+import { Quotes, TrendUp, Star } from "@phosphor-icons/react";
 
 const Testimonials = () => {
   const testimonials = [
@@ -58,7 +58,7 @@ const Testimonials = () => {
               >
                 {/* Quote Icon */}
                 <div className="mb-4">
-                  <Quote className="w-8 h-8 text-accent/30" />
+                  <Quotes className="w-8 h-8 text-accent/30" />
                 </div>
                 
                 {/* Quote Text */}
@@ -78,7 +78,7 @@ const Testimonials = () => {
                   {/* Metric Highlight */}
                   <div className="mt-4">
                     <div className="metric-highlight">
-                      <TrendingUp className="w-4 h-4" />
+                      <TrendUp className="w-4 h-4" />
                       {testimonial.metric}
                     </div>
                   </div>

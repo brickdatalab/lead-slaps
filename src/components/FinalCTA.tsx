@@ -1,24 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkle } from "@phosphor-icons/react";
 
 const FinalCTA = () => {
   return (
     <section className="relative bg-primary overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
-        {/* Diagonal Pattern */}
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: `repeating-linear-gradient(
-              45deg,
-              transparent,
-              transparent 20px,
-              rgba(255,255,255,0.1) 20px,
-              rgba(255,255,255,0.1) 40px
-            )`,
-          }}
-        />
         {/* Radial Gradient */}
         <div
           className="absolute inset-0"
@@ -35,7 +22,7 @@ const FinalCTA = () => {
         <div className="max-w-4xl mx-auto py-20 md:py-28 text-center">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-white/90 text-sm font-medium mb-6 backdrop-blur-sm">
-            <Sparkles className="w-4 h-4" />
+            <Sparkle className="w-4 h-4" />
             Start Converting Today
           </div>
           

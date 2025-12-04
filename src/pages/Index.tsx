@@ -14,7 +14,6 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
-import { ScrollIndicator } from "@/components/ScrollIndicator";
 
 const Index = () => {
   return (
@@ -26,7 +25,6 @@ const Index = () => {
       </Helmet>
       <Navigation />
       <Hero />
-      <ScrollIndicator />
       <TrustBar />
       <HowItWorks />
       <Problem />

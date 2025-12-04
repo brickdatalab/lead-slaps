@@ -1,4 +1,4 @@
-import { Shield, Bot, FileCheck, TrendingUp } from "lucide-react";
+import { Shield, Robot, ShieldCheck, TrendUp } from "@phosphor-icons/react";
 import diverseBusinessImage from "@/assets/industries-diverse-businesses.png";
 
 const WhyDifferent = () => {
@@ -10,19 +10,19 @@ const WhyDifferent = () => {
         "Our top-tier leads are sold once and never resold. You get a clean, uncontested shot at the deal. No more competing with 10-20 other brokers for burned-out prospects.",
     },
     {
-      icon: FileCheck,
+      icon: ShieldCheck,
       title: "Compliance First (Consent, TCPA, DNC)",
       description:
         "We take compliance seriously. Every lead is verified for consent and scrubbed against DNC and known litigator lists. Full audit trails with timestamps, IP addresses, and opt-in copy included.",
     },
     {
-      icon: Bot,
+      icon: Robot,
       title: "Real‑Time Delivery & Routing",
       description:
         "Leads are delivered to your CRM in under 60 seconds, with intelligent routing to get the right lead to the right rep, instantly. API, webhook, email, or SFTP—your choice.",
     },
     {
-      icon: TrendingUp,
+      icon: TrendUp,
       title: "Conversion Accountability, Not Just Volume",
       description:
         "Our success is tied to yours. We provide the data, strategy, and support you need to actually convert leads and grow your business. Quality over quantity, always.",

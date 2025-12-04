@@ -7,7 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ProductTierCard } from "@/components/products/ProductTierCard";
 import { InventoryDashboard } from "@/components/products/InventoryDashboard";
 import { useInventorySegments, ProductKey } from "@/hooks/useInventorySegments";
-import { Shield, Lock, CheckCircle, Target, Sparkles, Phone, ShieldCheck, ArrowRight, Database } from "lucide-react";
+import { Shield, Lock, CheckCircle, Target, Sparkle, Phone, ShieldCheck, ArrowRight, Database } from "@phosphor-icons/react";
 
 const Products = () => {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const Products = () => {
     },
     {
       num: 2,
-      icon: Sparkles,
+      icon: Sparkle,
       title: "Automated data hygiene",
       desc: "Phone/email validation, deduplication, standardizing fields, and suppression list checks ensure clean, deliverable records."
     },
@@ -180,7 +180,6 @@ const Products = () => {
                   "High-volume availability"
                 ]}
                 onStartOrder={() => handleProductSelect('alpha_data')}
-                featured
               />
               <ProductTierCard
                 tier="Scale Play"

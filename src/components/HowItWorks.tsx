@@ -1,11 +1,11 @@
-import { FileSearch, Brain, Send } from "lucide-react";
+import { MagnifyingGlass, Brain, PaperPlaneTilt } from "@phosphor-icons/react";
 import dashboardImage from "@/assets/dashboard-crm-interface.png";
 
 const HowItWorks = () => {
   const steps = [
     {
       number: "01",
-      icon: FileSearch,
+      icon: MagnifyingGlass,
       title: "Capture and Qualify Fresh Merchant Cash Advance Leads",
       description:
         "We capture high-intent leads from multiple sources, including inbound web forms, partner data, and proprietary intent signals. Every lead is pre-qualified based on your criteria and consent is verified at the source.",
@@ -19,7 +19,7 @@ const HowItWorks = () => {
     },
     {
       number: "03",
-      icon: Send,
+      icon: PaperPlaneTilt,
       title: "Deliver Exclusive Leads or Live Transfers to Your CRM",
       description:
         "We deliver exclusive leads directly to your CRM or dialer via real-time API, webhook, or other integrations. For qualified prospects, we can initiate a live transfer, connecting your closers with interested merchants instantly.",

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Share } from "@phosphor-icons/react";
 import ReactMarkdown from 'react-markdown';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -136,7 +136,7 @@ const BlogPost = () => {
               }}
               className="flex items-center gap-2 text-accent hover:text-accent/80 transition-colors ml-auto"
             >
-              <Share2 className="w-5 h-5" />
+              <Share className="w-5 h-5" />
               Share
             </button>
           </div>

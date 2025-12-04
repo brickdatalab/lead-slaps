@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
-import { Check, Brain, FileText, ShieldCheck, Quote, Zap, Link, FolderSync, CheckCircle, X, ArrowRight, Sparkles, TrendingUp, Star } from "lucide-react";
+import { Check, Brain, FileText, ShieldCheck, Lightning, Link, ArrowsClockwise, CheckCircle, X, ArrowRight, Sparkle, TrendUp, Star } from "@phosphor-icons/react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -70,7 +70,7 @@ const AddOns = () => {
                 </p>
                 
                 <div className="metric-highlight mb-6">
-                  <TrendingUp className="w-4 h-4" />
+                  <TrendUp className="w-4 h-4" />
                   Typical customers see 30-40% higher contact-to-close efficiency
                 </div>
                 
@@ -110,7 +110,7 @@ const AddOns = () => {
                   <div className="h-1 bg-gradient-to-r from-accent to-primary" />
                   <div className="p-6">
                     <h4 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                      <Zap className="w-4 h-4 text-accent" />
+                      <Lightning className="w-4 h-4 text-accent" />
                       Technical Details
                     </h4>
                     
@@ -166,7 +166,7 @@ const AddOns = () => {
                   <div className="h-1 bg-gradient-to-r from-blue-500 to-primary" />
                   <div className="p-6">
                     <h4 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                      <Zap className="w-4 h-4 text-blue-500" />
+                      <Lightning className="w-4 h-4 text-blue-500" />
                       Technical Details
                     </h4>
                     
@@ -219,7 +219,7 @@ const AddOns = () => {
                 </p>
                 
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full text-blue-600 text-sm font-medium mb-6">
-                  <Sparkles className="w-4 h-4" />
+                  <Sparkle className="w-4 h-4" />
                   Same-day turnaround standard. Rush option: 2-4 hours for hot deals.
                 </div>
                 
@@ -278,7 +278,7 @@ const AddOns = () => {
                 </p>
                 
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 rounded-full text-green-600 text-sm font-medium mb-6">
-                  <TrendingUp className="w-4 h-4" />
+                  <TrendUp className="w-4 h-4" />
                   Boost connect rates by 25-40%. Eliminate wasted spend on bad data.
                 </div>
                 
@@ -318,7 +318,7 @@ const AddOns = () => {
                   <div className="h-1 bg-gradient-to-r from-green-500 to-accent" />
                   <div className="p-6">
                     <h4 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                      <Zap className="w-4 h-4 text-green-500" />
+                      <Lightning className="w-4 h-4 text-green-500" />
                       Technical Details
                     </h4>
                     
@@ -493,7 +493,7 @@ const AddOns = () => {
               <Card className="p-6 border-2 border-accent/30 bg-gradient-to-br from-accent/5 to-white">
                 <h4 className="font-semibold text-slate-900 mb-6 flex items-center gap-2">
                   <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
-                    <Sparkles className="w-4 h-4 text-accent" />
+                    <Sparkle className="w-4 h-4 text-accent" />
                   </div>
                   With Add-Ons (Estimated)
                 </h4>
@@ -552,7 +552,7 @@ const AddOns = () => {
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  icon: Zap,
+                  icon: Lightning,
                   title: "Real-Time API",
                   description: "RESTful API with comprehensive docs, webhooks for instant delivery",
                   link: "View API Docs →",
@@ -566,7 +566,7 @@ const AddOns = () => {
                   color: "primary"
                 },
                 {
-                  icon: FolderSync,
+                  icon: ArrowsClockwise,
                   title: "Batch & Portal",
                   description: "CSV/Excel download, SFTP delivery, secure dashboard access",
                   link: "Learn More →",
@@ -645,7 +645,7 @@ const AddOns = () => {
                   <div className="space-y-2 mb-4">
                     {story.metrics.map((metric, mIdx) => (
                       <div key={mIdx} className="metric-highlight text-xs">
-                        <TrendingUp className="w-3 h-3" />
+                        <TrendUp className="w-3 h-3" />
                         {metric}
                       </div>
                     ))}
@@ -698,7 +698,7 @@ const AddOns = () => {
         <div className="container-padding relative">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-white/90 text-sm font-medium mb-6 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4" />
+              <Sparkle className="w-4 h-4" />
               Ready to Get Started?
             </div>
             

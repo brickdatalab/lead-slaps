@@ -1,9 +1,9 @@
-import { Zap, Database, Mail, ArrowRight } from "lucide-react";
+import { Lightning, Database, Envelope, ArrowRight } from "@phosphor-icons/react";
 
 const Delivery = () => {
   const methods = [
     {
-      icon: Zap,
+      icon: Lightning,
       title: "Real-Time API/Webhook",
       description:
         "Instant delivery via RESTful API or webhook. We also support scheduled SFTP drops and simple email/CSV delivery.",
@@ -15,7 +15,7 @@ const Delivery = () => {
         "Salesforce, HubSpot, Zoho, Zapier (for thousands of other apps).",
     },
     {
-      icon: Mail,
+      icon: Envelope,
       title: "Dialer Integrations",
       description:
         "Five9, RingCentral, CallTools, and other major dialers supported.",

@@ -1,16 +1,16 @@
-import { Sparkles, FileCheck, Phone } from "lucide-react";
+import { Sparkle, ListChecks, Phone } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 
 const AddOns = () => {
   const addOns = [
     {
-      icon: Sparkles,
+      icon: Sparkle,
       title: "AI Lead Scoring for MCA",
       description:
         "Our AI models score every lead for fundability, allowing you to prioritize your outreach and focus on the deals most likely to close.",
     },
     {
-      icon: FileCheck,
+      icon: ListChecks,
       title: "Data Enrichment & Verification (TCPA/DNC)",
       description:
         "We enrich your leads with critical data points and verify them for TCPA/DNC compliance, ensuring accuracy and protecting your business.",

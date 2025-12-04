@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { List, X } from "@phosphor-icons/react";
 import logo from "@/assets/logo.svg";
 
 const Navigation = () => {
@@ -46,11 +46,10 @@ const Navigation = () => {
             <a
               key={link.label}
               href={link.href}
-              style={{ outline: "none", boxShadow: "none" }}
-              className={`relative text-base font-medium ${
+              className={`text-base font-medium transition-colors duration-200 ${
                 isActive(link.href)
-                  ? "text-primary after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-primary"
-                  : "text-slate-600"
+                  ? "text-primary underline underline-offset-4 decoration-2 decoration-primary"
+                  : "text-slate-600 hover:text-primary hover:underline hover:underline-offset-4 hover:decoration-2 hover:decoration-primary"
               }`}
             >
               {link.label}
@@ -60,7 +59,7 @@ const Navigation = () => {
           {/* Build Dataset Button */}
           <a
             href="/build-data-set"
-            className="rounded-md border-2 border-primary bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-transparent hover:text-primary"
+            className="min-w-[130px] rounded-md border-2 border-primary bg-primary px-5 py-2.5 text-center text-sm font-semibold text-white transition-all hover:bg-transparent hover:text-primary"
           >
             Build Dataset
           </a>
@@ -75,7 +74,7 @@ const Navigation = () => {
           {mobileMenuOpen ? (
             <X className="h-6 w-6 text-primary" />
           ) : (
-            <Menu className="h-6 w-6 text-primary" />
+            <List className="h-6 w-6 text-primary" />
           )}
         </button>
       </nav>
@@ -93,7 +92,6 @@ const Navigation = () => {
                 <a
                   key={link.label}
                   href={link.href}
-                  style={{ outline: "none", boxShadow: "none" }}
                   className={`text-lg font-medium ${
                     isActive(link.href)
                       ? "text-primary"
