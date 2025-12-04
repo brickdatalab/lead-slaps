@@ -42,7 +42,6 @@ const ProductPreview = () => {
               "Built for sustainable, predictable volume"
             ]}
             onStartOrder={() => handleStartOrder('alpha_data')}
-            featured
           />
           <ProductTierCard
             tier="Scale tier"

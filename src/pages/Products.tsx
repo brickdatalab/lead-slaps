@@ -101,7 +101,7 @@ const Products = () => {
             <div className="flex flex-wrap justify-center gap-6 md:gap-12 text-sm">
               {[
                 { icon: Shield, text: "TCPA & 1:1 consent-aligned sourcing" },
-                { icon: Sparkles, text: "Data hygiene pipeline & 97%+ deliverability" },
+                { icon: Sparkle, text: "Data hygiene pipeline & 97%+ deliverability" },
                 { icon: Lock, text: "Encrypted, PCI-compliant checkout via Square" },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-2 text-slate-600">
