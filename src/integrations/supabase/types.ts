@@ -14,6 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
+      coupons: {
+        Row: {
+          amount_off_cents: number | null
+          created_at: string
+          currency: string | null
+          duration: string
+          duration_in_months: number | null
+          expires_at: string | null
+          id: string
+          max_redemptions: number | null
+          name: string | null
+          percent_off: number | null
+          stripe_coupon_id: string
+          times_redeemed: number | null
+          updated_at: string
+          valid: boolean
+        }
+        Insert: {
+          amount_off_cents?: number | null
+          created_at?: string
+          currency?: string | null
+          duration: string
+          duration_in_months?: number | null
+          expires_at?: string | null
+          id?: string
+          max_redemptions?: number | null
+          name?: string | null
+          percent_off?: number | null
+          stripe_coupon_id: string
+          times_redeemed?: number | null
+          updated_at?: string
+          valid?: boolean
+        }
+        Update: {
+          amount_off_cents?: number | null
+          created_at?: string
+          currency?: string | null
+          duration?: string
+          duration_in_months?: number | null
+          expires_at?: string | null
+          id?: string
+          max_redemptions?: number | null
+          name?: string | null
+          percent_off?: number | null
+          stripe_coupon_id?: string
+          times_redeemed?: number | null
+          updated_at?: string
+          valid?: boolean
+        }
+        Relationships: []
+      }
       customer_lifetime_spend: {
         Row: {
           avg_order_value_cents: number | null
@@ -57,6 +108,13 @@ export type Database = {
             foreignKeyName: "customer_lifetime_spend_customer_id_fkey"
             columns: ["customer_id"]
             isOneToOne: true
+            referencedRelation: "v_active_customers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "customer_lifetime_spend_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: true
             referencedRelation: "v_top_customers"
             referencedColumns: ["customer_id"]
           },
@@ -66,33 +124,39 @@ export type Database = {
         Row: {
           company_name: string | null
           created_at: string
+          deleted_at: string | null
           email: string | null
           id: string
           metadata: Json | null
           name: string | null
           phone: string | null
+          search_vector: unknown
           stripe_customer_id: string | null
           updated_at: string
         }
         Insert: {
           company_name?: string | null
           created_at?: string
+          deleted_at?: string | null
           email?: string | null
           id?: string
           metadata?: Json | null
           name?: string | null
           phone?: string | null
+          search_vector?: unknown
           stripe_customer_id?: string | null
           updated_at?: string
         }
         Update: {
           company_name?: string | null
           created_at?: string
+          deleted_at?: string | null
           email?: string | null
           id?: string
           metadata?: Json | null
           name?: string | null
           phone?: string | null
+          search_vector?: unknown
           stripe_customer_id?: string | null
           updated_at?: string
         }
@@ -226,6 +290,13 @@ export type Database = {
             foreignKeyName: "order_items_product_id_fkey"
             columns: ["product_id"]
             isOneToOne: false
+            referencedRelation: "v_active_products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "order_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
             referencedRelation: "v_revenue_by_product"
             referencedColumns: ["product_id"]
           },
@@ -234,9 +305,11 @@ export type Database = {
       orders: {
         Row: {
           amount_cents: number
+          coupon_id: string | null
           created_at: string
           currency: string
           customer_id: string
+          discount_cents: number | null
           id: string
           metadata: Json | null
           paid_at: string | null
@@ -248,9 +321,11 @@ export type Database = {
         }
         Insert: {
           amount_cents: number
+          coupon_id?: string | null
           created_at?: string
           currency?: string
           customer_id: string
+          discount_cents?: number | null
           id?: string
           metadata?: Json | null
           paid_at?: string | null
@@ -262,9 +337,11 @@ export type Database = {
         }
         Update: {
           amount_cents?: number
+          coupon_id?: string | null
           created_at?: string
           currency?: string
           customer_id?: string
+          discount_cents?: number | null
           id?: string
           metadata?: Json | null
           paid_at?: string | null
@@ -276,10 +353,24 @@ export type Database = {
         }
         Relationships: [
           {
+            foreignKeyName: "orders_coupon_id_fkey"
+            columns: ["coupon_id"]
+            isOneToOne: false
+            referencedRelation: "coupons"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "orders_customer_id_fkey"
             columns: ["customer_id"]
             isOneToOne: false
             referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "orders_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "v_active_customers"
             referencedColumns: ["id"]
           },
           {
@@ -357,6 +448,13 @@ export type Database = {
             foreignKeyName: "prices_product_id_fkey"
             columns: ["product_id"]
             isOneToOne: false
+            referencedRelation: "v_active_products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "prices_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
             referencedRelation: "v_revenue_by_product"
             referencedColumns: ["product_id"]
           },
@@ -366,30 +464,36 @@ export type Database = {
         Row: {
           active: boolean
           created_at: string
+          deleted_at: string | null
           description: string | null
           id: string
           name: string
           product_type: string
+          search_vector: unknown
           stripe_product_id: string
           updated_at: string
         }
         Insert: {
           active?: boolean
           created_at?: string
+          deleted_at?: string | null
           description?: string | null
           id?: string
           name: string
           product_type?: string
+          search_vector?: unknown
           stripe_product_id: string
           updated_at?: string
         }
         Update: {
           active?: boolean
           created_at?: string
+          deleted_at?: string | null
           description?: string | null
           id?: string
           name?: string
           product_type?: string
+          search_vector?: unknown
           stripe_product_id?: string
           updated_at?: string
         }
@@ -403,6 +507,7 @@ export type Database = {
           current_period_end: string | null
           current_period_start: string | null
           customer_id: string
+          deleted_at: string | null
           id: string
           price_id: string
           status: string
@@ -416,6 +521,7 @@ export type Database = {
           current_period_end?: string | null
           current_period_start?: string | null
           customer_id: string
+          deleted_at?: string | null
           id?: string
           price_id: string
           status: string
@@ -429,6 +535,7 @@ export type Database = {
           current_period_end?: string | null
           current_period_start?: string | null
           customer_id?: string
+          deleted_at?: string | null
           id?: string
           price_id?: string
           status?: string
@@ -441,6 +548,13 @@ export type Database = {
             columns: ["customer_id"]
             isOneToOne: false
             referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "subscriptions_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "v_active_customers"
             referencedColumns: ["id"]
           },
           {
@@ -461,6 +575,87 @@ export type Database = {
       }
     }
     Views: {
+      v_active_customers: {
+        Row: {
+          company_name: string | null
+          created_at: string | null
+          deleted_at: string | null
+          email: string | null
+          id: string | null
+          metadata: Json | null
+          name: string | null
+          phone: string | null
+          search_vector: unknown
+          stripe_customer_id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string | null
+          deleted_at?: string | null
+          email?: string | null
+          id?: string | null
+          metadata?: Json | null
+          name?: string | null
+          phone?: string | null
+          search_vector?: unknown
+          stripe_customer_id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string | null
+          deleted_at?: string | null
+          email?: string | null
+          id?: string | null
+          metadata?: Json | null
+          name?: string | null
+          phone?: string | null
+          search_vector?: unknown
+          stripe_customer_id?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      v_active_products: {
+        Row: {
+          active: boolean | null
+          created_at: string | null
+          deleted_at: string | null
+          description: string | null
+          id: string | null
+          name: string | null
+          product_type: string | null
+          search_vector: unknown
+          stripe_product_id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          created_at?: string | null
+          deleted_at?: string | null
+          description?: string | null
+          id?: string | null
+          name?: string | null
+          product_type?: string | null
+          search_vector?: unknown
+          stripe_product_id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          created_at?: string | null
+          deleted_at?: string | null
+          description?: string | null
+          id?: string | null
+          name?: string | null
+          product_type?: string | null
+          search_vector?: unknown
+          stripe_product_id?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       v_active_subscriptions: {
         Row: {
           cancel_at_period_end: boolean | null
@@ -488,6 +683,20 @@ export type Database = {
         }
         Relationships: []
       }
+      v_dashboard_stats: {
+        Row: {
+          active_subscriptions: number | null
+          mrr_cents: number | null
+          mrr_dollars: number | null
+          orders_last_30_days: number | null
+          revenue_last_30_days_dollars: number | null
+          total_customers: number | null
+          total_paid_orders: number | null
+          total_revenue_cents: number | null
+          total_revenue_dollars: number | null
+        }
+        Relationships: []
+      }
       v_monthly_revenue: {
         Row: {
           avg_order_value_cents: number | null
@@ -506,6 +715,18 @@ export type Database = {
           arr_dollars: number | null
           mrr_cents: number | null
           mrr_dollars: number | null
+        }
+        Relationships: []
+      }
+      v_recent_activity: {
+        Row: {
+          activity_type: string | null
+          amount_dollars: number | null
+          created_at: string | null
+          customer_email: string | null
+          customer_name: string | null
+          record_id: string | null
+          status: string | null
         }
         Relationships: []
       }
@@ -540,6 +761,49 @@ export type Database = {
       }
     }
     Functions: {
+      search_customers: {
+        Args: { search_query: string }
+        Returns: {
+          company_name: string | null
+          created_at: string
+          deleted_at: string | null
+          email: string | null
+          id: string
+          metadata: Json | null
+          name: string | null
+          phone: string | null
+          search_vector: unknown
+          stripe_customer_id: string | null
+          updated_at: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "customers"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
+      search_products: {
+        Args: { search_query: string }
+        Returns: {
+          active: boolean
+          created_at: string
+          deleted_at: string | null
+          description: string | null
+          id: string
+          name: string
+          product_type: string
+          search_vector: unknown
+          stripe_product_id: string
+          updated_at: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "products"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
       update_customer_lifetime_spend: {
         Args: { p_customer_id: string }
         Returns: undefined
