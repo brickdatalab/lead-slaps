@@ -2,8 +2,21 @@
 User-agent: *
 Allow: /
 
+# Disallow internal/build paths
+Disallow: /assets/
+Disallow: /*.js$
+Disallow: /*.css$
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 # Sitemap location
 Sitemap: https://leadslaps.com/sitemap.xml
 
-# Crawl-delay for polite bots
+# Crawl-delay for polite bots (not honored by Google, but by Bing)
+User-agent: *
 Crawl-delay: 1

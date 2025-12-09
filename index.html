@@ -9,20 +9,34 @@
     <meta name="author" content="Lead Slaps" />
     <link rel="canonical" href="https://leadslaps.com" />
     <link rel="icon" href="/favicon.png" type="image/png">
+    
+    <!-- Robots -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://leadslaps.com" />
-    
-    
-    <meta property="og:image" content="https://leadslaps.com/hero-data-analytics.png" />
+    <meta property="og:title" content="Buy Exclusive &amp; Verified MCA Leads | Fresh, Real-Time Leads | LeadSlaps">
+    <meta property="og:description" content="Buy exclusive, verified merchant cash advance leads delivered fresh. Transparent cash advance leads pricing. Boost conversions now.">
+    <meta property="og:image" content="https://leadslaps.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="LeadSlaps" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://leadslaps.com" />
-    
-    
-    <meta name="twitter:image" content="https://leadslaps.com/hero-data-analytics.png" />
+    <meta name="twitter:title" content="Buy Exclusive &amp; Verified MCA Leads | Fresh, Real-Time Leads | LeadSlaps">
+    <meta name="twitter:description" content="Buy exclusive, verified merchant cash advance leads delivered fresh. Transparent cash advance leads pricing. Boost conversions now.">
+    <meta name="twitter:image" content="https://leadslaps.com/og-image.png" />
+    <meta name="twitter:site" content="@leadslaps" />
+
+    <!-- Geo targeting -->
+    <meta name="geo.region" content="US" />
+    <meta name="geo.placename" content="United States" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,13 +50,14 @@
       "name": "Lead Slaps",
       "alternateName": "LeadSlaps",
       "url": "https://leadslaps.com",
-      "logo": "https://leadslaps.com/logo.png",
+      "logo": "https://leadslaps.com/favicon.png",
       "description": "Premium merchant cash advance lead provider offering live transfers, real-time submissions, and aged MCA leads to ISOs and direct funders.",
       "foundingDate": "2023",
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+1-855-532-3622",
         "contactType": "sales",
+        "email": "support@leadslaps.com",
         "areaServed": "US",
         "availableLanguage": "en"
       },
@@ -59,12 +74,7 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Lead Slaps",
-      "url": "https://leadslaps.com",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://leadslaps.com/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
+      "url": "https://leadslaps.com"
     }
     </script>
 
@@ -76,14 +86,19 @@
       "name": "Lead Slaps",
       "url": "https://leadslaps.com",
       "description": "Premium MCA lead generation and delivery service for merchant cash advance brokers, ISOs, and direct funders.",
-      "areaServed": "US",
-      "serviceType": "Lead Generation",
+      "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+      },
+      "serviceType": ["Lead Generation", "MCA Leads", "Business Financing Leads"],
       "priceRange": "$$",
       "telephone": "+1-855-532-3622",
+      "email": "support@leadslaps.com",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "US"
-      }
+      },
+      "openingHours": "Mo-Fr 09:00-18:00"
     }
     </script>
 
@@ -134,17 +149,32 @@
         "name": "Lead Slaps",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://leadslaps.com/logo.png"
+          "url": "https://leadslaps.com/favicon.png"
         }
       }
     }
     </script>
 
-    <link rel="icon" type="image/png" href="/favicon.png">
-  <meta property="og:title" content="Buy Exclusive &amp; Verified MCA Leads | Fresh, Real-Time Leads | LeadSlaps">
-  <meta name="twitter:title" content="Buy Exclusive &amp; Verified MCA Leads | Fresh, Real-Time Leads | LeadSlaps">
-  <meta property="og:description" content="Buy exclusive, verified merchant cash advance leads delivered fresh. Transparent cash advance leads pricing. Boost conversions now.">
-  <meta name="twitter:description" content="Buy exclusive, verified merchant cash advance leads delivered fresh. Transparent cash advance leads pricing. Boost conversions now.">
+    <!-- Product Schema for Lead Services -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "MCA Leads",
+      "description": "Exclusive, verified merchant cash advance leads for ISOs and direct funders",
+      "brand": {
+        "@type": "Brand",
+        "name": "LeadSlaps"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "offerCount": "3"
+      },
+      "category": "Lead Generation Services"
+    }
+    </script>
 </head>
 
   <body>
