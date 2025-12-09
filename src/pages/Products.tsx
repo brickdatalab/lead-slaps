@@ -158,38 +158,35 @@ const Products = () => {
 
             <div className="grid md:grid-cols-3 gap-8">
               <ProductTierCard
-                tier="Freshest"
+                tier="Premium tier"
                 title="Direct Submissions"
-                description="0–30 days old. Hot leads actively seeking funding, with maximum exclusivity and conversion potential."
+                description="Real-time and near-real-time submissions for teams that win on speed-to-contact and disciplined follow-up."
                 features={[
-                  "0–30 days old",
-                  "$6.50/lead - $10.00/lead",
-                  "Sold once, never resold",
-                  "Real-time capture & delivery"
+                  "< 15 days – $3.00 / record",
+                  "15–30 days – $2.00 / record",
+                  "Strict caps to avoid oversold lists"
                 ]}
                 onStartOrder={() => handleProductSelect('direct_submissions')}
               />
               <ProductTierCard
-                tier="Best Value"
+                tier="Growth tier"
                 title="Alpha Data"
-                description="30–180 days old. Solid prospects at a balanced price point—ideal for scaling pipeline."
+                description="Smart-aged submissions from the last 6 months, ideal for blending phone, SMS, and email into one consistent pipeline."
                 features={[
-                  "30–180 days old",
-                  "$2.50/lead - $5.00/lead",
-                  "Verified fundability indicators",
-                  "High-volume availability"
+                  "30–90 days – $1.00 / record",
+                  "90–180 days – $0.75 / record",
+                  "Built for sustainable, predictable volume"
                 ]}
                 onStartOrder={() => handleProductSelect('alpha_data')}
               />
               <ProductTierCard
-                tier="Scale Play"
+                tier="Scale tier"
                 title="Pulse Data"
-                description="180 days–2 years old. Budget-friendly aged data for nurture campaigns, dialers, and high-volume outreach."
+                description="6–24 month MCA data priced for high-volume dialing, SMS reactivation, and long-tail email campaigns."
                 features={[
-                  "180 days - 2 years old",
-                  "$0.15/lead - $0.50/lead",
-                  "Mass volume available",
-                  "Dialer & email optimized"
+                  "180–365 days – $0.50 / record",
+                  "1–2 years – $0.25 / record",
+                  "Optimized for big floors & nurture programs"
                 ]}
                 onStartOrder={() => handleProductSelect('pulse_data')}
               />
