@@ -3,7 +3,7 @@ const Problem = () => {
     <section className="bg-slate-50 py-24">
       <div className="container mx-auto max-w-4xl px-6 text-center lg:px-12">
         <h2 className="mb-8 font-heading text-4xl font-bold text-primary md:text-[40px]">
-          Why Most MCA Leads Are Low Quality (The Race to the Bottom)
+          Why Most Working Capital Leads Are Low Quality (The Race to the Bottom)
         </h2>
         <p className="mb-6 font-body text-lg leading-relaxed text-text-primary">
           The problem isn't your sales team; it's your vendor's business model. Traditional providers sell the same lead to 10-20 brokers, creating prospect burnout and making conversion nearly impossible. This forces good brokers to compete on price, not value, destroying margins and morale. This "Race to the Bottom" is characterized by:

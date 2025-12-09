@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 const FAQ = () => {
   const faqs = [
     {
@@ -25,7 +23,7 @@ const FAQ = () => {
     {
       question: "How do live transfer MCA leads work?",
       answer:
-        "An MCA live transfer is a pre-qualified, interested merchant who is transferred directly to your sales team in a live phone call. Our team handles the initial contact and qualification. When the merchant expresses interest and meets your criteria, we connect them to your closer instantly via a warm transfer, allowing your team to focus on closing instead of cold calling.",
+        "An MCA live transfer is a pre-qualified, interested merchant who is transferred directly to your sales team in a live phone call. Our team handles the initial contact and qualification. When the merchant expresses interest and meets your criteria, we connect them to your closer instantly via a warm transfer, allowing your team to focus on closing instead of cold calling. We bridge the gap between a cold lead and a set appointment.",
     },
     {
       question: "Are your MCA leads TCPA compliant?",
@@ -40,7 +38,7 @@ const FAQ = () => {
     {
       question: "What makes a good merchant cash advance lead?",
       answer:
-        "A good MCA lead has verified consent, accurate contact information, monthly revenue of at least $10,000, time in business of 6+ months, and genuine funding need. The best leads also include enriched data like bank statement verification, credit score ranges, and industry type. Lead Slaps provides AI scoring to help you prioritize the most fundable prospects.",
+        "A good MCA lead has verified consent, accurate contact information, monthly revenue of at least $10,000, time in business of 6+ months, and genuine funding need. The best leads also include enriched data like bank statement verification, credit score ranges, and industry type. Lead Slaps provides AI scoring to help you prioritize the most fundable prospects. Unlike UCC lists (public records), our leads are 100% inbound generated.",
     },
     {
       question: "Are exclusive MCA leads worth the price?",
@@ -53,29 +51,6 @@ const FAQ = () => {
         "Yes. Lead Slaps offers customizable lead filters including minimum monthly revenue, time in business, credit score ranges, industry type, geographic location, and funding amount requested. You can configure your filters to ensure you only receive leads that match your underwriting criteria, reducing wasted time on unqualified prospects.",
     },
   ];
-
-  useEffect(() => {
-    // Add FAQPage schema markup
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": faqs.map(faq => ({
-        "@type": "Question",
-        "name": faq.question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": faq.answer
-        }
-      }))
-    });
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
 
   return (
     <section id="faq" className="bg-slate-50 px-6 py-24 lg:px-12">

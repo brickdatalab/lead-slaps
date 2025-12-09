@@ -22,7 +22,7 @@ const HowItWorks = () => {
       icon: PaperPlaneTilt,
       title: "Deliver Exclusive Leads or Live Transfers to Your CRM",
       description:
-        "We deliver exclusive leads directly to your CRM or dialer via real-time API, webhook, or other integrations. For qualified prospects, we can initiate a live transfer, connecting your closers with interested merchants instantly.",
+        "We deliver exclusive leads directly to your CRM or dialer via real-time API, webhook, or other integrations. For qualified prospects, we can initiate a live transfer, connecting your closers with interested merchants instantly. We bridge the gap between a cold lead and a set appointment.",
     },
   ];
 

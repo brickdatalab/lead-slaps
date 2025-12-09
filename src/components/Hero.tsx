@@ -19,7 +19,7 @@ const Hero = () => {
               <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent rounded-full" />
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
-                Buy MCA Leads That{" "}
+                Buy Business Loan Leads That{" "}
                 <span className="gradient-text">Actually Convert</span>
               </h1>
               
