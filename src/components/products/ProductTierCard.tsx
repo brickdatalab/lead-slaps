@@ -20,7 +20,7 @@ export function ProductTierCard({
 }: ProductTierCardProps) {
   return (
     <Card
-      className="relative overflow-hidden transition-all duration-300 hover:-translate-y-1 border border-slate-200 hover:border-slate-300 hover:shadow-md"
+      className="relative overflow-hidden transition-all duration-300 hover:-translate-y-1 border border-slate-200 hover:border-slate-300 hover:shadow-md h-full flex flex-col"
     >
       {/* Top Accent Bar */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-slate-300 to-slate-200" />
@@ -40,9 +40,9 @@ export function ProductTierCard({
         </CardDescription>
       </CardHeader>
 
-      <CardContent className="pt-0">
+      <CardContent className="pt-0 flex flex-col flex-grow">
         {/* Features List */}
-        <ul className="space-y-3 mb-6">
+        <ul className="space-y-3 mb-6 flex-grow">
           {features.map((feature, idx) => (
             <li key={idx} className="flex items-start gap-3">
               <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-slate-100">
@@ -56,7 +56,7 @@ export function ProductTierCard({
         {/* CTA Button */}
         <Button
           onClick={onStartOrder}
-          className="w-full group"
+          className="w-full group mt-auto"
         >
           Start order – {title}
           <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
