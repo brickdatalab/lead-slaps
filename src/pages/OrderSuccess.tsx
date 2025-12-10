@@ -18,6 +18,31 @@ const OrderSuccess = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Push purchase event to dataLayer for GA4 conversion tracking
+  useEffect(() => {
+    if (sessionId) {
+      // Prevent duplicate events by checking sessionStorage
+      const eventKey = `purchase_tracked_${sessionId}`;
+      if (sessionStorage.getItem(eventKey)) {
+        return;
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'purchase',
+        ecommerce: {
+          transaction_id: sessionId,
+          currency: 'USD',
+          // Note: Actual value will be passed from Stripe webhook or retrieved via API
+          // This event signals a successful checkout completion
+        },
+      });
+
+      // Mark this session as tracked to prevent duplicate events
+      sessionStorage.setItem(eventKey, 'true');
+    }
+  }, [sessionId]);
+
   return (
     <>
       <Helmet>

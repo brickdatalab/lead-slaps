@@ -202,6 +202,33 @@ export function OrderConfigurator({ segments, initialProductKey, initialSegmentI
     setIsSubmitting(true);
     setCheckoutError(null);
 
+    // Push begin_checkout event to dataLayer for GA4
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'begin_checkout',
+      ecommerce: {
+        currency: 'USD',
+        value: estimatedTotal,
+        items: cartItems.map((item, index) => ({
+          item_id: item.segmentId,
+          item_name: item.productLabel,
+          item_category: item.productKey,
+          item_variant: item.ageBandLabel,
+          price: item.unitPriceCents / 100,
+          quantity: item.quantity,
+          index: index,
+        })),
+      },
+      // Custom dimensions
+      product_types: [...new Set(cartItems.map(item => item.productKey))].join(','),
+      age_bands: [...new Set(cartItems.map(item => item.ageBandKey))].join(','),
+      addons_selected: Object.entries(selectedAddOns)
+        .filter(([_, selected]) => selected)
+        .map(([key]) => key)
+        .join(',') || 'none',
+      total_leads: totalLeads,
+    });
+
     try {
       // Build line items for Stripe
       const lineItems: { priceId: string; quantity: number }[] = [];
