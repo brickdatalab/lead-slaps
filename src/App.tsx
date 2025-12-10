@@ -15,6 +15,7 @@ import Privacy from "./pages/Privacy";
 import Tcpa from "./pages/Tcpa";
 import NotFound from "./pages/NotFound";
 import BuildDataSet from "./pages/BuildDataSet";
+import OrderSuccess from "./pages/OrderSuccess";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/tcpa" element={<Tcpa />} />
             <Route path="/build-data-set" element={<BuildDataSet />} />
+            <Route path="/order-success" element={<OrderSuccess />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
