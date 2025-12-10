@@ -49,6 +49,46 @@ const blogPosts = [
     readTime: "9 min read",
     category: "Trends and Innovations",
     image: productFreshSubmissions
+  },
+  {
+    id: 5,
+    title: "MCA Sales Scripts That Close: Objection Handling for Brokers",
+    slug: "mca-sales-scripts-objection-handling",
+    excerpt: "Master the art of MCA sales with proven scripts and objection handling techniques that top brokers use to close more deals.",
+    date: "May 5, 2025",
+    readTime: "10 min read",
+    category: "Sales & Closing",
+    image: productLiveTransfer
+  },
+  {
+    id: 6,
+    title: "Maximizing ROI on Aged MCA Leads: The Complete Playbook",
+    slug: "maximizing-roi-aged-mca-leads",
+    excerpt: "Turn overlooked aged leads into a profitable goldmine with this comprehensive reactivation and conversion strategy guide.",
+    date: "May 19, 2025",
+    readTime: "9 min read",
+    category: "Lead Strategy",
+    image: heroDataAnalytics
+  },
+  {
+    id: 7,
+    title: "MCA Industry Benchmarks & KPIs for 2025: How Do You Compare?",
+    slug: "mca-industry-benchmarks-kpis-2025",
+    excerpt: "Compare your MCA operation against industry standards with comprehensive benchmarks for conversion rates, costs, and performance metrics.",
+    date: "June 2, 2025",
+    readTime: "8 min read",
+    category: "Industry Insights",
+    image: dashboardCrmInterface
+  },
+  {
+    id: 8,
+    title: "TCPA Compliance for MCA Brokers: Avoid Costly Fines in 2025",
+    slug: "tcpa-compliance-guide-mca-brokers",
+    excerpt: "Protect your MCA business from costly TCPA violations with this comprehensive compliance guide covering cold calling, DNC rules, and best practices.",
+    date: "June 16, 2025",
+    readTime: "11 min read",
+    category: "Compliance & Legal",
+    image: productFreshSubmissions
   }
 ];
 
