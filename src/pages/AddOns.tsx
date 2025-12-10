@@ -33,12 +33,10 @@ const AddOns = () => {
                 "description": "AI-powered fundability scoring that prioritizes your pipeline with data-driven scores. Reveals hidden gold in your leads with 0-100 scores and A-F grades.",
                 "brand": { "@type": "Brand", "name": "LeadSlaps" },
                 "offers": {
-                  "@type": "AggregateOffer",
+                  "@type": "Offer",
                   "priceCurrency": "USD",
                   "availability": "https://schema.org/InStock",
-                  "lowPrice": "0.40",
-                  "highPrice": "1499.00",
-                  "offerCount": "2"
+                  "price": "0.40"
                 },
                 "category": "Lead Scoring Services"
               },

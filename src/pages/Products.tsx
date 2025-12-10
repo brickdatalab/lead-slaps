@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ProductTierCard } from "@/components/products/ProductTierCard";
 import { InventoryDashboard } from "@/components/products/InventoryDashboard";
 import { useInventorySegments, ProductKey } from "@/hooks/useInventorySegments";
@@ -67,8 +66,8 @@ const Products = () => {
               "@type": "AggregateOffer",
               "priceCurrency": "USD",
               "availability": "https://schema.org/InStock",
-              "lowPrice": "0.35",
-              "highPrice": "85.00",
+              "lowPrice": "0.25",
+              "highPrice": "3.00",
               "offerCount": "3"
             },
             "category": "Lead Generation Services",
@@ -379,12 +378,14 @@ const Products = () => {
       {/* FAQ */}
       <section className="bg-slate-50 section-padding">
         <div className="container-padding">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8 text-center">
-              Frequently Asked Questions About MCA Leads
-            </h2>
-            
-            <Accordion type="single" collapsible className="space-y-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                Frequently Asked Questions About MCA Leads
+              </h2>
+            </div>
+
+            <div className="space-y-6">
               {[
                 {
                   q: "Do MCA leads really work?",
@@ -403,16 +404,16 @@ const Products = () => {
                   a: "In most cases, yes—geography, industry, and other MCA fit variables can be applied at the file level. For complex lender rules or custom segmentation, we recommend scheduling a data strategist call before checkout to ensure your file matches your underwriting criteria."
                 },
               ].map((faq, idx) => (
-                <AccordionItem key={idx} value={`item-${idx}`} className="bg-white rounded-lg border border-slate-200 px-6">
-                  <AccordionTrigger className="text-left font-semibold text-slate-900 hover:text-primary py-4">
+                <div key={idx} className="rounded-lg bg-surface p-8 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                  <h3 className="mb-4 font-heading text-xl font-semibold text-text-primary">
                     {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-slate-600 pb-4">
+                  </h3>
+                  <p className="font-body text-base leading-relaxed text-text-secondary">
                     {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
+                  </p>
+                </div>
               ))}
-            </Accordion>
+            </div>
           </div>
         </div>
       </section>
