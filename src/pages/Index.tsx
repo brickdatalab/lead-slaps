@@ -19,8 +19,8 @@ const Index = () => {
   return (
     <main className="min-h-screen">
       <Helmet>
-        <title>Buy Exclusive & Verified MCA Leads | Fresh Trigger Leads | Competitive Pricing</title>
-        <meta name="description" content="Buy merchant cash advance leads with transparent pricing. Exclusive, verified, and fresh MCA trigger leads delivered in real-time. TCPA compliant, no competition, higher conversions." />
+        <title>Buy MCA Leads | Exclusive Merchant Cash Advance Leads</title>
+        <meta name="description" content="Buy exclusive MCA leads with transparent pricing. Verified merchant cash advance leads delivered fresh. TCPA compliant. Higher conversions." />
         <link rel="canonical" href="https://leadslaps.com/" />
         <script type="application/ld+json">
           {JSON.stringify({
