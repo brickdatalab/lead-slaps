@@ -18,6 +18,61 @@ const AddOns = () => {
       <Helmet>
         <title>AI-Powered MCA Lead Add-Ons - FundSense, StatementSnap, TrustDial | Lead Slaps</title>
         <meta name="description" content="Transform leads into winners with AI add-ons. FundSense scoring, StatementSnap underwriting, and TrustDial verification. Close faster, convert more." />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "MCA Lead Add-Ons",
+            "description": "AI-powered add-on services to enhance MCA lead performance",
+            "numberOfItems": 3,
+            "itemListElement": [
+              {
+                "@type": "Product",
+                "position": 1,
+                "name": "FundSense",
+                "description": "AI-powered fundability scoring that prioritizes your pipeline with data-driven scores. Reveals hidden gold in your leads with 0-100 scores and A-F grades.",
+                "brand": { "@type": "Brand", "name": "LeadSlaps" },
+                "offers": {
+                  "@type": "AggregateOffer",
+                  "priceCurrency": "USD",
+                  "availability": "https://schema.org/InStock",
+                  "lowPrice": "0.40",
+                  "highPrice": "1499.00",
+                  "offerCount": "2"
+                },
+                "category": "Lead Scoring Services"
+              },
+              {
+                "@type": "Product",
+                "position": 2,
+                "name": "StatementSnap",
+                "description": "AI-powered pre-underwriting service that transforms raw data into underwriting-ready packages. Same-day turnaround with optional 2-4 hour rush.",
+                "brand": { "@type": "Brand", "name": "LeadSlaps" },
+                "offers": {
+                  "@type": "Offer",
+                  "priceCurrency": "USD",
+                  "availability": "https://schema.org/InStock",
+                  "price": "10.00"
+                },
+                "category": "Pre-Underwriting Services"
+              },
+              {
+                "@type": "Product",
+                "position": 3,
+                "name": "TrustDial",
+                "description": "Omnichannel contact verification service that validates phone, email, and address data. Boosts connect rates by 25-40% by eliminating bad data.",
+                "brand": { "@type": "Brand", "name": "LeadSlaps" },
+                "offers": {
+                  "@type": "Offer",
+                  "priceCurrency": "USD",
+                  "availability": "https://schema.org/InStock",
+                  "price": "0.45"
+                },
+                "category": "Data Verification Services"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
       <Navigation />
 

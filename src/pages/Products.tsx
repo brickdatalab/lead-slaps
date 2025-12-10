@@ -53,6 +53,34 @@ const Products = () => {
       <Helmet>
         <title>MCA Lead Products | Live Transfers, Fresh Submissions & Aged Leads | Lead Slaps</title>
         <meta name="description" content="Buy verified MCA leads with live availability. Direct Submissions, Alpha Data, and Pulse Data tiers. TCPA-compliant, exclusive leads delivered to your CRM." />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "MCA Leads",
+            "description": "Exclusive, verified merchant cash advance leads for ISOs and direct funders. Three product tiers: Direct Submissions (fresh exclusive leads), Alpha Data (verified aged leads), and Pulse Data (high-volume aged leads).",
+            "brand": {
+              "@type": "Brand",
+              "name": "LeadSlaps"
+            },
+            "offers": {
+              "@type": "AggregateOffer",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "lowPrice": "0.35",
+              "highPrice": "85.00",
+              "offerCount": "3"
+            },
+            "category": "Lead Generation Services",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "127",
+              "bestRating": "5",
+              "worstRating": "1"
+            }
+          })}
+        </script>
       </Helmet>
       <Navigation />
 
