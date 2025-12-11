@@ -31,6 +31,7 @@ const AddOns = () => {
                 "position": 1,
                 "name": "FundSense",
                 "description": "AI-powered fundability scoring that prioritizes your pipeline with data-driven scores. Reveals hidden gold in your leads with 0-100 scores and A-F grades.",
+                "image": "https://leadslaps.com/og-image.png",
                 "brand": { "@type": "Brand", "name": "LeadSlaps" },
                 "offers": {
                   "@type": "Offer",
@@ -45,6 +46,7 @@ const AddOns = () => {
                 "position": 2,
                 "name": "StatementSnap",
                 "description": "AI-powered pre-underwriting service that transforms raw data into underwriting-ready packages. Same-day turnaround with optional 2-4 hour rush.",
+                "image": "https://leadslaps.com/og-image.png",
                 "brand": { "@type": "Brand", "name": "LeadSlaps" },
                 "offers": {
                   "@type": "Offer",
@@ -59,6 +61,7 @@ const AddOns = () => {
                 "position": 3,
                 "name": "TrustDial",
                 "description": "Omnichannel contact verification service that validates phone, email, and address data. Boosts connect rates by 25-40% by eliminating bad data.",
+                "image": "https://leadslaps.com/og-image.png",
                 "brand": { "@type": "Brand", "name": "LeadSlaps" },
                 "offers": {
                   "@type": "Offer",
