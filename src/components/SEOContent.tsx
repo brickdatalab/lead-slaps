@@ -8,9 +8,62 @@ const SEOContent = () => {
           <h2 className="mb-6 font-heading text-3xl font-bold text-primary md:text-4xl">
             Cash Advance Leads Pricing – Transparent & Competitive
           </h2>
-          <p className="mb-4 font-body text-lg leading-relaxed text-text-primary">
-            Our cash advance leads pricing is straightforward and designed to fit your business model. We offer flexible per-lead costs starting as low as $5 for aged leads, $40-$80 for fresh exclusive submissions, and $75-$150 for live transfers. Volume discounts are available for bulk purchases, and subscription options provide predictable monthly costs with priority access to premium inventory.
+          <p className="mb-8 font-body text-lg leading-relaxed text-text-primary">
+            Our cash advance leads pricing is straightforward and designed to fit your business model. We offer flexible per-lead costs starting as low as $0.25 for aged leads up to $3.50 for fresh exclusive submissions. Volume discounts are available for bulk purchases, and subscription options provide predictable monthly costs with priority access to premium inventory.
           </p>
+
+          {/* Pricing Table for SEO */}
+          <div className="mb-8 overflow-x-auto rounded-lg border border-slate-200 shadow-sm">
+            <table className="w-full min-w-[600px] text-left text-sm text-slate-600">
+              <thead className="bg-slate-50 text-slate-900">
+                <tr>
+                  <th className="px-6 py-4 font-semibold">Product Tier</th>
+                  <th className="px-6 py-4 font-semibold">Lead Age</th>
+                  <th className="px-6 py-4 font-semibold">Price Per Lead</th>
+                  <th className="px-6 py-4 font-semibold">Best For</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 bg-white">
+                <tr>
+                  <td className="px-6 py-4 font-medium text-primary">Direct Submissions</td>
+                  <td className="px-6 py-4">0 – 15 Days</td>
+                  <td className="px-6 py-4 font-bold text-slate-900">$3.50</td>
+                  <td className="px-6 py-4">Speed-to-contact teams</td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 font-medium text-primary">Direct Submissions</td>
+                  <td className="px-6 py-4">15 – 30 Days</td>
+                  <td className="px-6 py-4 font-bold text-slate-900">$2.75</td>
+                  <td className="px-6 py-4">High-intent follow up</td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 font-medium text-blue-600">Alpha Data</td>
+                  <td className="px-6 py-4">30 – 90 Days</td>
+                  <td className="px-6 py-4 font-bold text-slate-900">$1.75</td>
+                  <td className="px-6 py-4">Pipeline building</td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 font-medium text-blue-600">Alpha Data</td>
+                  <td className="px-6 py-4">90 – 180 Days</td>
+                  <td className="px-6 py-4 font-bold text-slate-900">$0.95</td>
+                  <td className="px-6 py-4">Multi-channel nurture</td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 font-medium text-green-600">Pulse Data</td>
+                  <td className="px-6 py-4">6 – 12 Months</td>
+                  <td className="px-6 py-4 font-bold text-slate-900">$0.55</td>
+                  <td className="px-6 py-4">High-volume dialing</td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 font-medium text-green-600">Pulse Data</td>
+                  <td className="px-6 py-4">1 – 2 Years</td>
+                  <td className="px-6 py-4 font-bold text-slate-900">$0.25</td>
+                  <td className="px-6 py-4">SMS & Email campaigns</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
           <p className="mb-4 font-body text-lg leading-relaxed text-text-primary">
             Cash advance leads pricing varies based on three key factors: lead quality (verified vs. unverified), volume commitments (larger orders receive better rates), and exclusivity level (exclusive leads command premium pricing but deliver higher ROI). Unlike competitors who hide fees or charge setup costs, our transparent cash advance leads pricing model means you know exactly what you're paying upfront. Many brokers find that investing in higher-quality exclusive leads at competitive pricing actually lowers their cost per funded deal compared to cheaper shared alternatives.
           </p>

@@ -10,6 +10,7 @@ const Footer = () => {
     solutions: [
       { label: "Products", href: "/products" },
       { label: "Add-Ons", href: "/add-ons" },
+      { label: "MCA Trigger Leads", href: "/merchant-cash-advance-trigger-leads" },
       { label: "How It Works", href: "#how-it-works" },
       { label: "FAQ", href: "#faq" },
     ],

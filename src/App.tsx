@@ -10,6 +10,7 @@ import AddOns from "./pages/AddOns";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import TriggerLeads from "./pages/TriggerLeads";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import Tcpa from "./pages/Tcpa";
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/tcpa" element={<Tcpa />} />
             <Route path="/build-data-set" element={<BuildDataSet />} />
+            <Route path="/merchant-cash-advance-trigger-leads" element={<TriggerLeads />} />
             <Route path="/order-success" element={<OrderSuccess />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
